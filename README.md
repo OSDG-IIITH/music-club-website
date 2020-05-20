@@ -3,3 +3,4 @@
 ## Mentors
 - Devansh Manu
 - Tanvi Karandikar
+- Harshika Jain
