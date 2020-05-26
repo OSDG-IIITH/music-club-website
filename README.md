@@ -14,3 +14,7 @@
 <li>You can also intall a new package by npm install {packageName} --save and then push the change so everyone can install</li>
   <li>Both react-bootstrap and bootstrap have been installed</li> 
  </ul>
+=======
+- Harshika Jain
+- Yash Bhansali
+
