@@ -17,7 +17,9 @@
 
  ## Conventions
  <ul>
-  <li>To add a component please make an independent folder inside the directory src/components. Name the folder same as the components and add the JS and CSS files required for the component inside the folder.
+  <li>To add a component please make an independent folder inside the directory src/components. Name the folder same as the components and add the JS and CSS files required for the component inside the folder.</li>
+  <li>Keep all the images in public/images and not within components</li>
+  <li>Dont put --save flag while installing a package with npm that has been deprecated</li>
  </ul>
 =======
 - Harshika Jain
