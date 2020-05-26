@@ -4,3 +4,4 @@
 - Devansh Manu
 - Tanvi Karandikar
 - Harshika Jain
+- Yash Bhansali
