@@ -27,5 +27,3 @@
   <li>Any variables used inside the component should follow camel case</li>
   <li>Any CSS class should be snake-case but with an hypen instead of an underscore</li>
  </ul>
-=======
-
