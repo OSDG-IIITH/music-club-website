@@ -3,6 +3,8 @@
 ## Mentors
 - Devansh Manu
 - Tanvi Karandikar
+- Harshika Jain
+- Yash Bhansali
 
 ## How to setup
 
@@ -26,6 +28,4 @@
   <li>Any CSS class should be snake-case but with an hypen instead of an underscore</li>
  </ul>
 =======
-- Harshika Jain
-- Yash Bhansali
 
