@@ -2,8 +2,11 @@
 
 ## Landing Page
 
+> **Aman Rojjha**
+> **Mehul Mathur**
+
 - [ ] _Carousel_
-    - [ ] Past 3 events and upcoming events.
+    - [ ] Past 3 events and an upcoming event.
    
     - [ ] Button for respective **Events**.
         - [ ] Button for *Event Registration*.
@@ -45,7 +48,7 @@
             - [ ]  Meltdown :sob:
                 - Band Name
                 - Band Year
-                - $\dots$
+                - To be updated.
 
 
 - [ ] _About_
