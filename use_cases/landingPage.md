@@ -2,7 +2,7 @@
 
 ## Landing Page
 
-> **Aman Rojjha**
+> **Aman Rojjha** <br>
 > **Mehul Mathur**
 
 - [ ] _Carousel_
