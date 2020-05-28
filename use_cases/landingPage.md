@@ -2,7 +2,7 @@
 
 ## Landing Page
 
-> **Aman Rojjha**
+> **Aman Rojjha** <br>
 > **Mehul Mathur**
 
 - [ ] _Carousel_
@@ -54,9 +54,10 @@
 - [ ] _About_
     - Introduction
     - History
-    - [Link](Images) with some pop-up images
+    - [Link](Images) with some pop-up images:
+        - To be decided
         - Srujana
         - Felicity 2020
         - Unplugged
 
-- [ ] $Copyright$ at the end.
+- [ ] Copyright at the end.
