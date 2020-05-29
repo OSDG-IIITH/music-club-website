@@ -2,7 +2,7 @@
 
 ## Gallery Page (Events+Mixed)
 
-> **Prajneya Kumar* <br>
+> **Prajneya Kumar** <br>
 > **Pranav Kannan**
 
 - [ ] _Navbar_
