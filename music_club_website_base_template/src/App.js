@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-<<<<<<< HEAD
-=======
+
 // import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 //@ts-ignore
