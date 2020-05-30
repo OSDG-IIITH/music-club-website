@@ -1,0 +1,24 @@
+.heading{
+    display: block;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.timeline{
+    background-image: url('/images/KKW30_FRONT_FULL_1.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    min-height: 4000px;
+}
+
+.container-fluid{
+    background-color: gray;
+}
+
+.cards{
+    position: absolute;
+    background-color: transparent;
+    top:84rem;
+    width: 100%;    
+}

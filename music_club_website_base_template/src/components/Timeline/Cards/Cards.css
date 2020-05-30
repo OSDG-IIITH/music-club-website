@@ -1,0 +1,97 @@
+/* Container around content */
+.card-container{
+    padding: 10px 40px;
+    padding-bottom:2.625rem;
+    position: relative;
+    background-color: transparent;
+    width: 18.5rem;
+  }
+  
+  /* Place the container to the right */
+  .right {
+    left: 16.125rem;
+  }
+
+  .left{
+      right:20.5rem;
+  }
+  
+  /* Add arrows to the left container (pointing right) */
+  .left::before {
+    background-color: transparent !important;
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid white;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+  }
+  
+  /* Add arrows to the right container (pointing left) */
+  .right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+  
+  /* The actual content */
+  .content {
+    padding: 10px 20px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+  }
+
+  /* Cards on the left */
+  #card1{
+      right:17rem;
+  }
+
+  #card3{
+      right:17.25rem;
+  }
+
+  #card5{
+      right:17.65rem;
+  }
+
+  #card7{
+      right:18.075rem;
+  }
+
+  #card9{
+      right:18.5rem;
+  }
+
+  /* Cards on the rgiht */
+
+  #card2{
+      left:12.25rem;
+  }
+
+  #card4{
+      left:12.625rem;
+  }
+
+  #card6{
+      left:13.325rem;
+  }
+
+  #card8{
+      left:13.5rem;
+  }
+
+  #card10{
+      left:13.88rem;
+  }
