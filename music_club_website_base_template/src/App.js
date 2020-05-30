@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+<<<<<<< HEAD
+=======
 // import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 //@ts-ignore
@@ -9,6 +11,7 @@ import 'jquery';
 import 'popper.js';
 
 import Home from './components/Home/Home';
+import Timeline from './components/Timeline/Timeline'
 
 class App extends Component {
   render(){
@@ -19,6 +22,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route path="/" component={Home} exact/>
+            <Route path="/timeline" component={Timeline} exact/>
           </Switch>
         </div>
       </BrowserRouter>
