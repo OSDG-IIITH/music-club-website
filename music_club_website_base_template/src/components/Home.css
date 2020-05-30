@@ -1,0 +1,11 @@
+.bgDiv{
+    background-image: url("image/Background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 1920px;
+    height: 1080px;
+}
+
+#test{
+    color : var(--orangeText);
+}
