@@ -15,15 +15,15 @@ class Home extends Component {
       <div className="bg-Div">
         <Carousel>
           <div>
-            <img src={require('./image/BobMarley.jpg')} />
+            <img src='/images/Home/BobMarley.jpg' />
             <p className="Ganja Ganja"> Bob Marley </p>
           </div>
           <div>
-            <img src={require('./image/BobMarley2.jpg')} />
+            <img src='/images/Home/BobMarley2.jpg' />
             <p className="Ganja Ganja"> Bob Marley </p>
           </div>
           <div>
-            <img src={require('./image/Background.jpg')} />
+            <img src='/images/Home/Background.jpg' />
             <p className="Ganja Ganja"> Bob Marley </p>
           </div>
         </Carousel>
