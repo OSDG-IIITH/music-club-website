@@ -26,4 +26,3 @@
   <li>All components JS and CSS should follow Pascal case so should the function or class name of the component</li>
   <li>Any variables used inside the component should follow camel case</li>
   <li>Any CSS class should be snake-case but with an hypen instead of an underscore</li>
- </ul>
