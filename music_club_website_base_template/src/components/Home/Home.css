@@ -19,17 +19,23 @@
 .eventTextDiv{
     position: relative;
     top:600px;
+   
 }
 
 .eventTitle{
     font-size: 720%;
     color : var(--orangeText);
     font-weight: 800;
+    transition: opacity 500ms ease-in-out ;
+    
 }
+
+
 
 .eventDesc{
     font-weight: 800;
     font-size: 140%;
+    transition: opacity 500ms ease-in-out ;
 }
 
 #img1{
@@ -166,5 +172,37 @@
         height:550px;
     }
 
+    .eventTextDiv{
+        top:400px;
+    }
+    .awssld__bullets button{
+        background-color:white;
+        border-radius: 50%;
+        height: 5px;
+        width:5px;
+        
+    }
+
     
+}
+
+@media screen and (max-width:480px){
+    .carousel{
+        height:450px;
+    }
+
+    .eventTextDiv{
+        top:320px;
+    }
+    
+    .eventTitle{
+        font-size: 320%;
+        color : var(--orangeText);
+        font-weight: 800;
+    }
+    
+    .eventDesc{
+        font-weight: 800;
+        font-size: 60%;
+    }
 }
