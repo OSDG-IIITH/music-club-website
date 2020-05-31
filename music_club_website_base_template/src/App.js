@@ -10,7 +10,9 @@ import 'jquery';
 import 'popper.js';
 
 import Home from './components/Home/Home';
-import Timeline from './components/Timeline/Timeline'
+import Timeline from './components/Timeline/Timeline';
+import Event from './components/Gallery/Events/event';
+import Gallery from './components/Gallery/Mixed/gallery';
 
 class App extends Component {
   render(){
@@ -22,6 +24,8 @@ class App extends Component {
           <Switch>
             <Route path="/" component={Home} exact/>
             <Route path="/timeline" component={Timeline} exact/>
+            <Route path="/event" component={Event} exact/>
+            <Route path="/gallery" component={Gallery} exact/>
           </Switch>
         </div>
       </BrowserRouter>
