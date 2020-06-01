@@ -13,12 +13,14 @@
     font-size: 600%;
     font-family: 'Courier New', Courier, monospace;
     padding: 2vh 0em 0em 0em;
+    
 }
 
 #image{
     background-image: url('./Stock_Concert.jpg');
-    height: auto;
-    background-attachment: fixed;
+     height: 30vw; 
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .aboutTextDiv{
@@ -58,11 +60,19 @@
     transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
 }
 
+.regBtn{
+    position: absolute;
+    left:470px;
+    top:-50px;
+    transition: all 500ms ease-in-out;
+}
+
 #img1{
     background-image: url('../Home/Stock_Concert.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-attachment: fixed;
 }
 
 
@@ -145,6 +155,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-attachment: fixed;
 }
 
 #img3{
@@ -152,6 +163,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-attachment: fixed;
 }
 
 #img4{
@@ -159,6 +171,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-attachment: fixed;
 }
 
 .landingPageFooter{
@@ -179,6 +192,210 @@
     text-decoration-color: gray;
     text-align: center;
 }
+
+.regBtn{
+    position: absolute;
+    left:470px;
+    top:-50px;
+}
+
+/*MODAL CSS*/
+
+/* .form-dark .font-small {
+    font-size: 0.8rem; }
+  
+  .form-dark [type="radio"] + label,
+  .form-dark [type="checkbox"] + label {
+    font-size: 0.8rem; }
+  
+  .form-dark [type="checkbox"] + label:before {
+    top: 2px;
+    width: 15px;
+    height: 15px; }
+  
+  .form-dark .md-form label {
+    color: black; }
+  
+  .form-dark input[type=email]:focus:not([readonly]) {
+    border-bottom: 1px solid #00C851;
+    -webkit-box-shadow: 0 1px 0 0 #00C851;
+    box-shadow: 0 1px 0 0 #00C851; }
+  
+  .form-dark input[type=email]:focus:not([readonly]) + label {
+    color: #fff; }
+  
+  .form-dark input[type=password]:focus:not([readonly]) {
+    border-bottom: 1px solid #00C851;
+    -webkit-box-shadow: 0 1px 0 0 #00C851;
+    box-shadow: 0 1px 0 0 #00C851; }
+  
+  .form-dark input[type=password]:focus:not([readonly]) + label {
+    color: #fff; }
+  
+  .form-dark input[type="checkbox"] + label:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 17px;
+    height: 17px;
+    z-index: 0;
+    border: 1.5px solid #fff;
+    border-radius: 1px;
+    margin-top: 2px;
+    -webkit-transition: 0.2s;
+    transition: 0.2s; }
+  
+  .form-dark input[type="checkbox"]:checked + label:before {
+    top: -4px;
+    left: -3px;
+    width: 12px;
+    height: 22px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent #00c851 #00c851 transparent;
+    -webkit-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    transform: rotate(40deg);
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    transform-origin: 100% 100%; }
+  
+  .form-dark .modal-header {
+      border-bottom: none;
+  }
+*/
+  .mainModal{
+      background-image: url('../Home/recording_room.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+  } 
+
+  .modalBack{
+    background-image: url('../Home/Studio_Room.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  
+  .modalTitle{
+      font-weight: 800;
+      color:var(--orangeText);
+      padding-left: 5rem;
+  }
+
+  *,
+:before,
+:after {
+  box-sizing: border-box;
+}
+
+form {
+    width: 320px;
+    margin: 45px auto;
+  }
+
+  form h1 {
+    font-size: 3em;
+    font-weight: 300;
+    text-align: center;
+    color: #2196F3;
+  }
+  form h5 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #c6c6c6;
+  }
+
+  .group {
+    position: relative;
+    margin: 45px 0;
+  }
+  
+  textarea {
+    resize: none;
+  }
+
+  input,
+textarea {
+  background: none;
+  color: #c6c6c6;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 320px;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #c6c6c6;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+input:focus ~ label, input:valid ~ label,
+textarea:focus ~ label,
+textarea:valid ~ label {
+  top: -14px;
+  font-size: 12px;
+  color: rgb(250, 94, 21);
+}
+input:focus ~ .bar:before,
+textarea:focus ~ .bar:before {
+  width: 320px;
+}
+
+input[type="password"] {
+    letter-spacing: 0.3em;
+  }
+
+  label {
+    color: #c6c6c6;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    -webkit-transition: 300ms ease all;
+    transition: 300ms ease all;
+  }
+
+  .bar {
+    position: relative;
+    display: block;
+    width: 320px;
+  }
+  .bar:before {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 0px;
+    position: absolute;
+    background: rgb(247, 76, 8);
+    -webkit-transition: 300ms ease all;
+    transition: 300ms ease all;
+    left: 0%;
+  }
+  
+
+  
+
+  /*MODAL CSS END*/
+
+ @media screen and (max-width:574px){
+    
+    
+     #image{
+        
+         height: 400px; 
+        
+    } 
+    
+    
+
+} 
 
 @media screen and (max-width:975px){
     .carousel{
