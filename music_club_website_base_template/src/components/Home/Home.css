@@ -24,10 +24,9 @@
 }
 
 .aboutTextDiv{
-
     transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
     position: relative;
-    font-size: 100%;
+    /* font-size: 100%; */
     padding-top: 0%;
 }
 
@@ -62,7 +61,7 @@
 
 .regBtn{
     position: absolute;
-    left:470px;
+    left:41.5%;
     top:-50px;
     transition: all 500ms ease-in-out;
 }
@@ -193,12 +192,6 @@
     text-align: center;
 }
 
-.regBtn{
-    position: absolute;
-    left:470px;
-    top:-50px;
-}
-
 /*MODAL CSS*/
 
 /* .form-dark .font-small {
@@ -317,8 +310,7 @@ form {
     resize: none;
   }
 
-  input,
-textarea {
+  input, textarea {
   background: none;
   color: #c6c6c6;
   font-size: 18px;
@@ -386,14 +378,9 @@ input[type="password"] {
 
  @media screen and (max-width:574px){
     
-    
      #image{
-        
          height: 400px; 
-        
     } 
-    
-    
 
 } 
 
@@ -417,6 +404,18 @@ input[type="password"] {
         font-weight: 800;
         font-size: 80%;
     }
+
+    .aboutTextDiv{
+      transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
+      position: relative;
+      font-size: 80%;
+    }
+    .regBtn{
+      position: absolute;
+      left:38.5%;
+      top:-50px;
+      transition: all 500ms ease-in-out;
+    }
 }
 
 @media screen and (max-width:560px){
@@ -432,10 +431,27 @@ input[type="password"] {
         border-radius: 50%;
         height: 5px;
         width:5px;
-        
     }
 
-    
+    .aboutTextDiv{
+      transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
+      position: relative;
+      font-size: 80%;
+    }
+
+    .aboutHeadDiv{
+      position: relative;
+      font-size: 400%;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 2vh 0em 0em 0em;
+      
+  }
+    .regBtn{
+      position: absolute;
+      left:30%;
+      top:-50px;
+      transition: all 500ms ease-in-out;
+    }
 }
 
 @media screen and (max-width:480px){
@@ -447,6 +463,12 @@ input[type="password"] {
         top:320px;
     }
     
+    .aboutTextDiv{
+      transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
+      position: relative;
+      font-size: 80%;
+    }
+    
     .eventTitle{
         font-size: 320%;
         color : var(--orangeText);
@@ -456,5 +478,19 @@ input[type="password"] {
     .eventDesc{
         font-weight: 800;
         font-size: 60%;
+    }
+
+    .aboutHeadDiv{
+      position: relative;
+      font-size: 300%;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 2vh 0em 0em 0em;
+      
+    }
+    .regBtn{
+      position: absolute;
+      left:25%;
+      top:-50px;
+      transition: all 500ms ease-in-out;
     }
 }
