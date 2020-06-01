@@ -1,7 +1,7 @@
 
 
-#test{
-    color : var(--orangeText);
+body{
+  background-color: #343A40;
 }
 
 .carousel{
@@ -64,7 +64,110 @@
     left:41.5%;
     top:-50px;
     transition: all 500ms ease-in-out;
+    border-radius: 100px;
+    
 }
+
+#regBtnText{
+  font-family: 'Montserrat';
+  font-weight: 600;
+  
+}
+
+/*BUTTON CSS*/
+
+/* .text-box {
+  margin-left: 44vw;
+  margin-top: 42vh;
+} */
+
+#btnReg:link,
+#btnReg:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  position: absolute;
+}
+
+#btnReg:hover {
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#btnReg:active {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+  background-color: rgb(247, 4, 4);
+  color:#fff;
+}
+
+#btnReg::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: rgb(247, 22, 22);
+}
+
+#btnReg:hover::after {
+  -webkit-transform: scaleX(1.4) scaleY(1.6);
+          transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  -webkit-animation: moveInBottom 5s ease-out;
+          animation: moveInBottom 5s ease-out;
+  -webkit-animation-fill-mode: backwards;
+          animation-fill-mode: backwards;
+}
+
+@-webkit-keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+/*BUTTON CSS END*/
 
 #img1{
     background-image: url('../Home/Stock_Concert.jpg');
@@ -385,6 +488,8 @@ input[type="password"] {
 } 
 
 @media screen and (max-width:975px){
+
+  
     .carousel{
         height:650px;
     }

@@ -7,6 +7,7 @@ import 'bootstrap/dist/js/bootstrap';
 import AwesomeSlider from 'react-awesome-slider'
 import styles from 'react-awesome-slider/dist/styles.css'
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
+import {connect} from 'react-redux';
 // import "bootstrap-css-only/css/bootstrap.min.css";
 // import {Button} from 'react-bootstrap';
 //  import "mdbreact/dist/css/mdb.css";
@@ -114,14 +115,14 @@ class Home extends Component {
     console.log(this.state.isOnDisplay)
     return (
       <React.Fragment>
-        <div className="container-fluid mainDiv bg-white">
+        <div className="container-fluid mainDiv bg-dark">
           <AwesomeSlider fillParent={false} className="carousel container-sm" cssModule={styles} transitionDelay={500} mobileTouch={true} bullets={true} onTransitionStart={this.fade} onTransitionEnd={this.bringBack}  >
             <div className=" container-sm  carouselDiv" id="img1">
               <div className="eventTextDiv container-xs" >
                 <h1 className={"eventTitle text-center"} ref={this.eventTitle1}>Meltdown</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc1}>Where all the metal heads go Crazy</p>
-                <button type="button" className="btn btn-outline-danger regBtn" ref={this.regBtn1} data-toggle="modal" data-target="#exampleModalCenter">
-                      Register For Event
+                <button type="button" className="btn btn-white btn-animate btn-outline-warning regBtn" id="btnReg" ref={this.regBtn1} data-toggle="modal" data-target="#exampleModalCenter">
+                      <span id="regBtnText">Register For Event</span>
                     </button>
               </div>
             </div>
@@ -200,6 +201,8 @@ class Home extends Component {
                         </div>
                       </div>
                     </div>
+
+                    
 
                 {/*MODAL ENDS*/}
       
