@@ -7,6 +7,7 @@ import 'bootstrap/dist/js/bootstrap';
 import AwesomeSlider from 'react-awesome-slider'
 import styles from 'react-awesome-slider/dist/styles.css'
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
+import {connect} from 'react-redux';
 // import "bootstrap-css-only/css/bootstrap.min.css";
 // import {Button} from 'react-bootstrap';
 //  import "mdbreact/dist/css/mdb.css";
