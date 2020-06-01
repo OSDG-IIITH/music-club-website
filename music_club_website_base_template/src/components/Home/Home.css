@@ -8,19 +8,37 @@
     height:850px;
 }
 
+.aboutHeadDiv{
+    position: relative;
+    font-size: 600%;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 2vh 0em 0em 0em;
+}
 
+#image{
+    background-image: url('./Stock_Concert.jpg');
+    height: auto;
+    background-attachment: fixed;
+}
+
+.aboutTextDiv{
+
+    transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
+    position: relative;
+    font-size: 100%;
+    padding-top: 0%;
+}
 
 .carouselDiv{
     position: relative;
     height:100%;
-   
+    
 }
 
 .eventTextDiv{
     position: relative;
     top:600px;
-    
-   
+
 }
 
 .eventTitle{
@@ -28,8 +46,6 @@
     color : var(--orangeText);
     font-weight: 800;
     transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
-    
-    
     
 }
 
@@ -145,8 +161,23 @@
     background-position: center;
 }
 
-.about{
-    height: 600px;
+.landingPageFooter{
+    scroll-padding-top: inherit;
+    background-color: #464641;
+    position: relative;
+    height: 55px;
+}
+
+#footer-note{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    text-transform: uppercase;
+    text-overflow: clip;
+    text-rendering: geometricPrecision;
+    text-decoration-color: gray;
+    text-align: center;
 }
 
 @media screen and (max-width:975px){
