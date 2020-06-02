@@ -15,21 +15,22 @@ class Home extends Component {
       <div className="bg-Div">
         <Carousel>
           <div>
-            <img src={require('./image/BobMarley.jpg')} />
+            <img src={'./image/BobMarley.jpg'} />
             <p className="Ganja Ganja"> Bob Marley </p>
           </div>
           <div>
-            <img src={require('./image/BobMarley2.jpg')} />
+            <img src={'./image/BobMarley2.jpg'} />
             <p className="Ganja Ganja"> Bob Marley </p>
           </div>
           <div>
-            <img src={require('./image/Background.jpg')} />
+            <img src={'./image/Background.jpg'} />
             <p className="Ganja Ganja"> Bob Marley </p>
           </div>
         </Carousel>
       </div>
-    )
+    );
   }
 }
+
 
 export default Home;
