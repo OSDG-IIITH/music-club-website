@@ -19,7 +19,53 @@ import 'jquery';
 import 'popper.js';
 import './Home.css';
 
+
+
+
+
+
+
 class Home extends Component {
+
+
+  componentDidMount(){
+
+    function isElementInViewport(el){
+      // if(typeof jquery === "function" && el instanceof jquery){
+      //   el = el[0];
+       //}
+
+      var rect = el.getBoundingClientRect();
+      // console.log(rect.top);
+      // console.log(rect.bottom);
+      
+      return(
+        (rect.top <= 0 && rect.bottom >= 0) || (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) && rect.top <= (window.innerHeight || document.documentElement.clientHeight))
+        || (rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+      )
+    }
+
+    var scroll = window.requestAnimationFrame || function(callback){window.setTimeout(callback,1000/60)};
+    var elemntsToShow = [];
+    elemntsToShow.push(this.aboutImg.current);
+    elemntsToShow.push(this.aboutDesc.current);
+
+    function loop(){
+      elemntsToShow.forEach(function(el){
+      //console.log(isElementInViewport(el));
+        if(isElementInViewport(el)){
+          el.classList.add('is-visible');
+        } else{
+          el.classList.remove('is-visible');
+        }
+      })
+
+      scroll(loop);
+    }
+
+     loop();
+        // console.log(this.aboutHead.current);
+  }
 
   state = {
     isOnDisplay: true,
@@ -110,6 +156,8 @@ class Home extends Component {
   eventTitle4 = React.createRef();
   eventDesc4 = React.createRef();
   regBtn1 = React.createRef();
+  aboutImg = React.createRef();
+  aboutDesc = React.createRef();
 
   render() {
     console.log(this.state.isOnDisplay)
@@ -210,16 +258,16 @@ class Home extends Component {
       
         <hr className='my-4' />
         <div className="jumbotron about">
-          <h1 className='aboutHeadDiv py-5 px-4'>
+          <h1 className='aboutHeadDiv py-5 px-4' >
             About
             </h1>
           <div className='row'>
-            <div className='col-sm-8 aboutTextDiv card-blockquote'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit pellentesque bibendum. Donec eu ornare ex. Etiam pharetra dui elementum euismod mattis. Ut sollicitudin congue odio, sed tempor justo hendrerit vel. Vivamus fringilla dui a quam tincidunt finibus. Nullam sapien enim, ornare non condimentum in, pellentesque ac dolor. Donec vitae nibh eu magna accumsan maximus in sed magna. Ut accumsan gravida lectus. Maecenas eleifend nunc nisl, nec interdum augue fermentum a. Cras non ante quis turpis rhoncus eleifend. Aliquam ut facilisis diam. Nam egestas vehicula sem a pellentesque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum tempus bibendum justo a fermentum. Praesent a mollis velit. Pellentesque euismod dui id leo finibus ullamcorper.
+            <div ref={this.aboutDesc} className='col-sm-8 aboutTextDiv card-blockquote' >
+              <span  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit pellentesque bibendum. Donec eu ornare ex. Etiam pharetra dui elementum euismod mattis. Ut sollicitudin congue odio, sed tempor justo hendrerit vel. Vivamus fringilla dui a quam tincidunt finibus. Nullam sapien enim, ornare non condimentum in, pellentesque ac dolor. Donec vitae nibh eu magna accumsan maximus in sed magna. Ut accumsan gravida lectus. Maecenas eleifend nunc nisl, nec interdum augue fermentum a. Cras non ante quis turpis rhoncus eleifend. Aliquam ut facilisis diam. Nam egestas vehicula sem a pellentesque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum tempus bibendum justo a fermentum. Praesent a mollis velit. Pellentesque euismod dui id leo finibus ullamcorper.
               Morbi eu leo diam. Fusce enim arta libero viverra, non auctor odio ultrices.
               sdavvavsaavavbadsfdggfadffhggefgffgegdgfhgrgsfdgfbv
-              grwrdgfsefdgfgrgfhfgrwdgfnfgrwdgfnfgrw Nulla cursus eget elit vitae tincidunt. Nam a nibh ut nunc lobortis egestas quis sed lacus. Curabitur viverra lectus enim, ac malesuada lorem laoreet venenatis. Sed dui tellus, aliquam laoreet interdum et, gravida eu dui. Sed rhoncus auctor mi eget placerat. Integer nec lacus et mi luctus interdum quis at nisl. Cras a leo vitae arcu iaculis facilisis. Nam et dignissim neque. Nam varius varius accumsan. Vestibulum rutrum fringilla fermentum. </div>
-            <div className='col-sm-4 view overlay card card-img-top' id='image'>
+              grwrdgfsefdgfgrgfhfgrwdgfnfgrwdgfnfgrw Nulla cursus eget elit vitae tincidunt. Nam a nibh ut nunc lobortis egestas quis sed lacus. Curabitur viverra lectus enim, ac malesuada lorem laoreet venenatis. Sed dui tellus, aliquam laoreet interdum et, gravida eu dui. Sed rhoncus auctor mi eget placerat. Integer nec lacus et mi luctus interdum quis at nisl. Cras a leo vitae arcu iaculis facilisis. Nam et dignissim neque. Nam varius varius accumsan. Vestibulum rutrum fringilla fermentum.</span> </div>
+            <div ref={this.aboutImg}  className='col-sm-4 view overlay card card-img-top' id='image'>
             </div>
           </div>
           </div>
@@ -234,5 +282,7 @@ class Home extends Component {
     )
   }
 }
+
+
 
 export default Home;
