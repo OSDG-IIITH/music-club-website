@@ -28,11 +28,6 @@ export default class Login extends Component {
         localStorage.setItem("useet","uewvfihqevifvojqefvopebp546/*-+ewfievf")
         localStorage.setItem("passt","uewvfihqevifvojqefcfewrwvrv546/*-+ewfievf")
         
-
-
-       
-
-
 bcrypt.compare(username, '$2b$10$/vAq6f74Ye.Bqmgo7eo16eKfOGMrFpAh.OoyREteN58EHJpDX72li', function(err, res) {
     if(res) {
      // username natch
@@ -63,6 +58,11 @@ bcrypt.compare(username, '$2b$10$/vAq6f74Ye.Bqmgo7eo16eKfOGMrFpAh.OoyREteN58EHJp
                 loggedIn: true
             })
         }
+        else
+        {
+            alert("Oops! You have entered wrong username or password.");
+            window.location.reload();
+        }
     }
     render() {
             if(this.state.loggedIn)
@@ -79,7 +79,7 @@ bcrypt.compare(username, '$2b$10$/vAq6f74Ye.Bqmgo7eo16eKfOGMrFpAh.OoyREteN58EHJp
                         <input type="text" placeholder="Enter username" id="username" name="username" value={this.state.username} onChange={this.onChange} ></input><br/>
                         <label for="password">Password </label><br/>
                         <input type="password" placeholder="Enter password" id="password" name="password" value={this.state.password} onChange={this.onChange} ></input><br/>
-                        <input type="submit" id="submit" value="Sign in" />
+                        <input type="submit" id="login-submit" value="Sign in" />
                     </form>
                 </div>
             </div>           

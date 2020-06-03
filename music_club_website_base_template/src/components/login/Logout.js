@@ -9,8 +9,8 @@ export default class Logout extends Component {
     render() {
         return (
             <div id="log">
-                <h1 id="logout-message">you have been logged out!!!</h1>
-                <Link id="logout-login" to="/login">Login Again</Link>
+                <h2 id="logout-message">You have been logged out!!!</h2>
+                <br/><Link id="logout-login" to="/login">Login Again</Link>
             </div>
         )
     }
