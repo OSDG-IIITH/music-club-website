@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {DARK_THEME , LIGHT_THEME} from './colors';
+import {DARK_THEME} from './colors';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import rootReducer from './reducers/rootReducer'
 
 document.documentElement.style.setProperty(
   '--orangeText' , DARK_THEME.orangeText
@@ -17,9 +20,11 @@ document.documentElement.style.setProperty(
       '--lightGrey' , DARK_THEME.lightGrey
 );
 
+const store  = createStore(rootReducer);
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}><App /></Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

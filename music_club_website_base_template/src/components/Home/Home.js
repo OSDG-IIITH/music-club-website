@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Carousel } from 'react-responsive-carousel';
+// import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import 'bootstrap/dist/css/bootstrap.css';
 //@ts-ignore
@@ -8,10 +8,11 @@ import AwesomeSlider from 'react-awesome-slider'
 import styles from 'react-awesome-slider/dist/styles.css'
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import {connect} from 'react-redux';
+import {addUser} from '../../actions/userActions' 
 // import "bootstrap-css-only/css/bootstrap.min.css";
 // import {Button} from 'react-bootstrap';
 //  import "mdbreact/dist/css/mdb.css";
-import {MDBContainer , MDBBtn ,MDBModal , MDBModalBody , MDBModalHeader , MDBModalFooter , MDBInput} from 'mdbreact';
+// import {MDBContainer , MDBBtn ,MDBModal , MDBModalBody , MDBModalHeader , MDBModalFooter , MDBInput} from 'mdbreact';
 
 
 // to import react-bootstrap import {...} from 'react-bootstrap'
@@ -68,8 +69,10 @@ class Home extends Component {
   }
 
   state = {
-    isOnDisplay: true,
-    modal : false
+    
+    
+    modal : false,
+    registered : false
   }
 
   modalToggle = () =>{
@@ -158,9 +161,49 @@ class Home extends Component {
   regBtn1 = React.createRef();
   aboutImg = React.createRef();
   aboutDesc = React.createRef();
+  regForm = React.createRef();
+  tickMark = React.createRef();
+  modalBod = React.createRef();
+
+  handleSubmit = (e) =>{
+    e.preventDefault();
+    this.setState({
+      registered:true
+    })
+
+     this.modalBod.current.style.opacity = '6%';
+     this.tickMark.current.style.opacity = '100%';
+     this.tickMark.current.style.transform = 'translate(0px,0px) scale(1.1)';
+     var inpArr = e.target.querySelectorAll('input' , 'textarea');
+     var temp_obj = {};
+     for(let i=0;i<inpArr.length;i++){
+       temp_obj[inpArr[i].getAttribute('name')] = inpArr[i].value
+     }
+
+     this.props.addReg(temp_obj);
+     temp_obj = {};
+     
+    
+  }
+
+  
+
+  afterSubmit = (e) =>{
+    this.setState({
+      registered:false
+    })
+    
+  }
+
+  modalReset = () =>{
+    this.regForm.current.reset();
+    this.modalBod.current.style.opacity = '100%';
+    this.tickMark.current.style.opacity = '0%';
+    this.tickMark.current.style.transform = 'translate(0px,50px) scale(0.8)';
+  }
 
   render() {
-    console.log(this.state.isOnDisplay)
+    // console.log(this.state.isOnDisplay)
     return (
       <React.Fragment>
         <div className="container-fluid mainDiv bg-dark">
@@ -169,7 +212,7 @@ class Home extends Component {
               <div className="eventTextDiv container-xs" >
                 <h1 className={"eventTitle text-center"} ref={this.eventTitle1}>Meltdown</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc1}>Where all the metal heads go Crazy</p>
-                <button type="button" className="btn btn-white btn-animate btn-outline-warning regBtn" id="btnReg" ref={this.regBtn1} data-toggle="modal" data-target="#exampleModalCenter">
+                <button type="button" className="btn btn-white btn-animate btn-outline-warning regBtn" id="btnReg" ref={this.regBtn1} data-toggle="modal" data-target="#exampleModalCenter" onClick={this.modalReset}>
                       <span id="regBtnText">Register For Event</span>
                     </button>
               </div>
@@ -198,7 +241,7 @@ class Home extends Component {
 
                 {/*MODAL START*/}
 
-                    <div className="modal fade modalBack" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div className="modal fade modalBack" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div className="modal-dialog modal-dialog-centered" role="document">
                         <div className="modal-content mainModal">
 
@@ -208,29 +251,30 @@ class Home extends Component {
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <form>
-                          <div className="modal-body">
-                          <div class="wrapper">
+                          <form ref={this.regForm}  onSubmit={this.handleSubmit}>
+                          <div id="tickDiv" ref={this.tickMark}></div>
+                          <div ref={this.modalBod}  className="modal-body">
+                          <div className="wrapper">
                           
                             
-                            <div class="group">
-                              <input type="text" required="required"/><span class="highlight"></span><span class="bar"></span>
+                            <div className="group">
+                              <input name='name' type="text" required="required" disabled={this.state.registered} /><span className="highlight"></span><span className="bar"></span>
                               <label>Name</label>
                             </div>
-                            <div class="group">
-                              <input type="text" required="required"/><span class="highlight"></span><span class="bar"></span>
+                            <div className="group">
+                              <input name='email' type="text" required="required" disabled={this.state.registered} /><span className="highlight"></span><span className="bar"></span>
                               <label>Email</label>
                             </div>
-                            <div class="group">
-                              <input type="password" required="required"/><span class="highlight"></span><span class="bar"></span>
+                            <div className="group">
+                              <input name='password' type="password" required="required" disabled={this.state.registered} /><span className="highlight"></span><span className="bar"></span>
                               <label>Password</label>
                             </div>
-                            <div class="group">
-                              <input type="number" required="required"/><span class="highlight"></span><span class="bar"></span>
+                            <div className="group">
+                              <input name='number' type="number" required="required" disabled={this.state.registered} /><span className="highlight"></span><span className="bar"></span>
                               <label>Number</label>
                             </div>
-                            <div class="group">
-                              <textarea type="textarea" rows="5" required="required"></textarea><span class="highlight"></span><span class="bar"></span>
+                            <div className="group">
+                              <textarea name='message' type="textarea" rows="5" required="required" disabled={this.state.registered} ></textarea><span className="highlight"></span><span className="bar"></span>
                               <label>Message</label>
                             </div>
                             
@@ -239,9 +283,13 @@ class Home extends Component {
                           </div>
                           <div className="modal-footer">
 
-                            <div class="btn-box">
-                              <button className="btn btn-danger mx-4" type="button" data-dismiss="modal">Close</button>
-                              <button className="btn  btn-outline-warning mx-4" type="submit">Register</button>
+                            <div className="btn-box">
+                            {!this.state.registered ? (<React.Fragment><button className="btn btn-danger mx-4" type="button" data-dismiss="modal">Close</button>
+                              <button className="btn  btn-outline-warning mx-4" type="submit">Register</button></React.Fragment>) : (
+                                <React.Fragment><button className="btn btn-success" id="regSucc" type="button" data-dismiss="modal" onClick={this.afterSubmit}>Registered Successfully</button>
+                              </React.Fragment>
+                              )}
+                              
                               
                            </div>
                           </div>
@@ -281,8 +329,23 @@ class Home extends Component {
       </React.Fragment>
     )
   }
+
+  
+
+}
+
+const mapStateToProps = (state) =>{
+  return{
+    registeredUsers : state.registeredUsers
+  }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+  return{
+    addReg : (obj) =>{dispatch(addUser(obj))}
+  }
 }
 
 
 
-export default Home;
+export default connect(mapStateToProps,mapDispatchToProps)(Home);
