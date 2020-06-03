@@ -502,6 +502,25 @@ input[type="password"] {
     transition: 300ms ease all;
     left: 0%;
   }
+
+  #tickDiv{
+    background-image: url('./Green-Tick-PNG-Picture.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity : 0%;
+    transform: translate(0px,50px) scale(0.8);
+    width:300px;
+    height:300px;
+    position: absolute;
+    top:250px;
+    left:120px;
+    transition: opacity 600ms ease-in-out , transform 600ms ease-in-out;
+  }
+
+  #regSucc{
+    position:relative;
+    right:50px;
+  }
   
 
   
