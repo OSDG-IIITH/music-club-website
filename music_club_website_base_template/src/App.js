@@ -1,10 +1,6 @@
 import React,{Component} from 'react';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
-
-
-// <<<<<<< HEAD
-// =======
 // import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 //  login page style

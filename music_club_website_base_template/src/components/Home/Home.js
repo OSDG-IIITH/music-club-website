@@ -7,7 +7,7 @@ import 'bootstrap/dist/js/bootstrap';
 // to import react-bootstrap import {...} from 'react-bootstrap'
 import 'jquery';
 import 'popper.js';
-// import './Home.css';
+//import './Home.css';
 
 class Home extends Component {
   render() {
@@ -15,15 +15,15 @@ class Home extends Component {
       <div className="bg-Div">
         <Carousel>
           <div>
-            <img src={'./image/BobMarley.jpg'} />
+            <img src='/images/Home/BobMarley.jpg' />
             <p className="Ganja Ganja"> Bob Marley </p>
           </div>
           <div>
-            <img src={'./image/BobMarley2.jpg'} />
+            <img src='/images/Home/BobMarley2.jpg' />
             <p className="Ganja Ganja"> Bob Marley </p>
           </div>
           <div>
-            <img src={'./image/Background.jpg'} />
+            <img src='/images/Home/Background.jpg' />
             <p className="Ganja Ganja"> Bob Marley </p>
           </div>
         </Carousel>
