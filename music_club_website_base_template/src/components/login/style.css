@@ -1,0 +1,107 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    /* background-image: url(https://cdn.wallpapersafari.com/52/21/hGPzot.jpg); */
+    font-family: sans-serif;
+}
+
+#content-box {
+    width: 320px;
+    height: 400px;
+    background: white;
+    opacity: 0.7;
+    color: #fff;
+    font-weight: 1px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 15px 30px;
+}
+
+#content-box label {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+    color: black;
+    font-weight: bold;
+}
+
+#username,
+#password {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 0;
+    border: none;
+    color: black;
+    border-bottom: 1px solid black;
+    background: transparent;
+    outline: none;
+    height: 30px;
+}
+
+#login-submit {
+    width: 80%;
+    margin-bottom: 20px;
+    border: none;
+    border: 1px solid blue;
+    background-color: black;
+    opacity: 0.4;
+    outline: none;
+    height: 40px;
+    margin-left: 10%;
+    color: white;
+    font-weight: 1000;
+}
+#submit:hover{
+    opacity: .8;
+}
+#welcome {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: black;
+}
+
+#ent {
+    text-align: center;
+    font-weight: 700;
+    margin: 15px;
+    margin-bottom: 50px;
+    color: black;
+}
+
+#admin-topline{
+    color: #fff;
+    float:left;
+    margin: 15px;
+    margin-left: 30px;
+}
+#admin-logout-button{
+    float:right;
+    background-color: orange;
+    padding: 10px 30px;
+    margin:10px;
+    margin-right: 30px;
+}
+#logout-message{
+    color: #fff;
+    text-align:center;
+    margin: 15px;
+    margin-left: 30px;
+}
+#logout-login{
+    background-color: orange;
+    padding: 10px 30px;
+    margin: -20px -50px; 
+    position:relative;
+    font-weight: 800;
+    top:50%; 
+    left:50%;
+}

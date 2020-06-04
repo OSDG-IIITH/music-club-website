@@ -28,8 +28,9 @@ class Home extends Component {
           </div>
         </Carousel>
       </div>
-    )
+    );
   }
 }
+
 
 export default Home;
