@@ -1,8 +1,10 @@
 import React,{Component} from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 // import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
+//  login page style
+import './components/login/style.css'
 //@ts-ignore
 import 'bootstrap/dist/js/bootstrap';
 // to import react-bootstrap import {...} from 'react-bootstrap'
@@ -13,6 +15,7 @@ import Home from './components/Home/Home';
 import Timeline from './components/Timeline/Timeline';
 import Event from './components/Gallery/Events/event';
 import Gallery from './components/Gallery/Mixed/gallery';
+
 
 class App extends Component {
   render(){
@@ -26,10 +29,13 @@ class App extends Component {
             <Route path="/timeline" component={Timeline} exact/>
             <Route path="/event" component={Event} exact/>
             <Route path="/gallery" component={Gallery} exact/>
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/admin" component={Admin} />
+            <Route exact path="/logout" component={Logout} />
           </Switch>
         </div>
       </BrowserRouter>
-    )
+    );
   }
 }
 

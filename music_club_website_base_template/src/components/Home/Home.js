@@ -7,7 +7,7 @@ import 'bootstrap/dist/js/bootstrap';
 // to import react-bootstrap import {...} from 'react-bootstrap'
 import 'jquery';
 import 'popper.js';
-// import './Home.css';
+//import './Home.css';
 
 class Home extends Component {
   render() {
@@ -28,7 +28,7 @@ class Home extends Component {
           </div>
         </Carousel>
       </div>
-    )
+    );
   }
 }
 
