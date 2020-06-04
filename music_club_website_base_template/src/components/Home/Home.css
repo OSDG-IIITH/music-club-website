@@ -8,4 +8,580 @@
 
 #test{
     color : var(--orangeText);
+    font-weight: 800;
+    transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
+    
+}
+
+
+
+.eventDesc{
+    font-weight: 800;
+    font-size: 140%;
+    transition: opacity 500ms ease-in-out ;
+    transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
+}
+
+.regBtn{
+    position: absolute;
+    left:41.5%;
+    top:-50px;
+    transition: all 500ms ease-in-out;
+    border-radius: 100px;
+    
+}
+
+#regBtnText{
+  font-family: 'Montserrat';
+  font-weight: 600;
+  
+}
+
+/*BUTTON CSS*/
+
+/* .text-box {
+  margin-left: 44vw;
+  margin-top: 42vh;
+} */
+
+#btnReg:link,
+#btnReg:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  position: absolute;
+}
+
+#btnReg:hover {
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#btnReg:active {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+  background-color: rgb(247, 4, 4);
+  color:#fff;
+}
+
+#btnReg::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: rgb(247, 22, 22);
+}
+
+#btnReg:hover::after {
+  -webkit-transform: scaleX(1.4) scaleY(1.6);
+          transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  -webkit-animation: moveInBottom 5s ease-out;
+          animation: moveInBottom 5s ease-out;
+  -webkit-animation-fill-mode: backwards;
+          animation-fill-mode: backwards;
+}
+
+@-webkit-keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+/*BUTTON CSS END*/
+
+#img1{
+    background-image: url('../Home/Stock_Concert.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+.awssld__bullets {
+    position: absolute;
+    bottom: 3px;
+    z-index : 200;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+
+        
+.awssld__bullets button{
+    background-color:white;
+    border-radius: 50%;
+    height: 10px;
+    width:10px;
+    
+}
+
+.awssld__bullets .awssld__bullets--active {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5); 
+            background-color:var(--orangeText);
+        }
+
+ .awssld__controls__arrow-left, .awssld__controls__arrow-right {
+            width: 100%;
+            height: 40px;
+            position: relative;
+            display: block;
+            -webkit-transition: opacity 0.2s ease-out, -webkit-transform 0.2s ease-out 0.125s;
+            transition: opacity 0.2s ease-out, -webkit-transform 0.2s ease-out 0.125s;
+            transition: transform 0.2s ease-out 0.125s, opacity 0.2s ease-out;
+            transition: transform 0.2s ease-out 0.125s, opacity 0.2s ease-out, -webkit-transform 0.2s ease-out 0.125s; }
+
+ .awssld__controls__arrow-left:before, .awssld__controls__arrow-left:after, .awssld__controls__arrow-right:before, .awssld__controls__arrow-right:after {
+                content: ' ';
+                position: absolute;
+                right: calc( 50% - ( 0.7071 * (var(--organic-arrow-height) + var(--organic-arrow-thickness)) ) / 2);
+                height: 100%;
+                border-radius: 100%;
+                width: 5px;
+                background-color: var(--orangeText);
+                -webkit-transition: background-color 0.15s ease-out, -webkit-transform 0.15s ease-out;
+                transition: background-color 0.15s ease-out, -webkit-transform 0.15s ease-out;
+                transition: transform 0.15s ease-out, background-color 0.15s ease-out;
+                transition: transform 0.15s ease-out, background-color 0.15s ease-out, -webkit-transform 0.15s ease-out; }
+
+ .awssld__controls button:hover .awssld__controls__arrow-left:before {
+     background-color:wheat;
+    opacity: 1;
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg); }
+  .awssld__controls button:hover .awssld__controls__arrow-left:after {
+    background-color:wheat;
+    opacity: 1;
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg); }
+  .awssld__controls button:hover .awssld__controls__arrow-right:before {
+    background-color:wheat;
+    opacity: 1;
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg); }
+  .awssld__controls button:hover .awssld__controls__arrow-right:after {
+    background-color:wheat;
+    opacity: 1;
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg); }
+
+#img2{
+    background-image: url('../Home/Stock_Guitar.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#img3{
+    background-image: url('../Home/Stock_Concert.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#img4{
+    background-image: url('../Home/Stock_Guitar.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.landingPageFooter{
+    scroll-padding-top: inherit;
+    background-color: #464641;
+    position: relative;
+    height: 55px;
+}
+
+#footer-note{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    text-transform: uppercase;
+    text-overflow: clip;
+    text-rendering: geometricPrecision;
+    text-decoration-color: gray;
+    text-align: center;
+}
+
+/*MODAL CSS*/
+
+/* .form-dark .font-small {
+    font-size: 0.8rem; }
+  
+  .form-dark [type="radio"] + label,
+  .form-dark [type="checkbox"] + label {
+    font-size: 0.8rem; }
+  
+  .form-dark [type="checkbox"] + label:before {
+    top: 2px;
+    width: 15px;
+    height: 15px; }
+  
+  .form-dark .md-form label {
+    color: black; }
+  
+  .form-dark input[type=email]:focus:not([readonly]) {
+    border-bottom: 1px solid #00C851;
+    -webkit-box-shadow: 0 1px 0 0 #00C851;
+    box-shadow: 0 1px 0 0 #00C851; }
+  
+  .form-dark input[type=email]:focus:not([readonly]) + label {
+    color: #fff; }
+  
+  .form-dark input[type=password]:focus:not([readonly]) {
+    border-bottom: 1px solid #00C851;
+    -webkit-box-shadow: 0 1px 0 0 #00C851;
+    box-shadow: 0 1px 0 0 #00C851; }
+  
+  .form-dark input[type=password]:focus:not([readonly]) + label {
+    color: #fff; }
+  
+  .form-dark input[type="checkbox"] + label:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 17px;
+    height: 17px;
+    z-index: 0;
+    border: 1.5px solid #fff;
+    border-radius: 1px;
+    margin-top: 2px;
+    -webkit-transition: 0.2s;
+    transition: 0.2s; }
+  
+  .form-dark input[type="checkbox"]:checked + label:before {
+    top: -4px;
+    left: -3px;
+    width: 12px;
+    height: 22px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent #00c851 #00c851 transparent;
+    -webkit-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    transform: rotate(40deg);
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    transform-origin: 100% 100%; }
+  
+  .form-dark .modal-header {
+      border-bottom: none;
+  }
+*/
+  .mainModal{
+      background-image: url('../Home/recording_room.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+  } 
+
+  .modalBack{
+    background-image: url('../Home/Studio_Room.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  
+  .modalTitle{
+      font-weight: 800;
+      color:var(--orangeText);
+      padding-left: 5rem;
+  }
+
+  *,
+:before,
+:after {
+  box-sizing: border-box;
+}
+
+form {
+    width: 320px;
+    margin: 45px auto;
+  }
+
+  form h1 {
+    font-size: 3em;
+    font-weight: 300;
+    text-align: center;
+    color: #2196F3;
+  }
+  form h5 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #c6c6c6;
+  }
+
+  .group {
+    position: relative;
+    margin: 45px 0;
+  }
+  
+  textarea {
+    resize: none;
+  }
+
+  input, textarea {
+  background: none;
+  color: #c6c6c6;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 320px;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #c6c6c6;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+input:focus ~ label, input:valid ~ label,
+textarea:focus ~ label,
+textarea:valid ~ label {
+  top: -14px;
+  font-size: 12px;
+  color: rgb(250, 94, 21);
+}
+input:focus ~ .bar:before,
+textarea:focus ~ .bar:before {
+  width: 320px;
+}
+
+input[type="password"] {
+    letter-spacing: 0.3em;
+  }
+
+  label {
+    color: #c6c6c6;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    -webkit-transition: 300ms ease all;
+    transition: 300ms ease all;
+  }
+
+  .bar {
+    position: relative;
+    display: block;
+    width: 320px;
+  }
+  .bar:before {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 0px;
+    position: absolute;
+    background: rgb(247, 76, 8);
+    -webkit-transition: 300ms ease all;
+    transition: 300ms ease all;
+    left: 0%;
+  }
+
+  #tickDiv{
+    background-image: url('./Green-Tick-PNG-Picture.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity : 0%;
+    transform: translate(0px,50px) scale(0.8);
+    width:300px;
+    height:300px;
+    position: absolute;
+    top:250px;
+    left:120px;
+    transition: opacity 600ms ease-in-out , transform 600ms ease-in-out;
+  }
+
+  #regSucc{
+    position:relative;
+    right:50px;
+  }
+  
+
+  
+
+  /*MODAL CSS END*/
+
+ @media screen and (max-width:574px){
+    
+     #image{
+         height: 400px; 
+    } 
+
+} 
+
+@media screen and (max-width:975px){
+
+  
+    .carousel{
+        height:650px;
+    }
+
+    .eventTextDiv{
+        position: relative;
+        top:450px;
+    }
+    
+    .eventTitle{
+        font-size: 520%;
+        color : var(--orangeText);
+        font-weight: 800;
+    }
+    
+    .eventDesc{
+        font-weight: 800;
+        font-size: 80%;
+    }
+
+    .aboutTextDiv{
+      transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
+      position: relative;
+      font-size: 80%;
+    }
+    .regBtn{
+      position: absolute;
+      left:38.5%;
+      top:-50px;
+      transition: all 500ms ease-in-out;
+    }
+}
+
+@media screen and (max-width:560px){
+    .carousel{
+        height:550px;
+    }
+
+    .eventTextDiv{
+        top:400px;
+    }
+    .awssld__bullets button{
+        background-color:white;
+        border-radius: 50%;
+        height: 5px;
+        width:5px;
+    }
+
+    .aboutTextDiv{
+      transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
+      position: relative;
+      font-size: 80%;
+    }
+
+    .aboutHeadDiv{
+      position: relative;
+      font-size: 400%;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 2vh 0em 0em 0em;
+      
+  }
+    .regBtn{
+      position: absolute;
+      left:30%;
+      top:-50px;
+      transition: all 500ms ease-in-out;
+    }
+}
+
+@media screen and (max-width:480px){
+    .carousel{
+        height:450px;
+    }
+
+    .eventTextDiv{
+        top:320px;
+    }
+    
+    .aboutTextDiv{
+      transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
+      position: relative;
+      font-size: 80%;
+    }
+    
+    .eventTitle{
+        font-size: 320%;
+        color : var(--orangeText);
+        font-weight: 800;
+    }
+    
+    .eventDesc{
+        font-weight: 800;
+        font-size: 60%;
+    }
+
+    .aboutHeadDiv{
+      position: relative;
+      font-size: 300%;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 2vh 0em 0em 0em;
+      
+    }
+    .regBtn{
+      position: absolute;
+      left:25%;
+      top:-50px;
+      transition: all 500ms ease-in-out;
+    }
+}
+
+#FOR_TEST{
+  
 }
