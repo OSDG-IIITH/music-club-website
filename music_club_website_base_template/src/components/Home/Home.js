@@ -8,7 +8,7 @@ import AwesomeSlider from 'react-awesome-slider'
 import styles from 'react-awesome-slider/dist/styles.css'
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import {connect} from 'react-redux';
-import {addUser} from '../../actions/userActions' 
+import {addUser} from '../../actions/userActions'
 // import "bootstrap-css-only/css/bootstrap.min.css";
 // import {Button} from 'react-bootstrap';
 //  import "mdbreact/dist/css/mdb.css";
@@ -33,7 +33,7 @@ class Home extends Component {
       var rect = el.getBoundingClientRect();
       // console.log(rect.top);
       // console.log(rect.bottom);
-      
+
       return(
         (rect.top <= 0 && rect.bottom >= 0) || (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) && rect.top <= (window.innerHeight || document.documentElement.clientHeight))
         || (rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
@@ -63,8 +63,8 @@ class Home extends Component {
   }
 
   state = {
-    
-    
+
+
     modal : false,
     registered : false
   }
@@ -176,17 +176,17 @@ class Home extends Component {
 
      this.props.addReg(temp_obj);
      temp_obj = {};
-     
-    
+
+
   }
 
-  
+
 
   afterSubmit = (e) =>{
     this.setState({
       registered:false
     })
-    
+
   }
 
   modalReset = () =>{
@@ -252,8 +252,8 @@ class Home extends Component {
                           <div id="tickDiv" ref={this.tickMark}></div>
                           <div ref={this.modalBod}  className="modal-body">
                           <div className="wrapper">
-                          
-                            
+
+
                             <div className="group">
                               <input name='name' type="text" required="required" disabled={this.state.registered} /><span className="highlight"></span><span className="bar"></span>
                               <label>Name</label>
@@ -274,8 +274,8 @@ class Home extends Component {
                               <textarea name='message' type="textarea" rows="5" required="required" disabled={this.state.registered} ></textarea><span className="highlight"></span><span className="bar"></span>
                               <label>Message</label>
                             </div>
-                            
-                          
+
+
                       </div>
                           </div>
                           <div className="modal-footer">
@@ -286,8 +286,8 @@ class Home extends Component {
                                 <React.Fragment><button className="btn btn-success" id="regSucc" type="button" data-dismiss="modal" onClick={this.afterSubmit}>Registered Successfully</button>
                               </React.Fragment>
                               )}
-                              
-                              
+
+
                            </div>
                           </div>
                           </form>
@@ -295,12 +295,12 @@ class Home extends Component {
                       </div>
                     </div>
 
-                    
+
 
                 {/*MODAL ENDS*/}
-      
-      
-      
+
+
+
         <hr className='my-4' />
         <div className="jumbotron about">
           <h1 className='aboutHeadDiv py-5 px-4' >
@@ -327,7 +327,7 @@ class Home extends Component {
     )
   }
 
-  
+
 
 }
 
@@ -343,7 +343,7 @@ const mapDispatchToProps = (dispatch) =>{
   }
 }
 
-export default Home;
+
 
 
 export default connect(mapStateToProps,mapDispatchToProps)(Home);
