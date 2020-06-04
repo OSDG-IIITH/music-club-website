@@ -6,10 +6,10 @@
 }
 
 .timeline{
-    background-image: url('/images/KKW30_FRONT_FULL_1.png');
+    background-image: url('/images/Timeline/KKW30_FRONT_FULL_1.png');
     background-position: top;
     background-repeat: no-repeat;
-    min-height: 4000px;
+    min-height: 3700px;
 }
 
 .container-fluid{
@@ -21,4 +21,14 @@
     background-color: transparent;
     top:84rem;
     width: 100%;    
+}
+
+@media screen and (max-width:730px){
+    .timeline{
+        background-position:60% 0%; 
+    }
+
+    .container-fluid{
+        padding-left: 0px;
+    }
 }
