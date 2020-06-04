@@ -194,6 +194,9 @@ class Home extends Component {
     this.modalBod.current.style.opacity = '100%';
     this.tickMark.current.style.opacity = '0%';
     this.tickMark.current.style.transform = 'translate(0px,50px) scale(0.8)';
+    this.setState({
+      registered:false
+    })
   }
 
   render() {
