@@ -19,6 +19,8 @@ import {addUser} from '../../actions/userActions'
 import 'jquery';
 import 'popper.js';
 import './Home.css';
+// Test comment
+
 
 
 
@@ -349,6 +351,6 @@ const mapDispatchToProps = (dispatch) =>{
   }
 }
 
-
+// test comment
 
 export default connect(mapStateToProps,mapDispatchToProps)(Home);
