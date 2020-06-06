@@ -116,14 +116,14 @@ body{
   text-decoration: none;
   padding: 15px 40px;
   display: inline-block;
-  border-radius: 0px;
+  border-radius: 100px;
   -webkit-transition: all .2s;
   transition: all .2s;
   position: absolute;
 }
 
 #btnReg:hover {
-  -webkit-transform: translateY(-3spx);
+  -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
@@ -144,7 +144,7 @@ body{
   display: inline-block;
   height: 100%;
   width: 100%;
-  border-radius: 0px;
+  border-radius: 100px;
   position: absolute;
   top: 0;
   left: 0;
