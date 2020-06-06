@@ -74,6 +74,7 @@ class Event extends Component {
                       halfIcon={<i className='fa fa-star-half-alt'></i>}
                       fullIcon={<i className='fa fa-star'></i>}
                       color2={'#ffd700'} />
+                      <button type="submit" class="btn btn-info btn-rounded btn-fw"><b>Submit</b></button>
                   </div>
                 </div>
               </div>
