@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactStars from 'react-rating-stars-component';
 import FbImageLibrary from 'react-fb-image-grid';
 import 'bootstrap/dist/css/bootstrap.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 //@ts-ignore
 import 'bootstrap/dist/js/bootstrap';
 // to import react-bootstrap import {...} from 'react-bootstrap'
@@ -62,16 +64,17 @@ class Event extends Component {
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                   </div>
                   <div className="rating">
-                    Please rate us if you attended this event:
+                    Please rate us if you attended this event: <FontAwesomeIcon icon="coffee" />
                     <ReactStars
                       count={5}
                       onChange={ratingChanged}
-                      size={24}
+                      size={37}
                       half={true}
-                      emptyIcon={<i className='far fa-star'></i>}
+                      emptyIcon={<i class="fas fa-heart"></i>}
                       halfIcon={<i className='fa fa-star-half-alt'></i>}
                       fullIcon={<i className='fa fa-star'></i>}
                       color2={'#ffd700'} />
+                      <button type="submit" class="btn btn-info btn-rounded btn-fw"><b>Submit</b></button>
                   </div>
                 </div>
               </div>

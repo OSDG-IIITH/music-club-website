@@ -12,13 +12,11 @@
 .event-title{
   font-size: 4.25rem;
   text-transform: uppercase;
-  z-index: 3;
   color: white;
 }
 
 .event-path{
   font-size: 1.5rem;
-  z-index: 3;
   color: white;
 }
 
@@ -50,7 +48,6 @@
 .event-description .title{
   font-size: 4.25rem;
   text-transform: uppercase;
-  z-index: 3;
   color: black;
 }
 
@@ -77,4 +74,9 @@
 
 .footer{
   height: 10vw;
+}
+
+.mixed-gallery img{
+  height: auto;
+  max-width: 100%;
 }

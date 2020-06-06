@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import SimpleReactLightbox from 'simple-react-lightbox'
 
 // import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -22,19 +23,18 @@ class App extends Component {
     return(
       //the <Nav/> goes above the Switch if navbar is at top
       //add your component to this by Route path = "/{component name}"
-      <BrowserRouter>
-        <div>
-          <Switch>
-            <Route path="/" component={Home} exact/>
-            <Route path="/timeline" component={Timeline} exact/>
-            <Route path="/event" component={Event} exact/>
-            <Route path="/gallery" component={Gallery} exact/>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/admin" component={Admin} />
-            <Route exact path="/logout" component={Logout} />
-          </Switch>
-        </div>
-      </BrowserRouter>
+      <SimpleReactLightbox>
+        <BrowserRouter>
+          <div>
+            <Switch>
+              <Route path="/" component={Home} exact/>
+              <Route path="/timeline" component={Timeline} exact/>
+              <Route path="/event" component={Event} exact/>
+              <Route path="/gallery" component={Gallery} exact/>
+            </Switch>
+          </div>
+        </BrowserRouter>
+      </SimpleReactLightbox>
     );
   }
 }

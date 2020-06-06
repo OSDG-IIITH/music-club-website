@@ -96,3 +96,10 @@
   width: 40vw;
   box-shadow: 5px 10px #888888;
 }
+
+
+<Route exact path="/login" component={Login} />
+<Route exact path="/admin" component={Admin} />
+<Route exact path="/logout" component={Logout} />
+
+export default Home;
