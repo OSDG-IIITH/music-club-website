@@ -1,0 +1,82 @@
+.event-headWrapper{
+  background-color: #151748;
+  background-image: url('/images/Gallery/breadcrumb.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.event-header{
+  min-height: 50vh;
+}
+
+.event-title{
+  font-size: 4.25rem;
+  text-transform: uppercase;
+  color: white;
+}
+
+.event-path{
+  font-size: 1.5rem;
+  color: white;
+}
+
+.event-title-path{
+  display: inline-block;
+}
+
+.main-content{
+  height: 100%;
+  background: linear-gradient(55deg, grey 0%, white 51%, white 85%);
+}
+
+.content-wrap{
+  padding: 2rem 10vw 2rem 10vw;
+}
+
+.poster img{
+  border-style: solid;
+  margin-top: 2vw;
+  height: auto;
+  max-width: 100%;
+  /* box-shadow: 5px 10px #888888;  animate this and add while hovering */
+}
+
+.event-description{
+  margin: 2vw 0 0 2vw;
+}
+
+.event-description .title{
+  font-size: 4.25rem;
+  text-transform: uppercase;
+  color: black;
+}
+
+.event-description .list{
+  margin-top: 2vw;
+}
+
+.event-description .about{
+  margin-top: 2vw;
+}
+
+.event-description .rating{
+  margin-top: 2vw;
+}
+
+.gallery-wrapper{
+  margin-top: 3vw;
+}
+
+.gallery-title{
+  text-transform: uppercase;
+  font-size: 3.25rem;
+}
+
+.footer{
+  height: 10vw;
+}
+
+.mixed-gallery img{
+  height: auto;
+  max-width: 100%;
+}
