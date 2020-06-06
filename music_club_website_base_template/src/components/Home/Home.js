@@ -18,6 +18,8 @@ import {addUser} from '../../actions/userActions'
 // to import react-bootstrap import {...} from 'react-bootstrap'
 import 'jquery';
 import 'popper.js';
+import './Home.css';
+// Test comment
 //import './Home.css';
 
 class Home extends Component {
@@ -343,7 +345,7 @@ const mapDispatchToProps = (dispatch) =>{
   }
 }
 
-
+// test comment
 
 
 export default connect(mapStateToProps,mapDispatchToProps)(Home);
