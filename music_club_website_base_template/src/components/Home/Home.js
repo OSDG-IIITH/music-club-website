@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+//import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import 'bootstrap/dist/css/bootstrap.css';
 //@ts-ignore
 import 'bootstrap/dist/js/bootstrap';

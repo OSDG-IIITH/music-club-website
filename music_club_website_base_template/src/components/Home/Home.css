@@ -1,12 +1,78 @@
-.bgDiv{
-    background-image: url("image/Background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 1920px;
-    height: 1080px;
+
+
+body{
+  background-color: #343A40;
 }
 
-#test{
+.carousel{
+    height:850px;
+}
+
+.aboutHeadDiv{
+    position: relative;
+    font-size: 600%;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 2vh 0em 0em 0em;
+    
+}
+
+#image{
+    background-image: url('./Stock_Concert.jpg');
+     height: 30vw; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1em solid rgb(240, 234, 234);
+  border-bottom: 4em solid rgb(236, 233, 233);
+  border-radius: .25em;
+  box-shadow: 1em 1em 2em .25em rgba(5, 5, 5, 0.9);
+  margin: 2em auto;
+  opacity: 0;
+  transform: translateY(4em) rotateZ(-5deg);
+  transition: transform 4s .25s cubic-bezier(0,1,.3,1),
+              opacity .3s .25s ease-out;
+  max-width: 600px;
+  width: 90%;
+  will-change: transform, opacity;
+}
+
+#image.is-visible{
+  opacity:1;
+  transform: rotateZ(-1deg);
+}
+
+.aboutTextDiv{
+    
+    position: relative;
+    opacity: 0;
+   
+    /* font-size: 100%; */
+    padding-top: 0%;
+    transform: translate(-1000px,0px);
+  transition: transform 1100ms .15s cubic-bezier(0,1.5,.3,1), opacity 700ms ease-in-out;
+}
+
+ 
+
+.aboutTextDiv.is-visible{
+  opacity: 1;
+  transform: translate(0px,0px);
+ 
+} 
+
+.carouselDiv{
+    position: relative;
+    height:100%;
+    
+}
+
+.eventTextDiv{
+    position: relative;
+    top:600px;
+
+}
+
+.eventTitle{
+    font-size: 720%;
     color : var(--orangeText);
     font-weight: 800;
     transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
@@ -50,14 +116,14 @@
   text-decoration: none;
   padding: 15px 40px;
   display: inline-block;
-  border-radius: 100px;
+  border-radius: 0px;
   -webkit-transition: all .2s;
   transition: all .2s;
   position: absolute;
 }
 
 #btnReg:hover {
-  -webkit-transform: translateY(-3px);
+  -webkit-transform: translateY(-3spx);
           transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
@@ -78,7 +144,7 @@
   display: inline-block;
   height: 100%;
   width: 100%;
-  border-radius: 100px;
+  border-radius: 0px;
   position: absolute;
   top: 0;
   left: 0;
