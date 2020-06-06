@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import ReactStars from 'react-rating-stars-component';
-import FbImageLibrary from 'react-fb-image-grid';
-import 'bootstrap/dist/css/bootstrap.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+ import ReactStars from 'react-rating-stars-component';
+// import FbImageLibrary from 'react-fb-image-grid';
+ import 'bootstrap/dist/css/bootstrap.css';
+ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+ import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 //@ts-ignore
 import 'bootstrap/dist/js/bootstrap';
 // to import react-bootstrap import {...} from 'react-bootstrap'
 import 'jquery';
 import 'popper.js';
 
-import './event.css'
+ import './event.css'
 
 const ratingChanged = (newRating) => {
   console.log(newRating)
@@ -27,7 +27,7 @@ class Event extends Component {
   render() {
     return (
       <div>
-        <div className="event-headWrapper">
+         <div className="event-headWrapper">
           <div className="container">
             <div className="wrap w-100 d-flex align-items-center event-header">
               <div className="d-flex flex-column align-items-center w-100">
@@ -90,13 +90,13 @@ class Event extends Component {
           <div className="gallery-wrapper">
             <div className="wrap w-100 d-flex align-items-center">
               <div className="d-flex flex-column align-items-center w-100 gallery-title">
-                <FbImageLibrary images={images}/>
+                {/* <FbImageLibrary images={images}/> */}
               </div>
             </div>
           </div>
           <div className="footer">
           </div>
-        </div>
+        </div> 
       </div>
 
     )

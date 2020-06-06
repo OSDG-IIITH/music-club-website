@@ -1,4 +1,4 @@
-<div>
+{/* <div>
   <div className="section one">
     <div className="eventHeader">
       <div className="event-name">
@@ -45,7 +45,7 @@
 
 .two{
   background-image: url('/images/Gallery/two.jpg');
-  /* background-color: black; */
+  /* background-color: black; 
   padding: 2vw 2vw 0 2vw;
 }
 
@@ -102,4 +102,4 @@
 <Route exact path="/admin" component={Admin} />
 <Route exact path="/logout" component={Logout} />
 
-export default Home;
+export default Home; */}
