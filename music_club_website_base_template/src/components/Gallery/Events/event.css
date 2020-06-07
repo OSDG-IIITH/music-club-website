@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Roboto&display=swap');
+
 .event-headWrapper{
   background-color: #151748;
   background-image: url('/images/Gallery/breadcrumb.png');
@@ -10,6 +12,7 @@
 }
 
 .event-title{
+  font-family: 'Roboto', sans-serif;
   font-size: 2.5rem;
   text-transform: uppercase;
   color: white;
@@ -21,15 +24,18 @@
 }
 
 .event-title-path{
+  font-family: 'Quicksand', sans-serif;
   display: inline-block;
 }
 
 .main-content{
+  font-family: 'Roboto', sans-serif;
   min-height: 100vh;
   height: auto;
   width: 100%;
   background: linear-gradient(55deg, grey 0%, white 51%, white 85%);
-  /*-image: url('/images/Gallery/dynamic.jpg');*/
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .content-wrap{
@@ -89,6 +95,7 @@
 }
 
 .design-card{
+  font-family: 'Quicksand', sans-serif;
   background-color: white;
   border-radius: 25px;
   padding: 1vw 1vw 1vw 1vw;

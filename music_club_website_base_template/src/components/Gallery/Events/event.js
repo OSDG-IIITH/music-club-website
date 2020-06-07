@@ -88,13 +88,6 @@ class Event extends Component {
             <div className="gallery-wrapper">
               <div className="wrap w-100 d-flex align-items-center">
                 <div className="d-flex flex-column align-items-center w-100 gallery-title">
-                  GALLERY
-                </div>
-              </div>
-            </div>
-            <div className="gallery-wrapper">
-              <div className="wrap w-100 d-flex align-items-center">
-                <div className="d-flex flex-column align-items-center w-100 gallery-title">
                 <div className="mixed-gallery gallery-grid">
                   <SRLWrapper>
                     <div className="row">
