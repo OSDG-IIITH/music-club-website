@@ -6,17 +6,17 @@
 }
 
 .event-header{
-  min-height: 50vh;
+  height: 50vh;
 }
 
 .event-title{
-  font-size: 4.25rem;
+  font-size: 2.5rem;
   text-transform: uppercase;
   color: white;
 }
 
 .event-path{
-  font-size: 1.5rem;
+  font-size: 0.9rem;
   color: white;
 }
 
@@ -25,8 +25,11 @@
 }
 
 .main-content{
-  height: 100%;
+  min-height: 100vh;
+  height: auto;
+  width: 100%;
   background: linear-gradient(55deg, grey 0%, white 51%, white 85%);
+  /*-image: url('/images/Gallery/dynamic.jpg');*/
 }
 
 .content-wrap{
@@ -35,24 +38,24 @@
 
 .poster img{
   border-style: solid;
-  margin-top: 2vw;
+  margin-top: 4vw;
   height: auto;
   max-width: 100%;
+  border-radius: 25px;
+  padding: 0.2vw 0.2vw 0.2vw 0.2vw;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   /* box-shadow: 5px 10px #888888;  animate this and add while hovering */
 }
 
 .event-description{
-  margin: 2vw 0 0 2vw;
+  margin: 4vw 0 0 2vw;
 }
 
 .event-description .title{
-  font-size: 4.25rem;
+  font-size: 2.25rem;
   text-transform: uppercase;
   color: black;
-}
-
-.event-description .list{
-  margin-top: 2vw;
+  margin-bottom: 1vw;
 }
 
 .event-description .about{
@@ -69,7 +72,7 @@
 
 .gallery-title{
   text-transform: uppercase;
-  font-size: 3.25rem;
+  font-size: 2.25rem;
 }
 
 .footer{
@@ -79,4 +82,32 @@
 .mixed-gallery img{
   height: auto;
   max-width: 100%;
+}
+
+.mixed-gallery img:hover{
+  cursor: pointer;
+}
+
+.design-card{
+  background-color: white;
+  border-radius: 25px;
+  padding: 1vw 1vw 1vw 1vw;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  height: 100%;
+}
+
+.gallery-grid{
+  margin: 0 4vw 0 4vw;
+}
+
+#sky{
+  position: absolute;
+  top: 50vh !important;
+  min-height: 150vh !important;
+}
+
+@media screen and (max-width:990px){
+  .design-card{
+    padding: 3vw 3vw 3vw 3vw;
+  }
 }

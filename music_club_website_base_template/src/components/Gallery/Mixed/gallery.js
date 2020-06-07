@@ -31,37 +31,37 @@ class Gallery extends Component {
               <div className="d-flex flex-column align-items-center w-100 mixed-gallery">
                 <SRLWrapper>
                   <div className="row">
-                    <div className="col-sm-4 col-md-4 col-lg-4 col-12">
+                    <div className="col-sm-12 col-md-4 col-lg-4 col-12">
                       <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
-                    <div className="col-sm-4 col-md-4 col-lg-4 col-12">
+                    <div className="col-sm-12 col-md-4 col-lg-4 col-12">
                       <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
-                    <div className="col-sm-4 col-md-4 col-lg-4 col-12">
+                    <div className="col-sm-12 col-md-4 col-lg-4 col-12">
                      <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
                   </div>
                   <br/>
                   <div className="row">
-                    <div className="col-sm-4 col-md-4 col-lg-4 col-12">
+                    <div className="col-sm-12 col-md-4 col-lg-4 col-12">
                       <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
-                    <div className="col-sm-4 col-md-4 col-lg-4 col-12">
+                    <div className="col-sm-12 col-md-4 col-lg-4 col-12">
                       <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
-                    <div className="col-sm-4 col-md-4 col-lg-4 col-12">
+                    <div className="col-sm-12 col-md-4 col-lg-4 col-12">
                      <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
                   </div>
                   <br/>
                   <div className="row">
-                    <div className="col-sm-4 col-md-4 col-lg-4 col-12">
+                    <div className="col-sm-12 col-md-4 col-lg-4 col-12">
                       <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
-                    <div className="col-sm-4 col-md-4 col-lg-4 col-12">
+                    <div className="col-sm-12 col-md-4 col-lg-4 col-12">
                       <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
-                    <div className="col-sm-4 col-md-4 col-lg-4 col-12">
+                    <div className="col-sm-12 col-md-4 col-lg-4 col-12">
                      <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
                   </div>
