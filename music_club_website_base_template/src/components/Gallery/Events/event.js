@@ -38,7 +38,7 @@ class Event extends Component {
                 Event Name
                 </div>
                 <div className="event-path">
-                Home &gt; Timeline &gt; <div className="event-title-path">Event Name</div>
+                <div className="event-path-trail">Home</div> &gt; <div className="event-path-trail">Timeline</div> &gt; <div className="event-title-path">Event Name</div>
                 </div>
               </div>
             </div>
@@ -91,13 +91,13 @@ class Event extends Component {
                 <div className="mixed-gallery gallery-grid">
                   <SRLWrapper>
                     <div className="row">
-                    <div className="col-sm-12 col-md-4 col-lg-4 col-12">
+                    <div className="col-sm-12 col-md-12 col-lg-4 col-12">
                       <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
-                    <div className="col-sm-12 col-md-4 col-lg-4 col-12">
+                    <div className="col-sm-12 col-md-12 col-lg-4 col-12">
                       <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
-                    <div className="col-sm-12 col-md-4 col-lg-4 col-12">
+                    <div className="col-sm-12 col-md-12 col-lg-4 col-12">
                      <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
                     </div>

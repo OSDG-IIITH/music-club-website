@@ -19,7 +19,7 @@ class Gallery extends Component {
                 Gallery
                 </div>
                 <div className="event-path">
-                Home &gt; <div className="event-title-path">Gallery</div>
+                <div className="event-path-trail">Home</div> &gt; <div className="event-title-path">Gallery</div>
                 </div>
               </div>
             </div>

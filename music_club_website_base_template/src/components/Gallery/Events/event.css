@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
 .event-headWrapper{
   background-color: #151748;
@@ -12,8 +13,8 @@
 }
 
 .event-title{
-  font-family: 'Roboto', sans-serif;
-  font-size: 2.5rem;
+  font-family: 'Staatliches', cursive;
+  font-size: 4.375rem;
   text-transform: uppercase;
   color: white;
 }
@@ -28,8 +29,15 @@
   display: inline-block;
 }
 
+.event-path-trail{
+  display: inline-block;
+  border-bottom: 1px solid red;
+  padding-bottom: 0.5px;
+  cursor: pointer;
+}
+
 .main-content{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Staatliches', cursive;
   min-height: 100vh;
   height: auto;
   width: 100%;
@@ -44,7 +52,7 @@
 
 .poster img{
   border-style: solid;
-  margin-top: 4vw;
+  margin-top: 9rem;
   height: auto;
   max-width: 100%;
   border-radius: 25px;
@@ -58,9 +66,9 @@
 }
 
 .event-description .title{
-  font-size: 2.25rem;
+  font-size: 4rem;
   text-transform: uppercase;
-  color: black;
+  color: #151748;
   margin-bottom: 1vw;
 }
 
@@ -73,7 +81,7 @@
 }
 
 .gallery-wrapper{
-  margin-top: 3vw;
+  margin-top: 7vw;
 }
 
 .gallery-title{
@@ -86,12 +94,14 @@
 }
 
 .mixed-gallery img{
+  border-style: solid;
   height: auto;
   max-width: 100%;
 }
 
 .mixed-gallery img:hover{
   cursor: pointer;
+  opacity: 0.7;
 }
 
 .design-card{
@@ -115,6 +125,9 @@
 
 @media screen and (max-width:990px){
   .design-card{
-    padding: 3vw 3vw 3vw 3vw;
+    padding: 20px 20px 20px 20px;
+  }
+  .poster img{
+    margin-top: 4vw;
   }
 }
