@@ -65,6 +65,7 @@ body{
     
 }
 
+
 .eventTextDiv{
     position: relative;
     top:600px;
@@ -127,6 +128,7 @@ body{
           transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+
 
 #btnReg:active {
   -webkit-transform: translateY(-1px);
@@ -204,6 +206,7 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+    
 }
 
 

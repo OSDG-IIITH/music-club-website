@@ -211,8 +211,8 @@ class Home extends Component {
     // console.log(this.state.isOnDisplay)
     return (
       <React.Fragment>
-        <div className="container-fluid mainDiv bg-dark">
-          <AwesomeSlider fillParent={false} className="carousel container-sm" cssModule={styles} transitionDelay={500} mobileTouch={true} bullets={true} onTransitionStart={this.fade} onTransitionEnd={this.bringBack}  >
+        
+          <AwesomeSlider  fillParent={false} className="carousel container-sm" cssModule={styles} transitionDelay={500} mobileTouch={true} bullets={true} onTransitionStart={this.fade} onTransitionEnd={this.bringBack}  >
             <div className=" container-sm  carouselDiv" id="img1">
               <div className="eventTextDiv container-xs" >
                 <h1 className={"eventTitle text-center"} ref={this.eventTitle1}>Meltdown</h1>
@@ -242,7 +242,7 @@ class Home extends Component {
               </div>
             </div>
           </AwesomeSlider>
-        </div>
+        
 
                 {/*MODAL START*/}
 
