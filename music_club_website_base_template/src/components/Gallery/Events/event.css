@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
 .event-headWrapper{
   background-color: #151748;
   background-image: url('/images/Gallery/breadcrumb.png');
@@ -6,27 +9,41 @@
 }
 
 .event-header{
-  min-height: 50vh;
+  height: 50vh;
 }
 
 .event-title{
-  font-size: 4.25rem;
+  font-family: 'Staatliches', cursive;
+  font-size: 4.375rem;
   text-transform: uppercase;
   color: white;
 }
 
 .event-path{
-  font-size: 1.5rem;
+  font-size: 0.9rem;
   color: white;
 }
 
 .event-title-path{
+  font-family: 'Quicksand', sans-serif;
   display: inline-block;
 }
 
+.event-path-trail{
+  display: inline-block;
+  border-bottom: 1px solid red;
+  padding-bottom: 0.5px;
+  cursor: pointer;
+}
+
 .main-content{
-  height: 100%;
+  font-family: 'Staatliches', cursive;
+  min-height: 100vh;
+  height: auto;
+  width: 100%;
   background: linear-gradient(55deg, grey 0%, white 51%, white 85%);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .content-wrap{
@@ -35,24 +52,24 @@
 
 .poster img{
   border-style: solid;
-  margin-top: 2vw;
+  margin-top: 9rem;
   height: auto;
   max-width: 100%;
+  border-radius: 25px;
+  padding: 0.2vw 0.2vw 0.2vw 0.2vw;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   /* box-shadow: 5px 10px #888888;  animate this and add while hovering */
 }
 
 .event-description{
-  margin: 2vw 0 0 2vw;
+  margin: 4vw 0 0 2vw;
 }
 
 .event-description .title{
-  font-size: 4.25rem;
+  font-size: 4rem;
   text-transform: uppercase;
-  color: black;
-}
-
-.event-description .list{
-  margin-top: 2vw;
+  color: #151748;
+  margin-bottom: 1vw;
 }
 
 .event-description .about{
@@ -64,12 +81,12 @@
 }
 
 .gallery-wrapper{
-  margin-top: 3vw;
+  margin-top: 7vw;
 }
 
 .gallery-title{
   text-transform: uppercase;
-  font-size: 3.25rem;
+  font-size: 2.25rem;
 }
 
 .footer{
@@ -77,6 +94,40 @@
 }
 
 .mixed-gallery img{
+  border-style: solid;
   height: auto;
   max-width: 100%;
+}
+
+.mixed-gallery img:hover{
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.design-card{
+  font-family: 'Quicksand', sans-serif;
+  background-color: white;
+  border-radius: 25px;
+  padding: 1vw 1vw 1vw 1vw;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  height: 100%;
+}
+
+.gallery-grid{
+  margin: 0 4vw 0 4vw;
+}
+
+#sky{
+  position: absolute;
+  top: 50vh !important;
+  min-height: 150vh !important;
+}
+
+@media screen and (max-width:990px){
+  .design-card{
+    padding: 20px 20px 20px 20px;
+  }
+  .poster img{
+    margin-top: 4vw;
+  }
 }
