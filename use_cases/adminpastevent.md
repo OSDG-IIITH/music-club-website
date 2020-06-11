@@ -1,7 +1,7 @@
 # Past Event
 ## New requirement for data
-  review
-  photos
+    review
+    photos
 ## form
 ### add past event
     delby eventid
@@ -9,8 +9,9 @@
     delby eventid
 ### add review
     addby eventid
-### add photos
+### add photo
     addby eventid
+    image link
 ### update
     gallerylink
     review 
