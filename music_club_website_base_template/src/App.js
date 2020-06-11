@@ -4,8 +4,6 @@ import SimpleReactLightbox from 'simple-react-lightbox'
 
 // import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-//  login page style
-import './components/login/style.css'
 //@ts-ignore
 import 'bootstrap/dist/js/bootstrap';
 // to import react-bootstrap import {...} from 'react-bootstrap'

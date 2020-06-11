@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
+import '../components/login/style.css'
 // const bcrypt = require('bcryptjs');
 
 export default class Login extends Component {

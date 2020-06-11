@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link,Redirect} from 'react-router-dom'
+import '../components/login/style.css'
 
 export default class Admin extends Component {
     constructor(props)
