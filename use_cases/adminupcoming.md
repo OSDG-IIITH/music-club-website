@@ -1,9 +1,8 @@
 # Upcoming Event
-
-## delete event
+## form
+### delete event
     delevent ( button to delete an event)
-## create event
-#### form
+### create event
     eventid
     name
     poster
@@ -15,7 +14,7 @@
     gallerylink
     pinglink
     
-## update
+### update
     state 
     time
     date
