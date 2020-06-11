@@ -31,7 +31,10 @@ import './Home.css';
 class Home extends Component {
 
 
-  componentDidMount(){
+ componentDidMount(){
+
+    
+        
 
     function isElementInViewport(el){
       // if(typeof jquery === "function" && el instanceof jquery){

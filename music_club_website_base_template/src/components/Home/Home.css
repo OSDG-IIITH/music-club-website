@@ -75,10 +75,11 @@ body{
 }
 
 .eventTitle{
-    font-size: 720%;
-    color : var(--orangeText);
+    font-size: 1020%;
+    color : white;
     font-weight: 800;
     transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
+    font-family: "Staatliches";
     
 }
 
@@ -89,6 +90,7 @@ body{
     font-size: 140%;
     transition: opacity 500ms ease-in-out ;
     transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
+    font-family: "Staatliches";
 }
 
 .regBtn{
@@ -101,7 +103,7 @@ body{
 }
 
 #regBtnText{
-  font-family: 'Montserrat';
+  font-family: 'Staatliches';
   font-weight: 600;
   
 }
@@ -490,7 +492,7 @@ input[type="password"] {
     
     .eventTitle{
         font-size: 520%;
-        color : var(--orangeText);
+        
         font-weight: 800;
     }
     
@@ -556,6 +558,11 @@ input[type="password"] {
         top:320px;
     } */
     
+    #tickDiv{
+      width:150px;
+      height:200px;
+    }
+    
     .aboutTextDiv{
       transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
       position: relative;
@@ -564,7 +571,7 @@ input[type="password"] {
     
     .eventTitle{
         font-size: 320%;
-        color : var(--orangeText);
+        
         font-weight: 800;
     }
     
