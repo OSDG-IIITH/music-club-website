@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import '../components/login/style.css'
+import './style.css'
 
 export default class Logout extends Component {
     constructor(props){
