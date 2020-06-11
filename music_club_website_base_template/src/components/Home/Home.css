@@ -5,7 +5,7 @@ body{
 }
 
 .carousel{
-    height:850px;
+    height:100vh;
 }
 
 .aboutHeadDiv{
@@ -60,15 +60,17 @@ body{
 } 
 
 .carouselDiv{
-    position: relative;
-    height:100%;
+    position:absolute;
+    height:50%;
+    left:12vw;
     
 }
 
 
 .eventTextDiv{
     position: relative;
-    top:600px;
+    top:30%;
+    right:0%;
 
 }
 
@@ -477,14 +479,14 @@ input[type="password"] {
 @media screen and (max-width:975px){
 
   
-    .carousel{
-        height:650px;
-    }
+    /* .carousel{
+        height:890px;
+    } */
 
-    .eventTextDiv{
+    /* .eventTextDiv{
         position: relative;
         top:450px;
-    }
+    } */
     
     .eventTitle{
         font-size: 520%;
@@ -511,13 +513,14 @@ input[type="password"] {
 }
 
 @media screen and (max-width:560px){
-    .carousel{
-        height:550px;
-    }
 
-    .eventTextDiv{
+  /* .carousel{
+    height:630px;
+} */
+
+    /* .eventTextDiv{
         top:400px;
-    }
+    } */
     .awssld__bullets button{
         background-color:white;
         border-radius: 50%;
@@ -547,13 +550,11 @@ input[type="password"] {
 }
 
 @media screen and (max-width:480px){
-    .carousel{
-        height:450px;
-    }
+    
 
-    .eventTextDiv{
+    /* .eventTextDiv{
         top:320px;
-    }
+    } */
     
     .aboutTextDiv{
       transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
