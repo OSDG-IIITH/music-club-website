@@ -5,7 +5,7 @@ body{
 }
 
 .carousel{
-    height:850px;
+    height:100vh;
 }
 
 .aboutHeadDiv{
@@ -60,22 +60,26 @@ body{
 } 
 
 .carouselDiv{
-    position: relative;
-    height:100%;
+    position:absolute;
+    height:50%;
+    left:12vw;
     
 }
 
+
 .eventTextDiv{
     position: relative;
-    top:600px;
+    top:30%;
+    right:0%;
 
 }
 
 .eventTitle{
-    font-size: 720%;
-    color : var(--orangeText);
+    font-size: 1020%;
+    color : white;
     font-weight: 800;
     transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
+    font-family: "Staatliches";
     
 }
 
@@ -86,6 +90,7 @@ body{
     font-size: 140%;
     transition: opacity 500ms ease-in-out ;
     transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
+    font-family: "Staatliches";
 }
 
 .regBtn{
@@ -98,7 +103,7 @@ body{
 }
 
 #regBtnText{
-  font-family: 'Montserrat';
+  font-family: 'Staatliches';
   font-weight: 600;
   
 }
@@ -127,6 +132,7 @@ body{
           transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+
 
 #btnReg:active {
   -webkit-transform: translateY(-1px);
@@ -204,6 +210,7 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+    
 }
 
 
@@ -474,18 +481,18 @@ input[type="password"] {
 @media screen and (max-width:975px){
 
   
-    .carousel{
-        height:650px;
-    }
+    /* .carousel{
+        height:890px;
+    } */
 
-    .eventTextDiv{
+    /* .eventTextDiv{
         position: relative;
         top:450px;
-    }
+    } */
     
     .eventTitle{
         font-size: 520%;
-        color : var(--orangeText);
+        
         font-weight: 800;
     }
     
@@ -508,13 +515,14 @@ input[type="password"] {
 }
 
 @media screen and (max-width:560px){
-    .carousel{
-        height:550px;
-    }
 
-    .eventTextDiv{
+  /* .carousel{
+    height:630px;
+} */
+
+    /* .eventTextDiv{
         top:400px;
-    }
+    } */
     .awssld__bullets button{
         background-color:white;
         border-radius: 50%;
@@ -544,12 +552,15 @@ input[type="password"] {
 }
 
 @media screen and (max-width:480px){
-    .carousel{
-        height:450px;
-    }
+    
 
-    .eventTextDiv{
+    /* .eventTextDiv{
         top:320px;
+    } */
+    
+    #tickDiv{
+      width:150px;
+      height:200px;
     }
     
     .aboutTextDiv{
@@ -560,7 +571,7 @@ input[type="password"] {
     
     .eventTitle{
         font-size: 320%;
-        color : var(--orangeText);
+        
         font-weight: 800;
     }
     

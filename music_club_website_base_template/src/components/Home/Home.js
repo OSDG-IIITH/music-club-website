@@ -31,7 +31,10 @@ import './Home.css';
 class Home extends Component {
 
 
-  componentDidMount(){
+ componentDidMount(){
+
+    
+        
 
     function isElementInViewport(el){
       // if(typeof jquery === "function" && el instanceof jquery){
@@ -211,10 +214,10 @@ class Home extends Component {
     // console.log(this.state.isOnDisplay)
     return (
       <React.Fragment>
-        <div className="container-fluid mainDiv bg-dark">
-          <AwesomeSlider fillParent={false} className="carousel container-sm" cssModule={styles} transitionDelay={500} mobileTouch={true} bullets={true} onTransitionStart={this.fade} onTransitionEnd={this.bringBack}  >
-            <div className=" container-sm  carouselDiv" id="img1">
-              <div className="eventTextDiv container-xs" >
+        
+          <AwesomeSlider  fillParent={false} className="carousel " cssModule={styles} transitionDelay={500} mobileTouch={true} bullets={true} onTransitionStart={this.fade} onTransitionEnd={this.bringBack}  >
+            <div className="carouselDiv" id="img1">
+              <div className="eventTextDiv" >
                 <h1 className={"eventTitle text-center"} ref={this.eventTitle1}>Meltdown</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc1}>Where all the metal heads go Crazy</p>
                 <button type="button" className="btn btn-white btn-animate btn-outline-warning regBtn" id="btnReg" ref={this.regBtn1} data-toggle="modal" data-target="#exampleModalCenter" onClick={this.modalReset}>
@@ -222,31 +225,31 @@ class Home extends Component {
                     </button>
               </div>
             </div>
-            <div className="container-sm carouselDiv" id="img2">
-              <div className="eventTextDiv container-xs">
+            <div className="carouselDiv" id="img2">
+              <div className="container-xs">
                 <h1 className=" eventTitle text-center" ref={this.eventTitle2}>Euphonic</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc2}>The dopest introduction to music club</p>
               </div>
             </div>
-            <div className="container-sm carouselDiv" id="img3">
-              <div className="eventTextDiv container-xs">
+            <div className="carouselDiv" id="img3">
+              <div className="eventTextDiv">
                 <h1 className=" eventTitle text-center" ref={this.eventTitle3}>Unplugged</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc3}>Just raw beautiful talent , no wires attached</p>
               </div>
             </div>
 
-            <div className="container-sm carouselDiv" id="img4">
-              <div className="eventTextDiv container-xs">
+            <div className="carouselDiv" id="img4">
+              <div className="eventTextDiv">
                 <h1 className=" eventTitle text-center" ref={this.eventTitle4}>Roadblock</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc4}>Bring the music to the streets</p>
               </div>
             </div>
           </AwesomeSlider>
-        </div>
+        
 
                 {/*MODAL START*/}
 
-                    <div className="modal fade modalBack" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div className="modal fade modalBack" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div className="modal-dialog modal-dialog-centered" role="document">
                         <div className="modal-content mainModal">
 
