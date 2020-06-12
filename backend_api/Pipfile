@@ -8,6 +8,13 @@ verify_ssl = true
 [packages]
 fastapi = "*"
 uvicorn = "*"
+pydantic = "*"
+python-multipart = "*"
+async-exit-stack = "*"
+async-generator = "*"
+pyjwt = "*"
+passlib = {extras = ["bcrypt"],version = "*"}
+sqlalchemy = "*"
 
 [requires]
 python_version = "3.6"
