@@ -9,6 +9,7 @@ import styles from 'react-awesome-slider/dist/styles.css'
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import {connect} from 'react-redux';
 import {addUser} from '../../actions/userActions' 
+import axios from 'axios'
 // import "bootstrap-css-only/css/bootstrap.min.css";
 // import {Button} from 'react-bootstrap';
 //  import "mdbreact/dist/css/mdb.css";
@@ -77,7 +78,15 @@ class Home extends Component {
     
     
     modal : false,
-    registered : false
+    registered : false,
+    newRegister : {
+      name : '',
+      email : '',
+      year : '',
+      number : '',
+      instruments : '',
+      songs : ''
+    }
   }
 
   modalToggle = () =>{
@@ -170,23 +179,50 @@ class Home extends Component {
   tickMark = React.createRef();
   modalBod = React.createRef();
 
+  handleChange = (e)=>{
+    var {name , value} = e.target;
+    let updatedReg = this.state.newRegister;
+    updatedReg[name] = value;
+    this.setState({newRegister : updatedReg})
+    // console.log(this.state.newRegister);
+
+  }
+
   handleSubmit = (e) =>{
     e.preventDefault();
+    
     this.setState({
       registered:true
     })
 
+    console.log("fetch now");
+
+     fetch('/landingPage/events/register' , {method : 'POST' , body : this.state.newRegister})
+       .then(async response =>{
+         const data = await response.json();
+         if(!response.ok){
+           console.log("errrrorr");
+         }
+
+         console.log(data);
+
+       })
+
+       .catch(err => console.error(err))
+    
+
      this.modalBod.current.style.opacity = '6%';
      this.tickMark.current.style.opacity = '100%';
      this.tickMark.current.style.transform = 'translate(0px,0px) scale(1.1)';
-     var inpArr = e.target.querySelectorAll('input' , 'textarea');
-     var temp_obj = {};
-     for(let i=0;i<inpArr.length;i++){
-       temp_obj[inpArr[i].getAttribute('name')] = inpArr[i].value
-     }
 
-     this.props.addReg(temp_obj);
-     temp_obj = {};
+    //  var inpArr = e.target.querySelectorAll('input' , 'textarea');
+    //  var temp_obj = {};
+    //  for(let i=0;i<inpArr.length;i++){
+    //    temp_obj[inpArr[i].getAttribute('name')] = inpArr[i].value
+    //  }
+
+    //  this.props.addReg(temp_obj);
+    //  temp_obj = {};
      
     
   }
@@ -266,24 +302,28 @@ class Home extends Component {
                           
                             
                             <div className="group">
-                              <input name='name' type="text" required="required" disabled={this.state.registered} /><span className="highlight"></span><span className="bar"></span>
+                              <input name='name' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
                               <label>Name</label>
                             </div>
                             <div className="group">
-                              <input name='email' type="text" required="required" disabled={this.state.registered} /><span className="highlight"></span><span className="bar"></span>
-                              <label>Email</label>
+                              <input name='email' type="email" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label>Email (Preferrably College Id)</label>
                             </div>
                             <div className="group">
-                              <input name='password' type="password" required="required" disabled={this.state.registered} /><span className="highlight"></span><span className="bar"></span>
-                              <label>Password</label>
+                              <input name='year' type="number"  required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label>Year</label>
                             </div>
                             <div className="group">
-                              <input name='number' type="number" required="required" disabled={this.state.registered} /><span className="highlight"></span><span className="bar"></span>
-                              <label>Number</label>
+                              <input name='number' type="tel" pattern="[0-9]{10}" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label>Phone Number (10-digit)</label>
                             </div>
                             <div className="group">
-                              <textarea name='message' type="textarea" rows="5" required="required" disabled={this.state.registered} ></textarea><span className="highlight"></span><span className="bar"></span>
-                              <label>Message</label>
+                              <textarea name='instruments' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
+                              <label>Instruments/Vocalists</label>
+                            </div>
+                            <div className="group">
+                              <textarea name='songs' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
+                              <label>Song List</label>
                             </div>
                             
                           

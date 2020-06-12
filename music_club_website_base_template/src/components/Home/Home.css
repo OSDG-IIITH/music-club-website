@@ -401,6 +401,26 @@ textarea:focus {
   outline: none;
 }
 
+input::placeholder{
+  color:transparent;
+}
+
+textarea::placeholder{
+  color:transparent;
+}
+
+input:not(:placeholder-shown) ~label{
+  top:-14px;
+  font-size: 12px;
+  color : rgb(250, 94, 21);
+}
+
+textarea:not(:placeholder-shown) ~label{
+  top:-14px;
+  font-size: 12px;
+  color : rgb(250, 94, 21);
+}
+
 input:focus ~ label, input:valid ~ label,
 textarea:focus ~ label,
 textarea:valid ~ label {

@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 router = APIRouter()
 
-@router.get('/landingPage/events')
+@router.post('/landingPage/events/register')
 async def root():
     return "Hello World"
 
