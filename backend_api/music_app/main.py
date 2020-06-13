@@ -4,12 +4,13 @@ from enum import Enum
 import uvicorn
 from pydantic import BaseModel , Field , HttpUrl
 from sqlalchemy.orm import Session
-from modules import schemas
+from modules import schemas , models
+from modules.database import SessionLocal , engine
 from routers import landingPageEvents
 
 app = FastAPI(debug=True)
 
-
+models.Base.metadata.create_all(bind=engine)
 
 @app.get('/')
 async def root():
