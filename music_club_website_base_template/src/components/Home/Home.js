@@ -344,9 +344,9 @@ class Home extends Component {
                           <div className="modal-footer">
 
                             <div className="btn-box">
-                            {!this.state.registered ? (<React.Fragment><button className="btn btn-danger mx-4" type="button" data-dismiss="modal">Close</button>
-                              <button className="btn  btn-outline-warning mx-4" type="submit">Register</button></React.Fragment>) : (
-                                <React.Fragment><button className="btn btn-success" id="regSucc" type="button" data-dismiss="modal" onClick={this.afterSubmit}>Registered Successfully</button>
+                            {!this.state.registered ? (<React.Fragment><button className="btn btn-danger mx-4" type="button" style={{fontFamily : 'Staatliches'}} data-dismiss="modal">Close</button>
+                              <button className="btn  btn-outline-warning mx-4" type="submit" style={{fontFamily : 'Staatliches'}}>Register</button></React.Fragment>) : (
+                                <React.Fragment><button className="btn btn-success" id="regSucc" type="button" data-dismiss="modal" style={{fontFamily : 'Staatliches'}} onClick={this.afterSubmit}>Registered Successfully</button>
                               </React.Fragment>
                               )}
                               
