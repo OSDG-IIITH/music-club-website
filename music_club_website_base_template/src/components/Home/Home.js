@@ -191,24 +191,36 @@ class Home extends Component {
   handleSubmit = (e) =>{
     e.preventDefault();
     
-    this.setState({
-      registered:true
-    })
+    
 
     console.log("fetch now");
+    console.log(typeof(this.state.newRegister))
+    console.log(typeof(JSON.stringify(this.state.newRegister)))
+      fetch('/landingPage/events/register' , {method : 'POST' ,headers : {'Content-Type' : 'application/json'}, body : JSON.stringify(this.state.newRegister)})
+        .then(async response =>{
+          const data = await response.json();
+          if(!response.ok){
+            console.log("errrrorr");
+          }
 
-     fetch('/landingPage/events/register' , {method : 'POST' , body : this.state.newRegister})
-       .then(async response =>{
-         const data = await response.json();
-         if(!response.ok){
-           console.log("errrrorr");
-         }
+          console.log(data);
 
-         console.log(data);
+        })
 
-       })
+        .catch(err => console.error(err))
 
-       .catch(err => console.error(err))
+        this.setState({
+          registered:true,
+          newRegister : {
+            name : '',
+            email : '',
+            year : '',
+            number : '',
+            instruments : '',
+            songs : ''
+          }
+
+        })
     
 
      this.modalBod.current.style.opacity = '6%';
