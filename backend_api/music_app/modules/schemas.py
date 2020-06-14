@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
 class RegisteredCreate(BaseModel):
+    event_id : int
     band_name : str
     player_names : str
     instrument_names : str
@@ -12,8 +13,7 @@ class RegisteredCreate(BaseModel):
 
 class Registered(RegisteredCreate):
     id : int
-    event_id : int
-
+    
     class Config:
         orm_mode : True
 

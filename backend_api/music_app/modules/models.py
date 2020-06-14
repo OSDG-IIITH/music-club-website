@@ -19,7 +19,7 @@ class Event(Base):
 
 
 class Registration(Base):
-    __tablename__ = "registeration"
+    __tablename__ = "registration"
 
     id = Column(Integer, primary_key=True, index=True)
     event_id = Column(Integer,ForeignKey("event.id"))
