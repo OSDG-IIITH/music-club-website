@@ -4,8 +4,6 @@ import SimpleReactLightbox from 'simple-react-lightbox'
 
 // import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-//  login page style
-import './components/login/style.css'
 //@ts-ignore
 import 'bootstrap/dist/js/bootstrap';
 // to import react-bootstrap import {...} from 'react-bootstrap'
@@ -16,6 +14,9 @@ import Home from './components/Home/Home';
  import Timeline from './components/Timeline/Timeline';
 import Event from './components/Gallery/Events/event';
  import Gallery from './components/Gallery/Mixed/gallery';
+ import Login from './components/login/Login';
+ import Admin from './components/login/Admin';
+ import Logout from './components/login/Logout';
 
 
 class App extends Component {
@@ -31,6 +32,9 @@ class App extends Component {
               <Route path="/timeline" component={Timeline} exact/>
                <Route path="/event" component={Event} exact/>
               <Route path="/gallery" component={Gallery} exact/>  
+              <Route path="/login" component={Login} exact/>  
+              <Route path="/logout" component={Logout} exact/>  
+              <Route path="/admin" component={Admin} exact/>  
             </Switch>
           </div>
         </BrowserRouter>

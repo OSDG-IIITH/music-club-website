@@ -32,9 +32,9 @@ import './Home.css';
 class Home extends Component {
 
 
- componentDidMount(){
+ async componentDidMount(){
 
-    
+   
         
 
     function isElementInViewport(el){
@@ -191,24 +191,36 @@ class Home extends Component {
   handleSubmit = (e) =>{
     e.preventDefault();
     
-    this.setState({
-      registered:true
-    })
+    
 
     console.log("fetch now");
+    console.log(typeof(this.state.newRegister))
+    console.log(typeof(JSON.stringify(this.state.newRegister)))
+      fetch('/landingPage/events/register' , {method : 'POST' ,headers : {'Content-Type' : 'application/json'}, body : JSON.stringify(this.state.newRegister)})
+        .then(async response =>{
+          const data = await response.json();
+          if(!response.ok){
+            console.log("errrrorr");
+          }
 
-     fetch('/landingPage/events/register' , {method : 'POST' , body : this.state.newRegister})
-       .then(async response =>{
-         const data = await response.json();
-         if(!response.ok){
-           console.log("errrrorr");
-         }
+          console.log(data);
 
-         console.log(data);
+        })
 
-       })
+        .catch(err => console.error(err))
 
-       .catch(err => console.error(err))
+        this.setState({
+          registered:true,
+          newRegister : {
+            name : '',
+            email : '',
+            year : '',
+            number : '',
+            instruments : '',
+            songs : ''
+          }
+
+        })
     
 
      this.modalBod.current.style.opacity = '6%';
@@ -303,7 +315,7 @@ class Home extends Component {
                             
                             <div className="group">
                               <input name='name' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                              <label>Name</label>
+                              <label>PLayer Names</label>
                             </div>
                             <div className="group">
                               <input name='email' type="email" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
@@ -332,9 +344,9 @@ class Home extends Component {
                           <div className="modal-footer">
 
                             <div className="btn-box">
-                            {!this.state.registered ? (<React.Fragment><button className="btn btn-danger mx-4" type="button" data-dismiss="modal">Close</button>
-                              <button className="btn  btn-outline-warning mx-4" type="submit">Register</button></React.Fragment>) : (
-                                <React.Fragment><button className="btn btn-success" id="regSucc" type="button" data-dismiss="modal" onClick={this.afterSubmit}>Registered Successfully</button>
+                            {!this.state.registered ? (<React.Fragment><button className="btn btn-danger mx-4" type="button" style={{fontFamily : 'Staatliches'}} data-dismiss="modal">Close</button>
+                              <button className="btn  btn-outline-warning mx-4" type="submit" style={{fontFamily : 'Staatliches'}}>Register</button></React.Fragment>) : (
+                                <React.Fragment><button className="btn btn-success" id="regSucc" type="button" data-dismiss="modal" style={{fontFamily : 'Staatliches'}} onClick={this.afterSubmit}>Registered Successfully</button>
                               </React.Fragment>
                               )}
                               

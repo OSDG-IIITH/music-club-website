@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
+import './style.css'
 // const bcrypt = require('bcryptjs');
 
 export default class Login extends Component {
@@ -75,10 +76,10 @@ bcrypt.compare(username, '$2b$10$/vAq6f74Ye.Bqmgo7eo16eKfOGMrFpAh.OoyREteN58EHJp
                     <h2 id="welcome">Welcome back!</h2>
                     <h4 id="ent">Admin login here</h4>
                     <form id="login" onSubmit={this.submitForm}>
-                        <label for="username">Username </label><br/>
-                        <input type="text" placeholder="Enter username" id="username" name="username" value={this.state.username} onChange={this.onChange} ></input><br/>
-                        <label for="password">Password </label><br/>
-                        <input type="password" placeholder="Enter password" id="password" name="password" value={this.state.password} onChange={this.onChange} ></input><br/>
+                        <label id="loglabel1" for="adminusername">Username </label>
+                        <input type="text" placeholder="Enter username" id="adminusername" name="username" value={this.state.username} onChange={this.onChange} ></input><br/>
+                        <label id="loglabel2" for="adminpassword">Password </label>
+                        <input type="password" placeholder="Enter password" id="adminpassword" name="password" value={this.state.password} onChange={this.onChange} ></input><br/>
                         <input type="submit" id="login-submit" value="Sign in" />
                     </form>
                 </div>
