@@ -80,12 +80,14 @@ class Home extends Component {
     modal : false,
     registered : false,
     newRegister : {
-      name : '',
+      event_id : 404,
+      band_name : '',
+      player_names : '',
+      instrument_names : '',
       email : '',
       year : '',
-      number : '',
-      instruments : '',
-      songs : ''
+      contact_number : '',
+      song_names : ''
     }
   }
 
@@ -194,7 +196,7 @@ class Home extends Component {
     
 
     console.log("fetch now");
-    console.log(typeof(this.state.newRegister))
+    console.log(this.state.newRegister)
     console.log(typeof(JSON.stringify(this.state.newRegister)))
       fetch('/landingPage/events/register' , {method : 'POST' ,headers : {'Content-Type' : 'application/json'}, body : JSON.stringify(this.state.newRegister)})
         .then(async response =>{
@@ -212,12 +214,14 @@ class Home extends Component {
         this.setState({
           registered:true,
           newRegister : {
-            name : '',
+            event_id : 404,
+            band_name : '',
+            player_names : '',
+            instrument_names : '',
             email : '',
             year : '',
-            number : '',
-            instruments : '',
-            songs : ''
+            contact_number : '',
+            song_names : ''
           }
 
         })
@@ -314,8 +318,12 @@ class Home extends Component {
                           
                             
                             <div className="group">
-                              <input name='name' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                              <label>PLayer Names</label>
+                              <input name='player_names' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label>Player Names</label>
+                            </div>
+                            <div className="group">
+                              <input name='band_name' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label>Band Name</label>
                             </div>
                             <div className="group">
                               <input name='email' type="email" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
@@ -326,15 +334,15 @@ class Home extends Component {
                               <label>Year</label>
                             </div>
                             <div className="group">
-                              <input name='number' type="tel" pattern="[0-9]{10}" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <input name='contact_number' type="tel" pattern="[0-9]{10}" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
                               <label>Phone Number (10-digit)</label>
                             </div>
                             <div className="group">
-                              <textarea name='instruments' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
+                              <textarea name='instrument_names' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
                               <label>Instruments/Vocalists</label>
                             </div>
                             <div className="group">
-                              <textarea name='songs' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
+                              <textarea name='song_names' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
                               <label>Song List</label>
                             </div>
                             
