@@ -32,9 +32,9 @@ import './Home.css';
 class Home extends Component {
 
 
- componentDidMount(){
+ async componentDidMount(){
 
-    
+   
         
 
     function isElementInViewport(el){
@@ -315,7 +315,7 @@ class Home extends Component {
                             
                             <div className="group">
                               <input name='name' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                              <label>Name</label>
+                              <label>PLayer Names</label>
                             </div>
                             <div className="group">
                               <input name='email' type="email" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
