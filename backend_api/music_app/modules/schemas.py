@@ -19,15 +19,15 @@ class Registered(RegisteredCreate):
 
 class EventCreate(BaseModel):
 
-    name :str
-    state : str 
-    poster : str 
-    description : str 
-    date : str 
-    time : str 
-    venue : str 
-    gallery_link : str
-    ping_link : str 
+    name :str = ''
+    state : str = ''
+    poster : str = ''
+    description : str = '' 
+    date : str = ''
+    time : str = ''
+    venue : str = ''
+    gallery_link : str = ''
+    ping_link : str = ''
 
 class Event(EventCreate):
     id : int

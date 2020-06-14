@@ -26,8 +26,26 @@ async def get_registered(registered : schemas.RegisteredCreate = Body(...) , db 
     db.refresh(db_registered)
     return "Registration added to db!"
 
-@router.get('/events' , response_model= schemas.EventCreate)
-async def get_event(db : Session = Depends(get_db)):
-    return "TODO"
+@router.get('/events', response_model=List[schemas.EventCreate])
+async def get_event(db: Session = Depends(get_db)):
+    data = []
+    try:
+        upcoming_event = db.query(models.Event).filter(
+            models.Event.state == 'upcoming').first()
+        if upcoming_event != None:
+            data.append(upcoming_event)
+    except:
+        print("No upcoming events")
+
+    try:
+        past_events = db.query(models.Event).filter(
+            models.Event.state == 'completed').limit(3)
+        if past_events != None:
+            data.append(past_events)
+        print(past_events)
+    except:
+        print("No past events found!")
+
+    return data                                        
 
 
