@@ -1,10 +1,10 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
-from .database import Base
+from modules.database import Base
 from sqlalchemy.orm import relationship
 
 
-class UpcomingEvent(Base):
-    __tablename__ = "upcoming_event"
+class Event(Base):
+    __tablename__ = "event"
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String,index=True)
@@ -18,24 +18,25 @@ class UpcomingEvent(Base):
     ping_link = Column(String,index=True)
 
 
-class Registreation(Base):
-    __tablename__ = "registeration"
+class Registration(Base):
+    __tablename__ = "registration"
 
     id = Column(Integer, primary_key=True, index=True)
-    event_id = Column(Integer,ForeignKey("upcoming_event.id"))
+    event_id = Column(Integer,ForeignKey("event.id"))
     band_name = Column(String,index=True)
-    player_name = Column(String,index=True)
-    instrument_name = Column(String,index=True)
+    player_names = Column(String,index=True)
+    instrument_names = Column(String,index=True)
     email = Column(String,index=True)
-    contact_number = Column(Integer,index=True)
-    slot_required = Column(String,index=True)
-    song_name = Column(String,index=True)
+    year = Column(String , index=True)
+    contact_number = Column(String,index=True)
+    # slot_required = Column(String,index=True)
+    song_names = Column(String,index=True)
 
 class Lineup(Base):
     __tablename__ = "lineup"
 
     id = Column(Integer, primary_key=True, index=True)
-    event_id = Column(Integer,ForeignKey("upcoming_event.id"))
+    event_id = Column(Integer,ForeignKey("event.id"))
     band_name = Column(String,index=True)
     slot_given = Column(String,index=True)
     slot_number = Column(String,index=True)
@@ -45,7 +46,7 @@ class Photos(Base):
     __tablename__ = "photos"
 
     id = Column(Integer, primary_key=True, index=True)
-    event_id = Column(Integer,ForeignKey("upcoming_event.id"))
+    event_id = Column(Integer,ForeignKey("event.id"))
     label = Column(String,index=True)
     link = Column(String,index=True)
 
