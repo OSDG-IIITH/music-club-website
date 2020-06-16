@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import 'bootstrap/dist/css/bootstrap.css';
 //@ts-ignore
@@ -6,8 +7,16 @@ import 'bootstrap/dist/js/bootstrap';
 import AwesomeSlider from 'react-awesome-slider'
 import styles from 'react-awesome-slider/dist/styles.css'
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
-import { connect } from 'react-redux';
-import { addUser } from '../../actions/userActions'
+import {connect} from 'react-redux';
+import {addUser} from '../../actions/userActions' 
+import axios from 'axios'
+// import "bootstrap-css-only/css/bootstrap.min.css";
+// import {Button} from 'react-bootstrap';
+//  import "mdbreact/dist/css/mdb.css";
+// import {MDBContainer , MDBBtn ,MDBModal , MDBModalBody , MDBModalHeader , MDBModalFooter , MDBInput} from 'mdbreact';
+
+
+// to import react-bootstrap import {...} from 'react-bootstrap'
 import 'jquery';
 import 'popper.js';
 import './Home.css';
@@ -23,37 +32,37 @@ import './Home.css';
 class Home extends Component {
 
 
-  async componentDidMount() {
+ async componentDidMount(){
 
+   
+        
 
-
-
-    function isElementInViewport(el) {
+    function isElementInViewport(el){
       // if(typeof jquery === "function" && el instanceof jquery){
       //   el = el[0];
-      //}
+       //}
 
       var rect = el.getBoundingClientRect();
       // console.log(rect.top);
       // console.log(rect.bottom);
-
-      return (
+      
+      return(
         (rect.top <= 0 && rect.bottom >= 0) || (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) && rect.top <= (window.innerHeight || document.documentElement.clientHeight))
         || (rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
       )
     }
 
-    var scroll = window.requestAnimationFrame || function (callback) { window.setTimeout(callback, 1000 / 60) };
+    var scroll = window.requestAnimationFrame || function(callback){window.setTimeout(callback,1000/60)};
     var elemntsToShow = [];
     elemntsToShow.push(this.aboutImg.current);
     elemntsToShow.push(this.aboutDesc.current);
 
-    function loop() {
-      elemntsToShow.forEach(function (el) {
-        //console.log(isElementInViewport(el));
-        if (isElementInViewport(el)) {
+    function loop(){
+      elemntsToShow.forEach(function(el){
+      //console.log(isElementInViewport(el));
+        if(isElementInViewport(el)){
           el.classList.add('is-visible');
-        } else {
+        } else{
           el.classList.remove('is-visible');
         }
       })
@@ -61,30 +70,30 @@ class Home extends Component {
       scroll(loop);
     }
 
-    loop();
-    // console.log(this.aboutHead.current);
+     loop();
+        // console.log(this.aboutHead.current);
   }
 
   state = {
-
-
-    modal: false,
-    registered: false,
-    newRegister: {
-      event_id: 404,
-      band_name: '',
-      player_names: '',
-      instrument_names: '',
-      email: '',
-      year: '',
-      contact_number: '',
-      song_names: ''
+    
+    
+    modal : false,
+    registered : false,
+    newRegister : {
+      event_id : 404,
+      band_name : '',
+      player_names : '',
+      instrument_names : '',
+      email : '',
+      year : '',
+      contact_number : '',
+      song_names : ''
     }
   }
 
-  modalToggle = () => {
+  modalToggle = () =>{
     this.setState({
-      modal: !this.state.modal
+      modal : !this.state.modal
     })
   }
 
@@ -172,75 +181,84 @@ class Home extends Component {
   tickMark = React.createRef();
   modalBod = React.createRef();
 
-  handleChange = (e) => {
-    var { name, value } = e.target;
+  handleChange = (e)=>{
+    var {name , value} = e.target;
     let updatedReg = this.state.newRegister;
     updatedReg[name] = value;
-    this.setState({ newRegister: updatedReg })
+    this.setState({newRegister : updatedReg})
     // console.log(this.state.newRegister);
 
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = (e) =>{
     e.preventDefault();
-
-
+    
+    
 
     console.log("fetch now");
     console.log(this.state.newRegister)
-    console.log(typeof (JSON.stringify(this.state.newRegister)))
-    fetch('/landingPage/events/register', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(this.state.newRegister) })
-      .then(async response => {
-        const data = await response.json();
-        if (!response.ok) {
-          console.log("errrrorr");
-        }
+    console.log(typeof(JSON.stringify(this.state.newRegister)))
+      fetch('/landingPage/events/register' , {method : 'POST' ,headers : {'Content-Type' : 'application/json'}, body : JSON.stringify(this.state.newRegister)})
+        .then(async response =>{
+          const data = await response.json();
+          if(!response.ok){
+            console.log("errrrorr");
+          }
 
-        console.log(data);
+          console.log(data);
 
-      })
+        })
 
-      .catch(err => console.error(err))
+        .catch(err => console.error(err))
 
-    this.setState({
-      registered: true,
-      newRegister: {
-        event_id: 404,
-        band_name: '',
-        player_names: '',
-        instrument_names: '',
-        email: '',
-        year: '',
-        contact_number: '',
-        song_names: ''
-      }
+        this.setState({
+          registered:true,
+          newRegister : {
+            event_id : 404,
+            band_name : '',
+            player_names : '',
+            instrument_names : '',
+            email : '',
+            year : '',
+            contact_number : '',
+            song_names : ''
+          }
 
-    })
+        })
+    
 
+     this.modalBod.current.style.opacity = '6%';
+     this.tickMark.current.style.opacity = '100%';
+     this.tickMark.current.style.transform = 'translate(0px,0px) scale(1.1)';
 
-    this.modalBod.current.style.opacity = '6%';
-    this.tickMark.current.style.opacity = '100%';
-    this.tickMark.current.style.transform = 'translate(0px,0px) scale(1.1)';
+    //  var inpArr = e.target.querySelectorAll('input' , 'textarea');
+    //  var temp_obj = {};
+    //  for(let i=0;i<inpArr.length;i++){
+    //    temp_obj[inpArr[i].getAttribute('name')] = inpArr[i].value
+    //  }
 
-
+    //  this.props.addReg(temp_obj);
+    //  temp_obj = {};
+     
+    
   }
 
+  
 
-
-  afterSubmit = (e) => {
+  afterSubmit = (e) =>{
     this.setState({
-      registered: false
+      registered:false
     })
-
+    
   }
 
-  modalReset = () => {
+  modalReset = () =>{
     this.regForm.current.reset();
     this.modalBod.current.style.opacity = '100%';
     this.tickMark.current.style.opacity = '0%';
     this.tickMark.current.style.transform = 'translate(0px,50px) scale(0.8)';
     this.setState({
-      registered: false
+      registered:false
     })
   }
 
@@ -248,110 +266,113 @@ class Home extends Component {
     // console.log(this.state.isOnDisplay)
     return (
       <React.Fragment>
-
-        <AwesomeSlider fillParent={false} className="carousel " cssModule={styles} transitionDelay={500} mobileTouch={true} bullets={true} onTransitionStart={this.fade} onTransitionEnd={this.bringBack}  >
-          <div className="carouselDiv" id="img1">Depends(get_db)):entDesc" ref={this.eventDesc1}>Where all the metal heads go Crazy</p>
-          <button type="button" className="btn btn-white btn-animate btn-outline-warning regBtn" id="btnReg" ref={this.regBtn1} data-toggle="modal" data-target="#exampleModalCenter" onClick={this.modalReset}>
-            <span id="regBtnText">Register For Event</span>
-          </button>
+        
+          <AwesomeSlider  fillParent={false} className="carousel " cssModule={styles} transitionDelay={500} mobileTouch={true} bullets={true} onTransitionStart={this.fade} onTransitionEnd={this.bringBack}  >
+            <div className="carouselDiv" id="img1">
+              <div className="eventTextDiv" >
+                <h1 className={"eventTitle text-center"} ref={this.eventTitle1}>Meltdown</h1>
+                <p className="text-white text-center eventDesc" ref={this.eventDesc1}>Where all the metal heads go Crazy</p>
+                <button type="button" className="btn btn-white btn-animate btn-outline-warning regBtn" id="btnReg" ref={this.regBtn1} data-toggle="modal" data-target="#exampleModalCenter" onClick={this.modalReset}>
+                      <span id="regBtnText">Register For Event</span>
+                    </button>
               </div>
             </div>
-      <div className="carouselDiv" id="img2">
-        <div className="container-xs">
-          <h1 className=" eventTitle text-center" ref={this.eventTitle2}>Euphonic</h1>
-          <p className="text-white text-center eventDesc" ref={this.eventDesc2}>The dopest introduction to music club</p>
-        </div>
-      </div>
-      <div className="carouselDiv" id="img3">
-        <div className="eventTextDiv">
-          <h1 className=" eventTitle text-center" ref={this.eventTitle3}>Unplugged</h1>
-          <p className="text-white text-center eventDesc" ref={this.eventDesc3}>Just raw beautiful talent , no wires attached</p>
-        </div>
-      </div>
-
-      <div className="carouselDiv" id="img4">
-        <div className="eventTextDiv">
-          <h1 className=" eventTitle text-center" ref={this.eventTitle4}>Roadblock</h1>
-          <p className="text-white text-center eventDesc" ref={this.eventDesc4}>Bring the music to the streets</p>
-        </div>
-      </div>
-          </AwesomeSlider >
-
-
-      {/*MODAL START*/ }
-
-      < div className = "modal fade modalBack" id = "exampleModalCenter" tabIndex = "-1" role = "dialog" aria - labelledby="exampleModalCenterTitle" aria - hidden="true" >
-        <div className="modal-dialog modal-dialog-centered" role="document">
-          <div className="modal-content mainModal">
-
-            <div className="modal-header">
-              <h2 className="modal-title modalTitle mx-auto">Register</h2>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div className="carouselDiv" id="img2">
+              <div className="container-xs">
+                <h1 className=" eventTitle text-center" ref={this.eventTitle2}>Euphonic</h1>
+                <p className="text-white text-center eventDesc" ref={this.eventDesc2}>The dopest introduction to music club</p>
+              </div>
             </div>
-            <form ref={this.regForm} onSubmit={this.handleSubmit}>
-              <div id="tickDiv" ref={this.tickMark}></div>
-              <div ref={this.modalBod} className="modal-body">
-                <div className="wrapper">
-
-
-                  <div className="group">
-                    <input name='player_names' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                    <label>Player Names</label>
-                  </div>
-                  <div className="group">
-                    <input name='band_name' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                    <label>Band Name</label>
-                  </div>
-                  <div className="group">
-                    <input name='email' type="email" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                    <label>Email (Preferrably College Id)</label>
-                  </div>
-                  <div className="group">
-                    <input name='year' type="number" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                    <label>Year</label>
-                  </div>
-                  <div className="group">
-                    <input name='contact_number' type="tel" pattern="[0-9]{10}" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                    <label>Phone Number (10-digit)</label>
-                  </div>
-                  <div className="group">
-                    <textarea name='instrument_names' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
-                    <label>Instruments/Vocalists</label>
-                  </div>
-                  <div className="group">
-                    <textarea name='song_names' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
-                    <label>Song List</label>
-                  </div>
-
-
-                </div>
+            <div className="carouselDiv" id="img3">
+              <div className="eventTextDiv">
+                <h1 className=" eventTitle text-center" ref={this.eventTitle3}>Unplugged</h1>
+                <p className="text-white text-center eventDesc" ref={this.eventDesc3}>Just raw beautiful talent , no wires attached</p>
               </div>
-              <div className="modal-footer">
+            </div>
 
-                <div className="btn-box">
-                  {!this.state.registered ? (<React.Fragment><button className="btn btn-danger mx-4" type="button" style={{ fontFamily: 'Staatliches' }} data-dismiss="modal">Close</button>
-                    <button className="btn  btn-outline-warning mx-4" type="submit" style={{ fontFamily: 'Staatliches' }}>Register</button></React.Fragment>) : (
-                      <React.Fragment><button className="btn btn-success" id="regSucc" type="button" data-dismiss="modal" style={{ fontFamily: 'Staatliches' }} onClick={this.afterSubmit}>Registered Successfully</button>
-                      </React.Fragment>
-                    )}
-
-
-                </div>
+            <div className="carouselDiv" id="img4">
+              <div className="eventTextDiv">
+                <h1 className=" eventTitle text-center" ref={this.eventTitle4}>Roadblock</h1>
+                <p className="text-white text-center eventDesc" ref={this.eventDesc4}>Bring the music to the streets</p>
               </div>
-            </form>
-          </div>
-        </div>
-                    </div >
+            </div>
+          </AwesomeSlider>
+        
 
+                {/*MODAL START*/}
 
+                    <div className="modal fade modalBack" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div className="modal-dialog modal-dialog-centered" role="document">
+                        <div className="modal-content mainModal">
 
-      {/*MODAL ENDS*/ }
+                          <div className="modal-header">
+                            <h2 className="modal-title modalTitle mx-auto">Register</h2>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <form ref={this.regForm}  onSubmit={this.handleSubmit}>
+                          <div id="tickDiv" ref={this.tickMark}></div>
+                          <div ref={this.modalBod}  className="modal-body">
+                          <div className="wrapper">
+                          
+                            
+                            <div className="group">
+                              <input name='player_names' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label>Player Names</label>
+                            </div>
+                            <div className="group">
+                              <input name='band_name' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label>Band Name</label>
+                            </div>
+                            <div className="group">
+                              <input name='email' type="email" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label>Email (Preferrably College Id)</label>
+                            </div>
+                            <div className="group">
+                              <input name='year' type="number"  required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label>Year</label>
+                            </div>
+                            <div className="group">
+                              <input name='contact_number' type="tel" pattern="[0-9]{10}" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label>Phone Number (10-digit)</label>
+                            </div>
+                            <div className="group">
+                              <textarea name='instrument_names' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
+                              <label>Instruments/Vocalists</label>
+                            </div>
+                            <div className="group">
+                              <textarea name='song_names' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
+                              <label>Song List</label>
+                            </div>
+                            
+                          
+                      </div>
+                          </div>
+                          <div className="modal-footer">
 
+                            <div className="btn-box">
+                            {!this.state.registered ? (<React.Fragment><button className="btn btn-danger mx-4" type="button" style={{fontFamily : 'Staatliches'}} data-dismiss="modal">Close</button>
+                              <button className="btn  btn-outline-warning mx-4" type="submit" style={{fontFamily : 'Staatliches'}}>Register</button></React.Fragment>) : (
+                                <React.Fragment><button className="btn btn-success" id="regSucc" type="button" data-dismiss="modal" style={{fontFamily : 'Staatliches'}} onClick={this.afterSubmit}>Registered Successfully</button>
+                              </React.Fragment>
+                              )}
+                              
+                              
+                           </div>
+                          </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
 
+                    
 
-      < hr className = 'my-4' />
+                {/*MODAL ENDS*/}
+      
+      
+      
+        <hr className='my-4' />
         <div className="jumbotron about">
           <h1 className='aboutHeadDiv py-5 px-4' >
             About
@@ -362,37 +383,37 @@ class Home extends Component {
               Morbi eu leo diam. Fusce enim arta libero viverra, non auctor odio ultrices.
               sdavvavsaavavbadsfdggfadffhggefgffgegdgfhgrgsfdgfbv
               grwrdgfsefdgfgrgfhfgrwdgfnfgrwdgfnfgrw Nulla cursus eget elit vitae tincidunt. Nam a nibh ut nunc lobortis egestas quis sed lacus. Curabitur viverra lectus enim, ac malesuada lorem laoreet venenatis. Sed dui tellus, aliquam laoreet interdum et, gravida eu dui. Sed rhoncus auctor mi eget placerat. Integer nec lacus et mi luctus interdum quis at nisl. Cras a leo vitae arcu iaculis facilisis. Nam et dignissim neque. Nam varius varius accumsan. Vestibulum rutrum fringilla fermentum.</span> </div>
-            <div ref={this.aboutImg} className='col-sm-4 view overlay card card-img-top' id='image'>
+            <div ref={this.aboutImg}  className='col-sm-4 view overlay card card-img-top' id='image'>
             </div>
           </div>
-        </div>
-        <div className='jumbotron-fluid landingPageFooter'>
-          <div className='text-center footer'>
-            <span id='footer-note text-center'>
+          </div>
+          <div className='jumbotron-fluid landingPageFooter'>
+            <div className='text-center footer'>
+              <span id='footer-note text-center'>
               &copy; Copyright: lorem-ipsum@gmail.com
               </span>
+            </div>
           </div>
-        </div>
-      </React.Fragment >
+      </React.Fragment>
     )
   }
 
-
+  
 
 }
 
-const mapStateToProps = (state) => {
-  return {
-    registeredUsers: state.registeredUsers
+const mapStateToProps = (state) =>{
+  return{
+    registeredUsers : state.registeredUsers
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addReg: (obj) => { dispatch(addUser(obj)) }
+const mapDispatchToProps = (dispatch) =>{
+  return{
+    addReg : (obj) =>{dispatch(addUser(obj))}
   }
 }
 
 // test comment
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps,mapDispatchToProps)(Home);

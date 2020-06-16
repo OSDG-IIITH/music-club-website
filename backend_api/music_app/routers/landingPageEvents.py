@@ -29,6 +29,7 @@ async def get_registered(registered: schemas.RegisteredCreate = Body(...), db: S
     return "Registration added to db!"
 
 
+
 @router.get('/events', response_model=List[schemas.EventCreate])
 async def get_event(db: Session = Depends(get_db)):
     data = []
@@ -50,3 +51,4 @@ async def get_event(db: Session = Depends(get_db)):
         print("No past events found!")
 
     return data
+
