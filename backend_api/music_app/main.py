@@ -1,4 +1,4 @@
-from fastapi import FastAPI , Query , Body , Path , Header
+from fastapi import FastAPI , Query , Body , Path , Header , Depends
 from typing import List , Dict
 from enum import Enum
 import uvicorn
@@ -11,6 +11,17 @@ from routers import landingPageEvents
 app = FastAPI(debug=True)
 
 models.Base.metadata.create_all(bind=engine)
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+
+    finally:
+        db.close()
+
+# def test(test_param : str = None):
+#     return test_param
 
 @app.get('/')
 async def root():

@@ -71,11 +71,12 @@ body{
     position: relative;
     top:30%;
     right:0%;
+    
 
 }
 
 .eventTitle{
-    font-size: 1020%;
+    font-size: 1220%;
     color : white;
     font-weight: 800;
     transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
@@ -349,8 +350,9 @@ body{
   
   .modalTitle{
       font-weight: 800;
-      color:var(--orangeText);
+      color : white;
       padding-left: 5rem;
+      font-family: 'Staatliches';
   }
 
   *,
@@ -505,21 +507,20 @@ input[type="password"] {
         height:890px;
     } */
 
-    /* .eventTextDiv{
-        position: relative;
-        top:450px;
-    } */
+     .eventTextDiv{
+        top:50%;
+    } 
     
-    .eventTitle{
-        font-size: 520%;
+     .eventTitle{
+        font-size: 720%;
         
         font-weight: 800;
     }
     
     .eventDesc{
         font-weight: 800;
-        font-size: 80%;
-    }
+        font-size: 130%;
+    } 
 
     .aboutTextDiv{
       transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
@@ -590,15 +591,21 @@ input[type="password"] {
     }
     
     .eventTitle{
-        font-size: 320%;
+        font-size: 420%;
         
         font-weight: 800;
     }
     
     .eventDesc{
         font-weight: 800;
-        font-size: 60%;
+        font-size: 80%;
     }
+
+    #regBtnText{
+      font-size: 70%;
+    }
+
+    
 
     .aboutHeadDiv{
       position: relative;
