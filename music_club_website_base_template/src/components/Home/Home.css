@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
 body{
   background-color: #343A40;
@@ -80,7 +80,7 @@ body{
     color : white;
     font-weight: 800;
     transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
-    font-family: "Staatliches";
+    font-family: 'Staatliches' , cursive;
     
 }
 
@@ -91,7 +91,7 @@ body{
     font-size: 140%;
     transition: opacity 500ms ease-in-out ;
     transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
-    font-family: "Staatliches";
+    font-family: 'Staatliches' , cursive;
 }
 
 .regBtn{
