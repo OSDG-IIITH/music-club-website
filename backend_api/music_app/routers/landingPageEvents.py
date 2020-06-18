@@ -1,10 +1,11 @@
-from fastapi import APIRouter , Query , Body , Path , Header , Depends
-from typing import List , Dict
+from fastapi import APIRouter, Query, Body, Path, Header, Depends
+from typing import List, Dict
 from modules import schemas
 from modules import models
 from sqlalchemy.orm import Session
 from modules.database import SessionLocal
 router = APIRouter()
+
 
 def get_db():
     db = SessionLocal()
@@ -14,17 +15,20 @@ def get_db():
     finally:
         db.close()
 
-# HERE THE FORM DATA FROM A REGISTERING USER IS PRINTED AND CONSOLE LOGGED 
+# HERE THE FORM DATA FROM A REGISTERING USER IS PRINTED AND CONSOLE LOGGED
 # THE PARAMETER registered IS OF THE TYPE REGISTERED WHICH IS A PYDANTIC MODEL IN schemas.py
 
+
 @router.post('/events/register')
-async def get_registered(registered : schemas.RegisteredCreate = Body(...) , db : Session = Depends(get_db)):
+async def get_registered(registered: schemas.RegisteredCreate = Body(...), db: Session = Depends(get_db)):
     print(registered)
     db_registered = models.Registration(**registered.dict())
     db.add(db_registered)
     db.commit()
     db.refresh(db_registered)
     return "Registration added to db!"
+
+
 
 @router.get('/events', response_model=List[schemas.EventCreate])
 async def get_event(db: Session = Depends(get_db)):
@@ -46,6 +50,5 @@ async def get_event(db: Session = Depends(get_db)):
     except:
         print("No past events found!")
 
-    return data                                        
-
+    return data
 
