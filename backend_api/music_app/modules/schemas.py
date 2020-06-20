@@ -28,6 +28,8 @@ class EventCreate(BaseModel):
     venue : str = ''
     gallery_link : str = ''
     ping_link : str = ''
+    
+
 
 class AdminDetail(BaseModel):
     username :str = ''
@@ -40,3 +42,7 @@ class AddPhoto(BaseModel):
     
 class Event(EventCreate):
     id : int
+    registrations : List[Registered] = []
+
+    class Config:
+        orm_mod : True

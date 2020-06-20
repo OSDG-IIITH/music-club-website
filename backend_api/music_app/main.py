@@ -29,9 +29,8 @@ async def root():
 
 # THIS IS INCLUDING ALL LANDINGPAGE ENDPOINTS FROM routers/landingPage.py
 app.include_router(landingPageEvents.router , prefix="/landingPage" , tags=["landingPage"])  
-app.include_router(adminevent.router , prefix="/adminevent" , tags=["adminevent"])  
-app.include_router(adminphoto.router , prefix="/adminphoto" , tags=["adminphoto"])  
-app.include_router(adminuser.router , prefix="/adminuser" , tags=["adminuser"])  
+app.include_router(admin.router , prefix="/admin" , tags=["admin"])  
+
 
 if __name__ == "__main__":
     uvicorn.run("main:app" , host = "127.0.0.1",port = 8000,reload = True)
