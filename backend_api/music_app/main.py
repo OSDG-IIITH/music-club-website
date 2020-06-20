@@ -6,7 +6,7 @@ from pydantic import BaseModel , Field , HttpUrl
 from sqlalchemy.orm import Session
 from modules import schemas , models
 from modules.database import SessionLocal , engine
-from routers import landingPageEvents,adminevent,adminphoto,adminuser
+from routers import landingPageEvents,adminevent,adminphoto,adminuser , admin
 
 app = FastAPI(debug=True)
 

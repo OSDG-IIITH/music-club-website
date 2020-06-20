@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import List , Dict
 
 class RegisteredCreate(BaseModel):
     event_id : int
@@ -36,7 +37,7 @@ class AdminDetail(BaseModel):
     password :str = ''
 
 class AddPhoto(BaseModel):
-    event_id : str = ""
+    event_id : int
     label : str = ""
     link: str = ""
     
