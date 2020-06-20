@@ -29,5 +29,14 @@ class EventCreate(BaseModel):
     gallery_link : str = ''
     ping_link : str = ''
 
+class AdminDetail(BaseModel):
+    username :str = ''
+    password :str = ''
+
+class AddPhoto(BaseModel):
+    event_id : str = ""
+    label : str = ""
+    link: str = ""
+    
 class Event(EventCreate):
     id : int

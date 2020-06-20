@@ -6,7 +6,7 @@ from pydantic import BaseModel , Field , HttpUrl
 from sqlalchemy.orm import Session
 from modules import schemas , models
 from modules.database import SessionLocal , engine
-from routers import landingPageEvents,event,photo,adminuser
+from routers import landingPageEvents,adminevent,adminphoto,adminuser
 
 app = FastAPI(debug=True)
 
@@ -29,8 +29,8 @@ async def root():
 
 # THIS IS INCLUDING ALL LANDINGPAGE ENDPOINTS FROM routers/landingPage.py
 app.include_router(landingPageEvents.router , prefix="/landingPage" , tags=["landingPage"])  
-app.include_router(event.router , prefix="/event" , tags=["event"])  
-app.include_router(photo.router , prefix="/photo" , tags=["photo"])  
+app.include_router(adminevent.router , prefix="/adminevent" , tags=["adminevent"])  
+app.include_router(adminphoto.router , prefix="/adminphoto" , tags=["adminphoto"])  
 app.include_router(adminuser.router , prefix="/adminuser" , tags=["adminuser"])  
 
 if __name__ == "__main__":

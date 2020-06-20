@@ -20,7 +20,7 @@ def get_db():
 
 
 @router.post('/admin')
-async def add_event(registered: schemas.AddPhoto = Body(...), db: Session = Depends(get_db)):
+async def add_event(registered: schemas.EventCreate = Body(...), db: Session = Depends(get_db)):
     print(registered)
     db_img = models.Event(**registered.dict())
     db.add(db_img)
