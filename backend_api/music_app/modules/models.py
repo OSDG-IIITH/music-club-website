@@ -16,6 +16,7 @@ class Event(Base):
     venue = Column(String,index=True)
     gallery_link = Column(String,index=True)
     ping_link = Column(String,index=True)
+    registrations = relationship("Registration",cascade="all,delete,delete-orphan")
 
 
 class Registration(Base):

@@ -15,8 +15,6 @@ def get_db():
     finally:
         db.close()
 
-# HERE THE FORM DATA FROM A REGISTERING USER IS PRINTED AND CONSOLE LOGGED
-# THE PARAMETER registered IS OF THE TYPE REGISTERED WHICH IS A PYDANTIC MODEL IN schemas.py
 
 
 @router.post('/admin')

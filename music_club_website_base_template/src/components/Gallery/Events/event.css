@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
 .event-headWrapper{
-  background-color: #151748;
+  background-color: var(--headerBackground);
   background-image: url('/images/Gallery/breadcrumb.png');
   background-repeat: no-repeat;
   background-position: center center;
@@ -68,7 +68,7 @@
 .event-description .title{
   font-size: 4rem;
   text-transform: uppercase;
-  color: #151748;
+  color: var(--headerBackground);
   margin-bottom: 1vw;
 }
 
