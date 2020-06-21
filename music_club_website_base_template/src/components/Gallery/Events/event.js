@@ -38,7 +38,7 @@ class Event extends Component {
                 Event Name
                 </div>
                 <div className="event-path">
-                <div className="event-path-trail"><a href="/">Home</a></div> &gt; <div className="event-path-trail"><a href="/timeline">Timeline</a></div> &gt; <div className="event-title-path">Event Name</div>
+                  <div className="event-path-trail"><a href="/">Home</a></div> &gt; <div className="event-path-trail"><a href="/timeline">Timeline</a></div> &gt; <div className="event-title-path">Event Name</div>
                 </div>
               </div>
             </div>
