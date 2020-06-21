@@ -9,7 +9,7 @@ import styles from 'react-awesome-slider/dist/styles.css'
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import {connect} from 'react-redux';
 import {addUser} from '../../actions/userActions' 
-import axios from 'axios'
+
 
 // import "bootstrap-css-only/css/bootstrap.min.css";
 // import {Button} from 'react-bootstrap';
