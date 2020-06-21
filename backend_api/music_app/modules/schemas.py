@@ -36,6 +36,11 @@ class AdminDetail(BaseModel):
     username :str = ''
     password :str = ''
 
+class AdminPassword(BaseModel):
+    username :str = ''
+    password :str = ''
+    confirmpassword :str = ''
+        
 class AddPhoto(BaseModel):
     event_id : int
     label : str = ""
