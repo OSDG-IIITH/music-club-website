@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 body{
   background-color: #343A40;
@@ -8,11 +9,20 @@ body{
     height:100vh;
 }
 
+.about-home{
+  background-color: var(--headerBackground);
+  background-image: url('/images/Gallery/breadcrumb.png');
+  background-repeat: repeat-x;
+  background-size:cover;
+  background-position: center center;
+}
+
 .aboutHeadDiv{
     position: relative;
-    font-size: 600%;
-    font-family: 'Courier New', Courier, monospace;
+    font-size: 800%;
+    font-family: 'Staatliches',cursive;
     padding: 2vh 0em 0em 0em;
+    color : white
     
 }
 
@@ -44,7 +54,7 @@ body{
     
     position: relative;
     opacity: 0;
-   
+    color : white;
     /* font-size: 100%; */
     padding-top: 0%;
     transform: translate(-1000px,0px);
@@ -155,9 +165,10 @@ body{
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.btn-white {
-  background-color: rgb(247, 4, 4);
-  color:#fff;
+.btn-white:hover {
+ 
+  background-color:#9dd0e5;
+  
 }
 
 .evtbtn::after {
@@ -174,22 +185,23 @@ body{
   transition: all .4s;
 }
 
-.btn-white::after {
-  background-color: rgb(247, 22, 22);
+/* .btn-white::after {
+  background-color:#3589AD
 }
-
+*/
 .evtbtn:hover::after {
   -webkit-transform: scaleX(1.4) scaleY(1.6);
           transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
-}
+  background-color: #3589AD;
+} 
 
-.btn-animated {
+ .btn-animated {
   -webkit-animation: moveInBottom 5s ease-out;
           animation: moveInBottom 5s ease-out;
   -webkit-animation-fill-mode: backwards;
           animation-fill-mode: backwards;
-}
+} 
 
 @-webkit-keyframes moveInBottom {
   0% {
@@ -256,7 +268,7 @@ body{
 .awssld__bullets .awssld__bullets--active {
     -webkit-transform: scale(1.5);
             transform: scale(1.5); 
-            background-color:var(--orangeText);
+            background-color:var(--headerBackground);
         }
 
  .awssld__controls__arrow-left, .awssld__controls__arrow-right {
@@ -276,7 +288,7 @@ body{
                 height: 100%;
                 border-radius: 100%;
                 width: 5px;
-                background-color: var(--orangeText);
+                background-color: white;
                 -webkit-transition: background-color 0.15s ease-out, -webkit-transform 0.15s ease-out;
                 transition: background-color 0.15s ease-out, -webkit-transform 0.15s ease-out;
                 transition: transform 0.15s ease-out, background-color 0.15s ease-out;
@@ -373,6 +385,14 @@ body{
 :before,
 :after {
   box-sizing: border-box;
+}
+
+.wrapper-home{
+  display: block;
+  flex-direction: row;
+  width: 200vw;
+  /* transform: rotate(90deg) translateY(-100vh);
+  transform-origin: top left; */
 }
 
 form {
@@ -582,8 +602,8 @@ input[type="password"] {
 
     .aboutHeadDiv{
       position: relative;
-      font-size: 400%;
-      font-family: 'Courier New', Courier, monospace;
+      font-size: 600%;
+      
       padding: 2vh 0em 0em 0em;
       
   }
@@ -641,8 +661,8 @@ input[type="password"] {
 
     .aboutHeadDiv{
       position: relative;
-      font-size: 300%;
-      font-family: 'Courier New', Courier, monospace;
+      font-size: 500%;
+      
       padding: 2vh 0em 0em 0em;
       
     }

@@ -34,7 +34,7 @@ class App extends Component {
               <Route path="/gallery" component={Gallery} exact/>  
               <Route path="/login" component={Login} exact/>  
               <Route path="/logout" component={Logout} exact/>  
-              <Route path="/admin" component={Admin} exact/>  
+              <Route path="/admin" component={Admin} exact/>   
             </Switch>
           </div>
         </BrowserRouter>

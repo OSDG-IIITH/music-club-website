@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 // import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import 'bootstrap/dist/css/bootstrap.css';
@@ -10,6 +10,7 @@ import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import {connect} from 'react-redux';
 import {addUser} from '../../actions/userActions' 
 import axios from 'axios'
+
 // import "bootstrap-css-only/css/bootstrap.min.css";
 // import {Button} from 'react-bootstrap';
 //  import "mdbreact/dist/css/mdb.css";
@@ -275,10 +276,10 @@ class Home extends Component {
               <div className="eventTextDiv" >
                 <h1 className={"eventTitle text-center"} ref={this.eventTitle1}>Meltdown</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc1}>Where all the metal heads go Crazy</p>
-                <button type="button" className="btn btn-white btn-animate btn-outline-warning regBtn evtbtn"  ref={this.regBtn1} data-toggle="modal" data-target="#exampleModalCenter" onClick={this.modalReset}>
+                <button type="button" className="btn btn-white btn-animate btn-outline-light regBtn evtbtn"  ref={this.regBtn1} data-toggle="modal" data-target="#regModal" onClick={this.modalReset}>
                       <span id="regBtnText">Register For Event</span>
                     </button>
-                    <button type="button" className="btn btn-white btn-animate btn-outline-warning linBtn evtbtn" id="lineupBut"  ref={this.linBtn1} data-toggle="modal" data-target="#exampleModalCenter" onClick={this.modalReset}>
+                    <button type="button" className="btn btn-white btn-animate btn-outline-light linBtn evtbtn" id="lineupBut"  ref={this.linBtn1} data-toggle="modal" data-target="#lineupModal">
                       <span id="regBtnText">See Lineup</span>
                     </button>
               </div>
@@ -307,7 +308,7 @@ class Home extends Component {
 
                 {/*MODAL START*/}
 
-                    <div className="modal fade modalBack" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div className="modal fade modalBack" id="regModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div className="modal-dialog modal-dialog-centered" role="document">
                         <div className="modal-content mainModal">
 
@@ -320,7 +321,7 @@ class Home extends Component {
                           <form ref={this.regForm}  onSubmit={this.handleSubmit}>
                           <div id="tickDiv" ref={this.tickMark}></div>
                           <div ref={this.modalBod}  className="modal-body">
-                          <div className="wrapper">
+                          <div className="wrapper-home">
                           
                             
                             <div className="group">
@@ -372,14 +373,40 @@ class Home extends Component {
                       </div>
                     </div>
 
+                    {/*Register MODAL ENDS*/}
+
+                    {/*Lineup MODAL STARTS*/}
+
+                    <div className="modal fade modalBack" id="lineupModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div className="modal-dialog modal-dialog-centered" role="document">
+                        <div className="modal-content mainModal">
+
+                          <div className="modal-header">
+                            <h2 className="modal-title modalTitle mx-auto">Lineup</h2>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                      
+                          <div ref={this.modalBod}  className="modal-body">
+                          
+                          </div>
+                          <div className="modal-footer">
+
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+
                     
 
-                {/*MODAL ENDS*/}
+                {/*Lineup MODAL ENDS*/}
       
       
       
-        <hr className='my-4' />
-        <div className="jumbotron about">
+        {/* <hr className='my-4' /> */}
+        <div className="jumbotron about-home">
           <h1 className='aboutHeadDiv py-5 px-4' >
             About
             </h1>
@@ -393,13 +420,13 @@ class Home extends Component {
             </div>
           </div>
           </div>
-          <div className='jumbotron-fluid landingPageFooter'>
-            <div className='text-center footer'>
+          {/* <div className='jumbotron landingPageFooter'>
+            <div className='text-center footer'> */}
               <span id='footer-note text-center'>
               &copy; Copyright: lorem-ipsum@gmail.com
               </span>
-            </div>
-          </div>
+            {/* </div>
+          </div> */}
       </React.Fragment>
     )
   }
