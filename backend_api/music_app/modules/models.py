@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String , DateTime
 from modules.database import Base
 from sqlalchemy.orm import relationship
 
@@ -13,6 +13,7 @@ class Event(Base):
     description = Column(String,index=True)
     date = Column(String,index=True)
     time = Column(String,index=True)
+    db_time = Column(DateTime,index=True)
     venue = Column(String,index=True)
     gallery_link = Column(String,index=True)
     ping_link = Column(String,index=True)

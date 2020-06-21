@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import List , Dict
+from datetime import datetime
 
 class RegisteredCreate(BaseModel):
     event_id : int
@@ -26,6 +27,7 @@ class EventCreate(BaseModel):
     description : str = '' 
     date : str = ''
     time : str = ''
+    db_time : datetime = datetime.now()
     venue : str = ''
     gallery_link : str = ''
     ping_link : str = ''
