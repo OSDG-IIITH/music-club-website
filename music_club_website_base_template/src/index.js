@@ -20,6 +20,18 @@ document.documentElement.style.setProperty(
       '--lightGrey' , DARK_THEME.lightGrey
 );
 
+document.documentElement.style.setProperty(
+      '--cardTitle' , DARK_THEME.cardTitle
+);
+
+document.documentElement.style.setProperty(
+      '--timelineContent' , DARK_THEME.timelineContent
+);
+
+document.documentElement.style.setProperty(
+      '--headerBackground' , DARK_THEME.headerBackground
+);
+
 const store  = createStore(rootReducer);
 
 ReactDOM.render(
