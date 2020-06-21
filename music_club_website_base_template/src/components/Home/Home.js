@@ -81,7 +81,6 @@ class Home extends Component {
     modal : false,
     registered : false,
     newRegister : {
-      event_id : 404,
       band_name : '',
       player_names : '',
       instrument_names : '',
@@ -388,7 +387,7 @@ class Home extends Component {
                             </button>
                           </div>
                       
-                          <div ref={this.modalBod}  className="modal-body">
+                          <div  className="modal-body">
                           
                           </div>
                           <div className="modal-footer">

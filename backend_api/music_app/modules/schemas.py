@@ -3,7 +3,6 @@ from typing import List , Dict
 from datetime import datetime
 
 class RegisteredCreate(BaseModel):
-    event_id : int
     band_name : str
     player_names : str
     instrument_names : str
@@ -15,6 +14,7 @@ class RegisteredCreate(BaseModel):
 
 class Registered(RegisteredCreate):
     id : int
+    event_id : int
     
     class Config:
         orm_mode : True
@@ -49,3 +49,21 @@ class Event(EventCreate):
 
     class Config:
         orm_mod : True
+
+
+
+class LineupCreate(BaseModel):
+    band_name : str = ''
+    slot_given : str = ''
+    slot_number : int = 0
+    song_name  : str = ''
+
+class Lineup(LineupCreate):
+    id : int
+    event_id : int
+
+    class Config:
+        orm_mode : True
+
+    
+

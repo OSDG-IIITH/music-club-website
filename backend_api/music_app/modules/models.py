@@ -18,6 +18,7 @@ class Event(Base):
     gallery_link = Column(String,index=True)
     ping_link = Column(String,index=True)
     registrations = relationship("Registration",cascade="all,delete,delete-orphan")
+    lineup = relationship("Lineup" , cascade="all,delete,delete-orphan")
 
 
 class Registration(Base):
@@ -41,7 +42,7 @@ class Lineup(Base):
     event_id = Column(Integer,ForeignKey("event.id"))
     band_name = Column(String,index=True)
     slot_given = Column(String,index=True)
-    slot_number = Column(String,index=True)
+    slot_number = Column(Integer,index=True)
     song_name = Column(String,index=True)
 
 class Photos(Base):
