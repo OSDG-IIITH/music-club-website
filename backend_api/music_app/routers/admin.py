@@ -34,7 +34,6 @@ async def add_event(newEvent : schemas.EventCreate = Body(...) , db : Session = 
     db.commit()
     db.refresh(db_event)
     return "event added successfully"
-    
 
 @router.post('/delEvent')
 async def delete_event(event_id  : int = Body(...) , db: Session = Depends(get_db)):
@@ -42,14 +41,6 @@ async def delete_event(event_id  : int = Body(...) , db: Session = Depends(get_d
     db.delete(event_to_delete)
     db.commit()
     return "event deleted"
-
-@router.post('/addPhoto')
-async def add_photo(newPhoto : schemas.AddPhoto = Body(...) , db: Session = Depends(get_db)):
-    db_img = models.Photos(**newPhoto.dict())
-    db.add(db_img)
-    db.commit()
-    db.refresh(db_img)
-    return "photo has been added to db!"
 
 @router.put('/updateState')
 async def set_new_state(new_event_state = Body(...) , db: Session = Depends(get_db)):
@@ -60,4 +51,20 @@ async def set_new_state(new_event_state = Body(...) , db: Session = Depends(get_
     event_to_change.update({models.Event.state : newState} , synchronize_session = False)
     db.commit()
     return "state updated!"
+
+
+@router.post('/addPhoto')
+async def add_photo(newPhoto : schemas.AddPhoto = Body(...) , db: Session = Depends(get_db)):
+    db_img = models.Photos(**newPhoto.dict())
+    db.add(db_img)
+    db.commit()
+    db.refresh(db_img)
+    return "photo has been added to db!"
+
+@router.post('/delPhoto')
+async def add_photo(photo_id  : int = Body(...) , db: Session = Depends(get_db)):
+    image_to_delete = db.query(models.Photos).get(photo_id)
+    db.delete(image_to_delete)
+    db.commit()
+    return "photo has been deleted to db!"
 
