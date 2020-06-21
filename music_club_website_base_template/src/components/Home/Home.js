@@ -105,6 +105,7 @@ class Home extends Component {
       this.eventTitle1.current.style.transform = 'translate(0px , -700px)';
       this.eventDesc1.current.style.transform = 'translate(-1100px , 0px)';
       this.regBtn1.current.style.transform = 'translate(-1100px, 0px)';
+      this.linBtn1.current.style.transform = 'translate(-1100px, 0px)';
     }
 
     if (this.eventTitle2.current) {
@@ -139,6 +140,7 @@ class Home extends Component {
       this.eventTitle1.current.style.transform = 'translate(0px , 0px)';
       this.eventDesc1.current.style.transform = 'translate(0px , 0px)';
       this.regBtn1.current.style.transform = 'translate(0px, 0px)';
+      this.linBtn1.current.style.transform = 'translate(0px, 0px)';
 
     }
 
@@ -175,6 +177,7 @@ class Home extends Component {
   eventTitle4 = React.createRef();
   eventDesc4 = React.createRef();
   regBtn1 = React.createRef();
+  linBtn1 = React.createRef();
   aboutImg = React.createRef();
   aboutDesc = React.createRef();
   regForm = React.createRef();
@@ -272,8 +275,11 @@ class Home extends Component {
               <div className="eventTextDiv" >
                 <h1 className={"eventTitle text-center"} ref={this.eventTitle1}>Meltdown</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc1}>Where all the metal heads go Crazy</p>
-                <button type="button" className="btn btn-white btn-animate btn-outline-warning regBtn" id="btnReg" ref={this.regBtn1} data-toggle="modal" data-target="#exampleModalCenter" onClick={this.modalReset}>
+                <button type="button" className="btn btn-white btn-animate btn-outline-warning regBtn evtbtn"  ref={this.regBtn1} data-toggle="modal" data-target="#exampleModalCenter" onClick={this.modalReset}>
                       <span id="regBtnText">Register For Event</span>
+                    </button>
+                    <button type="button" className="btn btn-white btn-animate btn-outline-warning linBtn evtbtn" id="lineupBut"  ref={this.linBtn1} data-toggle="modal" data-target="#exampleModalCenter" onClick={this.modalReset}>
+                      <span id="regBtnText">See Lineup</span>
                     </button>
               </div>
             </div>

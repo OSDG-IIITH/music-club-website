@@ -96,16 +96,30 @@ body{
 
 .regBtn{
     position: absolute;
-    left:41.5%;
+    left:39%;
     top:-50px;
     transition: all 500ms ease-in-out;
     border-radius: 100px;
     
 }
 
+.linBtn{
+  position: absolute;
+  left:41.5%;
+  top:300px;
+  transition: all 500ms ease-in-out;
+  border-radius: 100px;
+  
+}
+
+#lineupBut{
+  height: 40px;
+}
+
 #regBtnText{
   font-family: 'Staatliches';
   font-weight: 600;
+  
   
 }
 
@@ -116,8 +130,8 @@ body{
   margin-top: 42vh;
 } */
 
-#btnReg:link,
-#btnReg:visited {
+.evtbtn:link,
+.evtbtn:visited {
   text-transform: uppercase;
   text-decoration: none;
   padding: 15px 40px;
@@ -128,14 +142,14 @@ body{
   position: absolute;
 }
 
-#btnReg:hover {
+.evtbtn:hover {
   -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 
-#btnReg:active {
+.evtbtn:active {
   -webkit-transform: translateY(-1px);
           transform: translateY(-1px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -146,7 +160,7 @@ body{
   color:#fff;
 }
 
-#btnReg::after {
+.evtbtn::after {
   content: "";
   display: inline-block;
   height: 100%;
@@ -164,7 +178,7 @@ body{
   background-color: rgb(247, 22, 22);
 }
 
-#btnReg:hover::after {
+.evtbtn:hover::after {
   -webkit-transform: scaleX(1.4) scaleY(1.6);
           transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
@@ -529,9 +543,18 @@ input[type="password"] {
     }
     .regBtn{
       position: absolute;
-      left:38.5%;
+      left:33.5%;
       top:-50px;
       transition: all 500ms ease-in-out;
+    }
+
+    .linBtn{
+      position: absolute;
+      left:38.5%;
+      top:200px;
+      transition: all 500ms ease-in-out;
+      
+      
     }
 }
 
@@ -564,12 +587,21 @@ input[type="password"] {
       padding: 2vh 0em 0em 0em;
       
   }
-    .regBtn{
+    /* .regBtn{
       position: absolute;
       left:30%;
       top:-50px;
       transition: all 500ms ease-in-out;
     }
+
+    .linBtn{
+      position: absolute;
+      left:30%;
+      top:180px;
+      transition: all 500ms ease-in-out;
+      
+      
+    } */
 }
 
 @media screen and (max-width:480px){
@@ -602,7 +634,7 @@ input[type="password"] {
     }
 
     #regBtnText{
-      font-size: 70%;
+      font-size: 90%;
     }
 
     
@@ -616,9 +648,20 @@ input[type="password"] {
     }
     .regBtn{
       position: absolute;
-      left:25%;
+      left:23%;
       top:-50px;
       transition: all 500ms ease-in-out;
     }
+
+    .linBtn{
+      position: absolute;
+      left:29.5%;
+      top:140px;
+      transition: all 500ms ease-in-out;
+    }
+
+    /* #lineupBut{
+      height: 35px;
+    } */
 }
 
