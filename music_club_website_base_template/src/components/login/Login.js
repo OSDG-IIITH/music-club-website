@@ -23,37 +23,8 @@ export default class Login extends Component {
     submitForm(e){
         e.preventDefault()
         const {username,password} = this.state
-
-
-        /*
-        localStorage.setItem("useet","uewvfihqevifvojqefvopebp546/*-+ewfievf")
-        localStorage.setItem("passt","uewvfihqevifvojqefcfewrwvrv546/*-+ewfievf")
         
-bcrypt.compare(username, '$2b$10$/vAq6f74Ye.Bqmgo7eo16eKfOGMrFpAh.OoyREteN58EHJpDX72li', function(err, res) {
-    if(res) {
-     // username natch
-     localStorage.setItem("useet","uewvfihqevifvojqefvopebp546/*-+ewfievf")
-        
-    } else {
-     // username don't match
-     console.log("oops! wrong username");
-    } 
-  });
-
-  bcrypt.compare(password, '$2b$10$ql4GTeUrH15KJZWkgxWmAu7IWrsqTC6Jwhxt2f/rVIOELjoT7BtL2', function(err, res) {
-    if(res) {
-     // Passwords natch
-     localStorage.setItem("passt","uewvfihqevifvojqefvopebp546/*-+ewfievf")
-        
-    } else {
-     // Passwords don't match
-     console.log("oops! wrong password");
-    } 
-  });
-        const useet = localStorage.getItem("useet")
-        const passt = localStorage.getItem("passt")
-*/
-        if((username==="music@iiith" && password==="music")){
+        if(/* need return value here */){
             localStorage.setItem("token","esrdcfyvubicuvidxcyrxuihbivvivjhcxkcjcgucuc@jgv5(&%jkb")
             this.setState({
                 loggedIn: true
