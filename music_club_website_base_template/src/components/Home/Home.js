@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import axios from 'axios'
 // import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import 'bootstrap/dist/css/bootstrap.css';
@@ -32,12 +33,53 @@ import './Home.css';
 
 class Home extends Component {
 
-
+  fetchEvents = () =>{
+    axios.get('./landingPage/events')
+    .then(res =>{
+      var event_arr = []
+      // console.log("raw" , res.data)
+      event_arr = res.data.map(e =>{
+        return {...e , db_time : new Date(e.db_time)}
+      })
+      // console.log("before sorting" , event_arr)
+      event_arr.sort((a,b) =>{
+        return -(a.db_time - b.db_time)
+      })
+      console.log("after sorting" , event_arr)
+      this.setState({events : event_arr})
+      // console.log(this.state.events)
+      // var d = new Date(this.state.events[0].db_time)
+      // console.log(d)
+      for(var i=0;i<this.state.events.length;i++){
+        if(this.state.events[i].state !== 'completed'){
+          this.setState({latestEvent : this.state.events[i]})
+          if(this.state.events[i].state === 'regOpen'){
+            this.setState({showRegister : true})
+          }
+          
+        }
+        else{
+          if(!this.state.pastevent1){
+            this.setState({pastevent1 : this.state.events[i]})
+          }
+          else{
+            if(!this.state.pastevent2){
+              this.setState({pastevent2 : this.state.events[i]})
+            }
+            else{
+                this.setState({pastevent3 : this.state.events[i]})
+            }
+          }
+        }
+      }
+      
+      console.log(this.state)
+    })
+  }
+  
  async componentDidMount(){
 
-   
-        
-
+  this.fetchEvents();
     function isElementInViewport(el){
       // if(typeof jquery === "function" && el instanceof jquery){
       //   el = el[0];
@@ -88,7 +130,15 @@ class Home extends Component {
       year : '',
       contact_number : '',
       song_names : ''
-    }
+    },
+    events : null,
+    showRegister : false,
+    showLineup : false,
+    latestEvent : null,
+    pastevent1 : null,
+    pastevent2 : null,
+    pastevent3 : null
+    
   }
 
   modalToggle = () =>{
@@ -267,17 +317,18 @@ class Home extends Component {
 
   render() {
     // console.log(this.state.isOnDisplay)
+    
     return (
       <React.Fragment>
         
           <AwesomeSlider  fillParent={false} className="carousel " cssModule={styles} transitionDelay={500} mobileTouch={true} bullets={true} onTransitionStart={this.fade} onTransitionEnd={this.bringBack}  >
             <div className="carouselDiv" id="img1">
               <div className="eventTextDiv" >
-                <h1 className={"eventTitle text-center"} ref={this.eventTitle1}>Meltdown</h1>
-                <p className="text-white text-center eventDesc" ref={this.eventDesc1}>Where all the metal heads go Crazy</p>
-                <button type="button" className="btn btn-white btn-animate btn-outline-light regBtn evtbtn"  ref={this.regBtn1} data-toggle="modal" data-target="#regModal" onClick={this.modalReset}>
+                <h1 className={"eventTitle text-center"} ref={this.eventTitle1}>{this.state.latestEvent ?  this.state.latestEvent.name : ""}</h1>
+                <p className="text-white text-center eventDesc" ref={this.eventDesc1}>{this.state.latestEvent ?  this.state.latestEvent.description : ""}</p>
+                {this.state.showRegister ?  <button type="button" className="btn btn-white btn-animate btn-outline-light regBtn evtbtn"  ref={this.regBtn1} data-toggle="modal" data-target="#regModal" onClick={this.modalReset}>
                       <span id="regBtnText">Register For Event</span>
-                    </button>
+                    </button>  : null}
                     <button type="button" className="btn btn-white btn-animate btn-outline-light linBtn evtbtn" id="lineupBut"  ref={this.linBtn1} data-toggle="modal" data-target="#lineupModal">
                       <span id="regBtnText">See Lineup</span>
                     </button>
@@ -285,21 +336,21 @@ class Home extends Component {
             </div>
             <div className="carouselDiv" id="img2">
               <div className="eventTextDiv">
-                <h1 className=" eventTitle text-center" ref={this.eventTitle2}>Euphonic</h1>
-                <p className="text-white text-center eventDesc" ref={this.eventDesc2}>The dopest introduction to music club</p>
+                <h1 className=" eventTitle text-center" ref={this.eventTitle2}>{this.state.pastevent1 ? this.state.pastevent1.name : ""}</h1>
+                <p className="text-white text-center eventDesc" ref={this.eventDesc2}>{this.state.pastevent1 ? this.state.pastevent1.description : ""}</p>
               </div>
             </div>
             <div className="carouselDiv" id="img3">
               <div className="eventTextDiv">
-                <h1 className=" eventTitle text-center" ref={this.eventTitle3}>Unplugged</h1>
-                <p className="text-white text-center eventDesc" ref={this.eventDesc3}>Just raw beautiful talent , no wires attached</p>
+                <h1 className=" eventTitle text-center" ref={this.eventTitle3}>{this.state.pastevent2 ? this.state.pastevent2.name : ""}</h1>
+                <p className="text-white text-center eventDesc" ref={this.eventDesc3}>{this.state.pastevent2 ? this.state.pastevent2.description : ""}</p>
               </div>
             </div>
 
             <div className="carouselDiv" id="img4">
               <div className="eventTextDiv">
-                <h1 className=" eventTitle text-center" ref={this.eventTitle4}>Roadblock</h1>
-                <p className="text-white text-center eventDesc" ref={this.eventDesc4}>Bring the music to the streets</p>
+                <h1 className=" eventTitle text-center" ref={this.eventTitle4}>{this.state.pastevent3 ? this.state.pastevent3.name : ""}</h1>
+                <p className="text-white text-center eventDesc" ref={this.eventDesc4}>{this.state.pastevent3 ? this.state.pastevent3.description : ""}</p>
               </div>
             </div>
           </AwesomeSlider>

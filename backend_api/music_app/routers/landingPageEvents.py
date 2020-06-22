@@ -38,7 +38,8 @@ async def get_event(db: Session = Depends(get_db)):
     
     events = db.query(models.Event).order_by(desc(models.Event.db_time)).limit(4).all()
     
-   #print(type(events[0]))
+    
+    # print((events[0]))
     if events != None:
         for e in events:
             data.append(e.__dict__)
