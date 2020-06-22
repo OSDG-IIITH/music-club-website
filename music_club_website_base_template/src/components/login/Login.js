@@ -24,7 +24,7 @@ export default class Login extends Component {
         e.preventDefault()
         const {username,password} = this.state
         
-        if(/* need return value here */){
+        if(0){
             localStorage.setItem("token","esrdcfyvubicuvidxcyrxuihbivvivjhcxkcjcgucuc@jgv5(&%jkb")
             this.setState({
                 loggedIn: true
