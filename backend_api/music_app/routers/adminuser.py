@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Query, Body, Path, Header, Depends, HTTPException, status
-from typing import List, Dictfrom fastapi.security
+from typing import List, Dict
 from modules import schemas
 from modules import models
 from sqlalchemy.orm import Session
@@ -31,7 +31,7 @@ def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
 @router.post('/admin')
-async def add_password( db: Session = Depends(get_db), user : schemas.AdminDetail):
+async def add_password(*, db: Session = Depends(get_db), user : schemas.AdminDetail):
     db_user = models.User(username = user.username , password = get_password_hash(user.password))
     db.add(db_user)
     db.commit()
