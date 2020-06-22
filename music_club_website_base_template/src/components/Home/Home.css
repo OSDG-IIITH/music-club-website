@@ -12,7 +12,7 @@ body{
 .about-home{
   background-color: var(--headerBackground);
   background-image: url('/images/Gallery/breadcrumb.png');
-  background-repeat: repeat-x;
+  background-repeat: no-repeat;
   background-size:cover;
   background-position: center center;
 }
@@ -71,16 +71,18 @@ body{
 
 .carouselDiv{
     position:absolute;
-    height:50%;
-    left:12vw;
+    height:100%;
+    margin-left: auto;
+    margin-right: auto;
+   
     
 }
 
 
 .eventTextDiv{
     position: relative;
-    top:30%;
-    right:0%;
+    top:55%;
+    
     
 
 }
@@ -101,7 +103,7 @@ body{
     font-size: 140%;
     transition: opacity 500ms ease-in-out ;
     transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
-    font-family: 'Staatliches' , cursive;
+    font-family: 'Bebas Neue', cursive;
 }
 
 .regBtn{
@@ -115,7 +117,7 @@ body{
 
 .linBtn{
   position: absolute;
-  left:41.5%;
+  left:42.5%;
   top:300px;
   transition: all 500ms ease-in-out;
   border-radius: 100px;
@@ -542,11 +544,11 @@ input[type="password"] {
     } */
 
      .eventTextDiv{
-        top:50%;
+        top:65%;
     } 
     
      .eventTitle{
-        font-size: 720%;
+        font-size: 820%;
         
         font-weight: 800;
     }
@@ -570,8 +572,8 @@ input[type="password"] {
 
     .linBtn{
       position: absolute;
-      left:38.5%;
-      top:200px;
+      left:38.7%;
+      top:220px;
       transition: all 500ms ease-in-out;
       
       
@@ -675,7 +677,7 @@ input[type="password"] {
 
     .linBtn{
       position: absolute;
-      left:29.5%;
+      left:32.5%;
       top:140px;
       transition: all 500ms ease-in-out;
     }
