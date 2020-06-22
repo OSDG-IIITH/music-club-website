@@ -50,6 +50,7 @@ class Photos(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     event_id = Column(Integer,ForeignKey("event.id"))
+    photo_id = Column(String,primary_key=True,index=True)
     label = Column(String,index=True)
     link = Column(String,index=True)
 
