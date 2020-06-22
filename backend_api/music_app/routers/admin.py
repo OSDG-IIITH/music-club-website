@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Query, Body, Path, Header, Depends, HTTPException, status
 from fastapi.encoders import jsonable_encoder
-from typing import List, Dictfrom fastapi.security
 from typing import List, Dict
 from modules import schemas
 from modules import models
@@ -39,12 +38,12 @@ def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
 @router.post('/changepassword')
-async def change_password( db: Session = Depends(get_db), user : schemas.AdminPassword):
+async def change_password(*, db: Session = Depends(get_db), user : schemas.AdminPassword):
     if user.password == user.confirmpassword :
         new_username = user.username['username']
-        new_username = get_password_hash(user.password)['password']
-        db_user = db.query(models.User).filter(models.User.id == 1 )
-        db_user.update({models.User : new_username , new_password})
+        new_password = get_password_hash(user.password)['password']
+        db.query(models.User).filter(models.User.id == 1).update({models.User.username : new_username , models.User.password : new_password} , synchronize_session= False)
+        # db_user.update({models.User : new_username , new_password})
         db.commit()
         return "username and password is updated"
     return "confirm password did't match"
@@ -56,7 +55,7 @@ async def get_password(db: Session = Depends(get_db)):
     paas=user.password 
     # from database table named User
     db_ok = db.query(models.User).filter(models.User.id == 1 )
-    if db_ok.username = name && verify_password(paas, db_ok.password) :
+    if db_ok.username == name and verify_password(paas, db_ok.password) :
         return true  # value neede to be used in login.js
     return false
 
