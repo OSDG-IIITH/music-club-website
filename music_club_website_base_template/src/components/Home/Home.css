@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 body{
   background-color: #343A40;
@@ -8,11 +9,20 @@ body{
     height:100vh;
 }
 
+.about-home{
+  background-color: var(--headerBackground);
+  background-image: url('/images/Gallery/breadcrumb.png');
+  background-repeat: repeat-x;
+  background-size:cover;
+  background-position: center center;
+}
+
 .aboutHeadDiv{
     position: relative;
-    font-size: 600%;
-    font-family: 'Courier New', Courier, monospace;
+    font-size: 800%;
+    font-family: 'Staatliches',cursive;
     padding: 2vh 0em 0em 0em;
+    color : white
     
 }
 
@@ -44,7 +54,7 @@ body{
     
     position: relative;
     opacity: 0;
-   
+    color : white;
     /* font-size: 100%; */
     padding-top: 0%;
     transform: translate(-1000px,0px);
@@ -96,16 +106,30 @@ body{
 
 .regBtn{
     position: absolute;
-    left:41.5%;
+    left:39%;
     top:-50px;
     transition: all 500ms ease-in-out;
     border-radius: 100px;
     
 }
 
+.linBtn{
+  position: absolute;
+  left:41.5%;
+  top:300px;
+  transition: all 500ms ease-in-out;
+  border-radius: 100px;
+  
+}
+
+#lineupBut{
+  height: 40px;
+}
+
 #regBtnText{
   font-family: 'Staatliches';
   font-weight: 600;
+  
   
 }
 
@@ -116,8 +140,8 @@ body{
   margin-top: 42vh;
 } */
 
-#btnReg:link,
-#btnReg:visited {
+.evtbtn:link,
+.evtbtn:visited {
   text-transform: uppercase;
   text-decoration: none;
   padding: 15px 40px;
@@ -128,25 +152,26 @@ body{
   position: absolute;
 }
 
-#btnReg:hover {
+.evtbtn:hover {
   -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 
-#btnReg:active {
+.evtbtn:active {
   -webkit-transform: translateY(-1px);
           transform: translateY(-1px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.btn-white {
-  background-color: rgb(247, 4, 4);
-  color:#fff;
+.btn-white:hover {
+ 
+  background-color:#9dd0e5;
+  
 }
 
-#btnReg::after {
+.evtbtn::after {
   content: "";
   display: inline-block;
   height: 100%;
@@ -160,22 +185,23 @@ body{
   transition: all .4s;
 }
 
-.btn-white::after {
-  background-color: rgb(247, 22, 22);
+/* .btn-white::after {
+  background-color:#3589AD
 }
-
-#btnReg:hover::after {
+*/
+.evtbtn:hover::after {
   -webkit-transform: scaleX(1.4) scaleY(1.6);
           transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
-}
+  background-color: #3589AD;
+} 
 
-.btn-animated {
+ .btn-animated {
   -webkit-animation: moveInBottom 5s ease-out;
           animation: moveInBottom 5s ease-out;
   -webkit-animation-fill-mode: backwards;
           animation-fill-mode: backwards;
-}
+} 
 
 @-webkit-keyframes moveInBottom {
   0% {
@@ -242,7 +268,7 @@ body{
 .awssld__bullets .awssld__bullets--active {
     -webkit-transform: scale(1.5);
             transform: scale(1.5); 
-            background-color:var(--orangeText);
+            background-color:var(--headerBackground);
         }
 
  .awssld__controls__arrow-left, .awssld__controls__arrow-right {
@@ -262,7 +288,7 @@ body{
                 height: 100%;
                 border-radius: 100%;
                 width: 5px;
-                background-color: var(--orangeText);
+                background-color: white;
                 -webkit-transition: background-color 0.15s ease-out, -webkit-transform 0.15s ease-out;
                 transition: background-color 0.15s ease-out, -webkit-transform 0.15s ease-out;
                 transition: transform 0.15s ease-out, background-color 0.15s ease-out;
@@ -359,6 +385,14 @@ body{
 :before,
 :after {
   box-sizing: border-box;
+}
+
+.wrapper-home{
+  display: block;
+  flex-direction: row;
+  width: 200vw;
+  /* transform: rotate(90deg) translateY(-100vh);
+  transform-origin: top left; */
 }
 
 form {
@@ -529,9 +563,18 @@ input[type="password"] {
     }
     .regBtn{
       position: absolute;
-      left:38.5%;
+      left:33.5%;
       top:-50px;
       transition: all 500ms ease-in-out;
+    }
+
+    .linBtn{
+      position: absolute;
+      left:38.5%;
+      top:200px;
+      transition: all 500ms ease-in-out;
+      
+      
     }
 }
 
@@ -559,17 +602,26 @@ input[type="password"] {
 
     .aboutHeadDiv{
       position: relative;
-      font-size: 400%;
-      font-family: 'Courier New', Courier, monospace;
+      font-size: 600%;
+      
       padding: 2vh 0em 0em 0em;
       
   }
-    .regBtn{
+    /* .regBtn{
       position: absolute;
       left:30%;
       top:-50px;
       transition: all 500ms ease-in-out;
     }
+
+    .linBtn{
+      position: absolute;
+      left:30%;
+      top:180px;
+      transition: all 500ms ease-in-out;
+      
+      
+    } */
 }
 
 @media screen and (max-width:480px){
@@ -602,23 +654,34 @@ input[type="password"] {
     }
 
     #regBtnText{
-      font-size: 70%;
+      font-size: 90%;
     }
 
     
 
     .aboutHeadDiv{
       position: relative;
-      font-size: 300%;
-      font-family: 'Courier New', Courier, monospace;
+      font-size: 500%;
+      
       padding: 2vh 0em 0em 0em;
       
     }
     .regBtn{
       position: absolute;
-      left:25%;
+      left:23%;
       top:-50px;
       transition: all 500ms ease-in-out;
     }
+
+    .linBtn{
+      position: absolute;
+      left:29.5%;
+      top:140px;
+      transition: all 500ms ease-in-out;
+    }
+
+    /* #lineupBut{
+      height: 35px;
+    } */
 }
 

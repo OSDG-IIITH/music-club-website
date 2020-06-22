@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import SimpleReactLightbox from 'simple-react-lightbox'
 
 // import './App.css';
@@ -34,7 +34,7 @@ class App extends Component {
               <Route path="/gallery" component={Gallery} exact/>  
               <Route path="/login" component={Login} exact/>  
               <Route path="/logout" component={Logout} exact/>  
-              <Route path="/admin" component={Admin} exact/>  
+              <Route path="/admin" component={Admin} exact/>   
             </Switch>
           </div>
         </BrowserRouter>

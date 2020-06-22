@@ -4,6 +4,7 @@ from typing import List, Dictfrom fastapi.security
 from typing import List, Dict
 from modules import schemas
 from modules import models
+from sqlalchemy import desc
 import jwt
 from jwt import PyJWTError
 from passlib.context import CryptContext
@@ -74,6 +75,19 @@ async def delete_event(event_id  : int = Body(...) , db: Session = Depends(get_d
     db.delete(event_to_delete)
     db.commit()
     return "event deleted"
+
+
+@router.post('/addLineup')
+async def add_lineup(db : Session = Depends(get_db) , new_lineup : List[schemas.LineupCreate] = Body(...)):
+    lineup_event = db.query(models.Event).order_by(desc(models.Event.db_time)).first()
+    ev_id = lineup_event.id
+    for slot in new_lineup:
+        db_slot = models.Lineup(**slot.dict() , event_id = ev_id)
+        db.add(db_slot)
+    
+    db.commit()
+
+    return "lineup added"
 
 @router.put('/updateState')
 async def set_new_state(new_event_state = Body(...) , db: Session = Depends(get_db)):
