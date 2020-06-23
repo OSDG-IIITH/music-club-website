@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "57df84636016fe7b5ea4775e55648473910cb0a94ae4c6542333e4ac75e6ce77"
+            "sha256": "52383eef71ded68f15b1f142db70c96162577cf47747a3fb12d49921f824444f"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.6"
+            "python_version": "3.8.2"
         },
         "sources": [
             {
@@ -95,21 +95,13 @@
             ],
             "version": "==7.1.2"
         },
-        "dataclasses": {
-            "hashes": [
-                "sha256:3459118f7ede7c8bea0fe795bff7c6c2ce287d01dd226202f7c9ebc0610a7836",
-                "sha256:494a6dcae3b8bcf80848eea2ef64c0cc5cd307ffc263e17cdf42f3e5420808e6"
-            ],
-            "markers": "python_version < '3.7'",
-            "version": "==0.7"
-        },
         "fastapi": {
             "hashes": [
-                "sha256:35394a965e66af64b64f0ce18d5ab49403876eabf0f6a4f2f2a20f794214997b",
-                "sha256:c0ba776275e91920b2f0eab1066f4c3f83fc05695f3e654f2013e6fcd9084969"
+                "sha256:bfea20cc164885af99bad4bc680a99fe3b75d8d43b278ad51f1501d97cf8f762",
+                "sha256:cdd953e806d5c6bee879178d4e6c7b2ebcee219ea252a39c1c98ad8c7b798235"
             ],
             "index": "pypi",
-            "version": "==0.56.0"
+            "version": "==0.58.0"
         },
         "h11": {
             "hashes": [
@@ -137,9 +129,6 @@
             "version": "==0.1.1"
         },
         "passlib": {
-            "extras": [
-                "bcrypt"
-            ],
             "hashes": [
                 "sha256:68c35c98a7968850e17f1b6892720764cc7eed0ef2b7cb3116a89a28e43fe177",
                 "sha256:8d666cef936198bc2ab47ee9b0410c94adf2ba798e5a84bf220be079ae7ab6a8"
@@ -235,10 +224,10 @@
         },
         "starlette": {
             "hashes": [
-                "sha256:6169ee78ded501095d1dda7b141a1dc9f9934d37ad23196e180150ace2c6449b",
-                "sha256:a9bb130fa7aa736eda8a814b6ceb85ccf7a209ed53843d0d61e246b380afa10f"
+                "sha256:04fe51d86fd9a594d9b71356ed322ccde5c9b448fc716ac74155e5821a922f8d",
+                "sha256:0fb4b38d22945b46acb880fedee7ee143fd6c0542992501be8c45c0ed737dd1a"
             ],
-            "version": "==0.13.2"
+            "version": "==0.13.4"
         },
         "uvicorn": {
             "hashes": [

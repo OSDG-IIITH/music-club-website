@@ -4,7 +4,8 @@ export const DARK_THEME = {
     lightGrey : '#363333',
     cardTitle : '#ef5455',
     timelineContent : '#0089ad',
-    headerBackground : '#151748' 
+    headerBackground : '#black',
+    aboutBackground : 'black'
 }
 
 export const LIGHT_THEME = {
