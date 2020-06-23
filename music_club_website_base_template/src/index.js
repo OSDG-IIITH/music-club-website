@@ -32,6 +32,10 @@ document.documentElement.style.setProperty(
       '--headerBackground' , DARK_THEME.headerBackground
 );
 
+document.documentElement.style.setProperty(
+      '--aboutBackground' , DARK_THEME.aboutBackground
+);
+
 const store  = createStore(rootReducer);
 
 ReactDOM.render(

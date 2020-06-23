@@ -1,6 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-.timeline-list{
+.heading{
+    display: block;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.timeline{
+    background-image: url('/images/Timeline/KKW30_FRONT_FULL_1.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    min-height: 3700px;
+}
+
+.container-fluid{
+    background-color: gray;
+}
+
+.cards{
+    position: absolute;
+    background-color: transparent;
+    top:84rem;
+    width: 100%;
+}
+
+@media screen and (max-width:730px){
+    .timeline{
+        background-position:60% 0%;
+    }
+
+    .container-fluid{
+        padding-left: 0px;
+    }
+}
+
+
+/* .timeline-list{
   margin: 48vh 5vw 0 10vw;
 }
 .timeline-event:hover{
@@ -60,4 +96,4 @@
 
 @media screen and (max-width:730px){
 
-}
+} */
