@@ -13,13 +13,14 @@ body{
   background-color: var(--aboutBackground);
   background-image: url('/images/Gallery/breadcrumb.png');
   background-repeat: no-repeat;
-  background-size:cover;
-  background-position: center center;
+  background-size: cover;
+  background-position:-27vw center;
 }
 
 .aboutHeadDiv{
     position: relative;
     font-size: 800%;
+    text-shadow: red 4px 4px;
     font-family: 'Staatliches',cursive;
     padding: 2vh 0em 0em 0em;
     color : white
@@ -112,6 +113,8 @@ body{
     top:-50px;
     transition: all 500ms ease-in-out;
     border-radius: 100px;
+    border : 2px white;
+    border-style: solid;
 
 }
 
@@ -121,6 +124,8 @@ body{
   top:300px;
   transition: all 500ms ease-in-out;
   border-radius: 100px;
+  border : 2px white;
+  border-style: solid;
 
 }
 
@@ -131,6 +136,7 @@ body{
 #regBtnText{
   font-family: 'Staatliches';
   font-weight: 600;
+  color : white;
 
 
 }
@@ -169,7 +175,8 @@ body{
 
 .btn-white:hover {
 
-  background-color:#9dd0e5;
+  background-color:#eb120b;
+  border-color: red;
 
 }
 
@@ -192,10 +199,10 @@ body{
 }
 */
 .evtbtn:hover::after {
-  -webkit-transform: scaleX(1.4) scaleY(1.6);
-          transform: scaleX(1.4) scaleY(1.6);
+  -webkit-transform: scaleX(1.9) scaleY(1.9);
+          transform: scaleX(1.9) scaleY(1.9);
   opacity: 0;
-  background-color: #3589AD;
+  background-color: #df1a0f;
 }
 
  .btn-animated {
@@ -270,7 +277,7 @@ body{
 .awssld__bullets .awssld__bullets--active {
     -webkit-transform: scale(1.5);
             transform: scale(1.5);
-            background-color:var(--headerBackground);
+            background-color:red;
         }
 
  .awssld__controls__arrow-left, .awssld__controls__arrow-right {
@@ -290,7 +297,7 @@ body{
                 height: 100%;
                 border-radius: 100%;
                 width: 5px;
-                background-color: white;
+                background-color: red;
                 -webkit-transition: background-color 0.15s ease-out, -webkit-transform 0.15s ease-out;
                 transition: background-color 0.15s ease-out, -webkit-transform 0.15s ease-out;
                 transition: transform 0.15s ease-out, background-color 0.15s ease-out;
@@ -542,6 +549,8 @@ input[type="password"] {
     /* .carousel{
         height:890px;
     } */
+
+    
 
      .eventTextDiv{
         top:65%;
