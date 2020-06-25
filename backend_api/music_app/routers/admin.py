@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Query, Body, Path, Header, Depends, HTTPException, status
+from fastapi import APIRouter, Query, Body, Path, Header, Depends, HTTPException, status , File , UploadFile
 from fastapi.encoders import jsonable_encoder
 from typing import List, Dict
 from modules import schemas
@@ -48,7 +48,7 @@ async def change_password(*, db: Session = Depends(get_db), user : schemas.Admin
         return "username and password is updated"
     return "confirm password did't match"
 
-@router.post('/login', response_model=List[schemas.AdminDetail])
+@router.post('/login')
 async def get_password(db: Session = Depends(get_db)):
     # from /login form
     name=user.username
@@ -56,8 +56,8 @@ async def get_password(db: Session = Depends(get_db)):
     # from database table named User
     db_ok = db.query(models.User).filter(models.User.id == 1 )
     if db_ok.username == name and verify_password(paas, db_ok.password) :
-        return true  # value neede to be used in login.js
-    return false
+        return True # value neede to be used in login.js
+    return False
 
 
 @router.post('/addEvent')
@@ -99,18 +99,20 @@ async def set_new_state(new_event_state = Body(...) , db: Session = Depends(get_
     return "state updated!"
 
 
-@router.post('/addPhoto')
-async def add_photo(newPhoto : schemas.AddPhoto = Body(...) , db: Session = Depends(get_db)):
-    db_img = models.Photos(**newPhoto.dict())
-    db.add(db_img)
-    db.commit()
-    db.refresh(db_img)
-    return "photo has been added to db!"
+# @router.post('/addPhoto')
+# async def add_photo(newPhoto : schemas.AddPhoto = Body(...) , db: Session = Depends(get_db)):
+#     db_img = models.Photos(**newPhoto.dict())
+#     db.add(db_img)
+#     db.commit()
+#     db.refresh(db_img)
+#     return "photo has been added to db!"
 
-@router.post('/delPhoto')
-async def add_photo(photo_id  : int = Body(...) , db: Session = Depends(get_db)):
-    image_to_delete = db.query(models.Photos).get(photo_id)
-    db.delete(image_to_delete)
-    db.commit()
-    return "photo has been deleted to db!"
+# @router.post('/delPhoto')
+# async def add_photo(photo_id  : int = Body(...) , db: Session = Depends(get_db)):
+#     image_to_delete = db.query(models.Photos).get(photo_id)
+#     db.delete(image_to_delete)
+#     db.commit()
+#     return "photo has been deleted to db!"
 
+# @router.post('/addPhoto')
+# async def add_photo(img_files : UploadFile = List[UploadFile])
