@@ -46,7 +46,7 @@ class AdminPassword(BaseModel):
 class AddPhoto(BaseModel):
     event_id : int
     label : str = ""
-    link: str = ""
+    image : bytes
     
 class Event(EventCreate):
     id : int

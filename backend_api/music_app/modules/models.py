@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String , DateTime
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String , DateTime , LargeBinary
 from modules.database import Base
 from sqlalchemy.orm import relationship
 
@@ -50,9 +50,8 @@ class Photos(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     event_id = Column(Integer,ForeignKey("event.id"))
-    photo_id = Column(String,primary_key=True,index=True)
     label = Column(String,index=True)
-    link = Column(String,index=True)
+    image = Column(LargeBinary , index=True)
 
 class User(Base):
     __tablename__ = "adminuser"

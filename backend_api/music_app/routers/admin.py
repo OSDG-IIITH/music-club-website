@@ -1,6 +1,8 @@
 from fastapi import APIRouter, Query, Body, Path, Header, Depends, HTTPException, status , File , UploadFile
 from fastapi.encoders import jsonable_encoder
+from fastapi.responses import HTMLResponse
 from typing import List, Dict
+import base64
 from modules import schemas
 from modules import models
 from sqlalchemy import desc
@@ -99,20 +101,29 @@ async def set_new_state(new_event_state = Body(...) , db: Session = Depends(get_
     return "state updated!"
 
 
-# @router.post('/addPhoto')
-# async def add_photo(newPhoto : schemas.AddPhoto = Body(...) , db: Session = Depends(get_db)):
-#     db_img = models.Photos(**newPhoto.dict())
-#     db.add(db_img)
-#     db.commit()
-#     db.refresh(db_img)
-#     return "photo has been added to db!"
+@router.post('/addPhoto')
+async def add_photo(*, img_files : List[UploadFile] = File(...) , db : Session = Depends(get_db) , eventId : int = Body(...)):
+    for f in img_files:
+        data = await f.read(10)
+        b64data = base64.b64encode(data)
+        newImage = {
+            'event_id' : eventId,
+            'label' : "test",
+            'image' : b64data
+        }
+        
+        newImageRow = schemas.AddPhoto(**newImage)
+        db_img = models.Photos(**newImageRow.dict())
+        db.add(db_img)
+        db.commit()
+        db.refresh(db_img)
 
-# @router.post('/delPhoto')
-# async def add_photo(photo_id  : int = Body(...) , db: Session = Depends(get_db)):
-#     image_to_delete = db.query(models.Photos).get(photo_id)
-#     db.delete(image_to_delete)
-#     db.commit()
-#     return "photo has been deleted to db!"
+    return "photo saved in db"
 
-# @router.post('/addPhoto')
-# async def add_photo(img_files : UploadFile = List[UploadFile])
+@router.post('/delPhoto')
+async def add_photo(photo_id  : int = Body(...) , db: Session = Depends(get_db)):
+    image_to_delete = db.query(models.Photos).get(photo_id)
+    db.delete(image_to_delete)
+    db.commit()
+    return "photo has been deleted to db!"
+
