@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 .heading{
     display: block;
     width: 100%;
@@ -20,15 +22,78 @@
     position: absolute;
     background-color: transparent;
     top:84rem;
-    width: 100%;    
+    width: 100%;
 }
 
 @media screen and (max-width:730px){
     .timeline{
-        background-position:60% 0%; 
+        background-position:60% 0%;
     }
 
     .container-fluid{
         padding-left: 0px;
     }
 }
+
+
+/* .timeline-list{
+  margin: 48vh 5vw 0 10vw;
+}
+.timeline-event:hover{
+  cursor: pointer;
+  transform: translateY(-5px) scale(1.005) translateZ(0);
+  box-shadow: 0 7px 30px #000;
+}
+.card-image img{
+  width: 100%;
+  height: auto;
+}
+.card-title{
+  text-transform: uppercase;
+  font-size: 3.5vh;
+  color: var(--cardTitle);
+  font-family: 'Bebas Neue', cursive;
+}
+.container-fluid{
+    background-color: gray;
+}
+.card-fix{
+  min-width: 300px;
+  width: 20vw;
+  margin: 0 10px 0 10px;
+}
+
+.slide{
+  background-color: var(--timelineContent);
+  background-image: url('/images/Timeline/2.png');
+  background-repeat: repeat-x;
+  min-width: 2300px;
+  width: 230vw;
+  height: 100vh;
+}
+.wrapper{
+  display: flex;
+  flex-direction: row;
+  width: 200vw;
+  transform: rotate(90deg) translateY(-100vh);
+  transform-origin: top left;
+}
+.outer-wrapper{
+  width: 100vh;
+  height: 100vw;
+  transform: rotate(-90deg) translateX(-100vh);
+  transform-origin: top left;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  left: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar{
+  display:none;
+}
+
+@media screen and (max-width:730px){
+
+} */

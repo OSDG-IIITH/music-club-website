@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String , DateTime
 from modules.database import Base
 from sqlalchemy.orm import relationship
 
@@ -13,9 +13,12 @@ class Event(Base):
     description = Column(String,index=True)
     date = Column(String,index=True)
     time = Column(String,index=True)
+    db_time = Column(DateTime,index=True)
     venue = Column(String,index=True)
     gallery_link = Column(String,index=True)
     ping_link = Column(String,index=True)
+    registrations = relationship("Registration",cascade="all,delete,delete-orphan")
+    lineup = relationship("Lineup" , cascade="all,delete,delete-orphan")
 
 
 class Registration(Base):
@@ -39,7 +42,7 @@ class Lineup(Base):
     event_id = Column(Integer,ForeignKey("event.id"))
     band_name = Column(String,index=True)
     slot_given = Column(String,index=True)
-    slot_number = Column(String,index=True)
+    slot_number = Column(Integer,index=True)
     song_name = Column(String,index=True)
 
 class Photos(Base):
@@ -47,6 +50,7 @@ class Photos(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     event_id = Column(Integer,ForeignKey("event.id"))
+    photo_id = Column(String,primary_key=True,index=True)
     label = Column(String,index=True)
     link = Column(String,index=True)
 

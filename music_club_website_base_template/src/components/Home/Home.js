@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
+import axios from 'axios'
 // import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import 'bootstrap/dist/css/bootstrap.css';
@@ -9,7 +10,8 @@ import styles from 'react-awesome-slider/dist/styles.css'
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import {connect} from 'react-redux';
 import {addUser} from '../../actions/userActions' 
-import axios from 'axios'
+
+
 // import "bootstrap-css-only/css/bootstrap.min.css";
 // import {Button} from 'react-bootstrap';
 //  import "mdbreact/dist/css/mdb.css";
@@ -31,12 +33,53 @@ import './Home.css';
 
 class Home extends Component {
 
-
+  fetchEvents = () =>{
+    axios.get('./landingPage/events')
+    .then(res =>{
+      var event_arr = []
+      // console.log("raw" , res.data)
+      event_arr = res.data.map(e =>{
+        return {...e , db_time : new Date(e.db_time)}
+      })
+      // console.log("before sorting" , event_arr)
+      event_arr.sort((a,b) =>{
+        return -(a.db_time - b.db_time)
+      })
+      console.log("after sorting" , event_arr)
+      this.setState({events : event_arr})
+      // console.log(this.state.events)
+      // var d = new Date(this.state.events[0].db_time)
+      // console.log(d)
+      for(var i=0;i<this.state.events.length;i++){
+        if(this.state.events[i].state !== 'completed'){
+          this.setState({latestEvent : this.state.events[i]})
+          if(this.state.events[i].state === 'regOpen'){
+            this.setState({showRegister : true})
+          }
+          
+        }
+        else{
+          if(!this.state.pastevent1){
+            this.setState({pastevent1 : this.state.events[i]})
+          }
+          else{
+            if(!this.state.pastevent2){
+              this.setState({pastevent2 : this.state.events[i]})
+            }
+            else{
+                this.setState({pastevent3 : this.state.events[i]})
+            }
+          }
+        }
+      }
+      
+      console.log(this.state)
+    })
+  }
+  
  async componentDidMount(){
 
-   
-        
-
+  this.fetchEvents();
     function isElementInViewport(el){
       // if(typeof jquery === "function" && el instanceof jquery){
       //   el = el[0];
@@ -80,7 +123,6 @@ class Home extends Component {
     modal : false,
     registered : false,
     newRegister : {
-      event_id : 404,
       band_name : '',
       player_names : '',
       instrument_names : '',
@@ -88,7 +130,15 @@ class Home extends Component {
       year : '',
       contact_number : '',
       song_names : ''
-    }
+    },
+    events : null,
+    showRegister : false,
+    showLineup : false,
+    latestEvent : null,
+    pastevent1 : null,
+    pastevent2 : null,
+    pastevent3 : null
+    
   }
 
   modalToggle = () =>{
@@ -102,29 +152,30 @@ class Home extends Component {
     if (this.eventTitle1.current) {
       this.eventTitle1.current.style.opacity = '20%';
       this.eventDesc1.current.style.opacity = '20%';
-      this.eventTitle1.current.style.transform = 'translate(0px , -700px)';
+      this.eventTitle1.current.style.transform = 'translate(0px , -900px)';
       this.eventDesc1.current.style.transform = 'translate(-1100px , 0px)';
       this.regBtn1.current.style.transform = 'translate(-1100px, 0px)';
+      this.linBtn1.current.style.transform = 'translate(-1100px, 0px)';
     }
 
     if (this.eventTitle2.current) {
       this.eventTitle2.current.style.opacity = '20%';
       this.eventDesc2.current.style.opacity = '20%';
-      this.eventTitle2.current.style.transform = 'translate(0px , -700px)';
+      this.eventTitle2.current.style.transform = 'translate(0px , -900px)';
       this.eventDesc2.current.style.transform = 'translate(-1100px , 0px)';
     }
 
     if (this.eventTitle3.current) {
       this.eventTitle3.current.style.opacity = '20%';
       this.eventDesc3.current.style.opacity = '20%';
-      this.eventTitle3.current.style.transform = 'translate(0px , -700px)';
+      this.eventTitle3.current.style.transform = 'translate(0px , -900px)';
       this.eventDesc3.current.style.transform = 'translate(-1100px , 0px)';
     }
 
     if (this.eventTitle4.current) {
       this.eventTitle4.current.style.opacity = '20%';
       this.eventDesc4.current.style.opacity = '20%';
-      this.eventTitle4.current.style.transform = 'translate(0px , -700px)';
+      this.eventTitle4.current.style.transform = 'translate(0px , -900px)';
       this.eventDesc4.current.style.transform = 'translate(-1100px , 0px)';
     }
 
@@ -139,6 +190,7 @@ class Home extends Component {
       this.eventTitle1.current.style.transform = 'translate(0px , 0px)';
       this.eventDesc1.current.style.transform = 'translate(0px , 0px)';
       this.regBtn1.current.style.transform = 'translate(0px, 0px)';
+      this.linBtn1.current.style.transform = 'translate(0px, 0px)';
 
     }
 
@@ -175,6 +227,7 @@ class Home extends Component {
   eventTitle4 = React.createRef();
   eventDesc4 = React.createRef();
   regBtn1 = React.createRef();
+  linBtn1 = React.createRef();
   aboutImg = React.createRef();
   aboutDesc = React.createRef();
   regForm = React.createRef();
@@ -264,36 +317,40 @@ class Home extends Component {
 
   render() {
     // console.log(this.state.isOnDisplay)
+    
     return (
       <React.Fragment>
         
           <AwesomeSlider  fillParent={false} className="carousel " cssModule={styles} transitionDelay={500} mobileTouch={true} bullets={true} onTransitionStart={this.fade} onTransitionEnd={this.bringBack}  >
             <div className="carouselDiv" id="img1">
               <div className="eventTextDiv" >
-                <h1 className={"eventTitle text-center"} ref={this.eventTitle1}>Meltdown</h1>
-                <p className="text-white text-center eventDesc" ref={this.eventDesc1}>Where all the metal heads go Crazy</p>
-                <button type="button" className="btn btn-white btn-animate btn-outline-warning regBtn" id="btnReg" ref={this.regBtn1} data-toggle="modal" data-target="#exampleModalCenter" onClick={this.modalReset}>
+                <h1 className={"eventTitle text-center"} ref={this.eventTitle1}>{this.state.latestEvent ?  this.state.latestEvent.name : ""}</h1>
+                <p className="text-white text-center eventDesc" ref={this.eventDesc1}>{this.state.latestEvent ?  this.state.latestEvent.description : ""}</p>
+                {this.state.showRegister ?  <button type="button" className="btn btn-white btn-animate btn-outline-light regBtn evtbtn"  ref={this.regBtn1} data-toggle="modal" data-target="#regModal" onClick={this.modalReset}>
                       <span id="regBtnText">Register For Event</span>
+                    </button>  : null}
+                    <button type="button" className="btn btn-white btn-animate btn-outline-light linBtn evtbtn" id="lineupBut"  ref={this.linBtn1} data-toggle="modal" data-target="#lineupModal">
+                      <span id="regBtnText">See Lineup</span>
                     </button>
               </div>
             </div>
             <div className="carouselDiv" id="img2">
-              <div className="container-xs">
-                <h1 className=" eventTitle text-center" ref={this.eventTitle2}>Euphonic</h1>
-                <p className="text-white text-center eventDesc" ref={this.eventDesc2}>The dopest introduction to music club</p>
+              <div className="eventTextDiv">
+                <h1 className=" eventTitle text-center" ref={this.eventTitle2}>{this.state.pastevent1 ? this.state.pastevent1.name : ""}</h1>
+                <p className="text-white text-center eventDesc" ref={this.eventDesc2}>{this.state.pastevent1 ? this.state.pastevent1.description : ""}</p>
               </div>
             </div>
             <div className="carouselDiv" id="img3">
               <div className="eventTextDiv">
-                <h1 className=" eventTitle text-center" ref={this.eventTitle3}>Unplugged</h1>
-                <p className="text-white text-center eventDesc" ref={this.eventDesc3}>Just raw beautiful talent , no wires attached</p>
+                <h1 className=" eventTitle text-center" ref={this.eventTitle3}>{this.state.pastevent2 ? this.state.pastevent2.name : ""}</h1>
+                <p className="text-white text-center eventDesc" ref={this.eventDesc3}>{this.state.pastevent2 ? this.state.pastevent2.description : ""}</p>
               </div>
             </div>
 
             <div className="carouselDiv" id="img4">
               <div className="eventTextDiv">
-                <h1 className=" eventTitle text-center" ref={this.eventTitle4}>Roadblock</h1>
-                <p className="text-white text-center eventDesc" ref={this.eventDesc4}>Bring the music to the streets</p>
+                <h1 className=" eventTitle text-center" ref={this.eventTitle4}>{this.state.pastevent3 ? this.state.pastevent3.name : ""}</h1>
+                <p className="text-white text-center eventDesc" ref={this.eventDesc4}>{this.state.pastevent3 ? this.state.pastevent3.description : ""}</p>
               </div>
             </div>
           </AwesomeSlider>
@@ -301,7 +358,7 @@ class Home extends Component {
 
                 {/*MODAL START*/}
 
-                    <div className="modal fade modalBack" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div className="modal fade modalBack" id="regModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div className="modal-dialog modal-dialog-centered" role="document">
                         <div className="modal-content mainModal">
 
@@ -314,7 +371,7 @@ class Home extends Component {
                           <form ref={this.regForm}  onSubmit={this.handleSubmit}>
                           <div id="tickDiv" ref={this.tickMark}></div>
                           <div ref={this.modalBod}  className="modal-body">
-                          <div className="wrapper">
+                          <div className="wrapper-home">
                           
                             
                             <div className="group">
@@ -366,14 +423,40 @@ class Home extends Component {
                       </div>
                     </div>
 
+                    {/*Register MODAL ENDS*/}
+
+                    {/*Lineup MODAL STARTS*/}
+
+                    <div className="modal fade modalBack" id="lineupModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div className="modal-dialog modal-dialog-centered" role="document">
+                        <div className="modal-content mainModal">
+
+                          <div className="modal-header">
+                            <h2 className="modal-title modalTitle mx-auto">Lineup</h2>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                      
+                          <div  className="modal-body">
+                          
+                          </div>
+                          <div className="modal-footer">
+
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+
                     
 
-                {/*MODAL ENDS*/}
+                {/*Lineup MODAL ENDS*/}
       
       
       
-        <hr className='my-4' />
-        <div className="jumbotron about">
+        {/* <hr className='my-4' /> */}
+        <div className="jumbotron about-home">
           <h1 className='aboutHeadDiv py-5 px-4' >
             About
             </h1>
@@ -387,13 +470,11 @@ class Home extends Component {
             </div>
           </div>
           </div>
-          <div className='jumbotron-fluid landingPageFooter'>
-            <div className='text-center footer'>
-              <span id='footer-note text-center'>
-              &copy; Copyright: lorem-ipsum@gmail.com
-              </span>
-            </div>
-          </div>
+          {/* <div className='jumbotron landingPageFooter'>
+            <div className='text-center footer'> */}
+              
+            {/* </div>
+          </div> */}
       </React.Fragment>
     )
   }

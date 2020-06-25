@@ -1,4 +1,5 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 body{
   background-color: #343A40;
@@ -8,17 +9,26 @@ body{
     height:100vh;
 }
 
+.about-home{
+  background-color: var(--aboutBackground);
+  background-image: url('/images/Gallery/breadcrumb.png');
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center center;
+}
+
 .aboutHeadDiv{
     position: relative;
-    font-size: 600%;
-    font-family: 'Courier New', Courier, monospace;
+    font-size: 800%;
+    font-family: 'Staatliches',cursive;
     padding: 2vh 0em 0em 0em;
-    
+    color : white
+
 }
 
 #image{
     background-image: url('./Stock_Concert.jpg');
-     height: 30vw; 
+     height: 30vw;
     background-repeat: no-repeat;
     background-size: cover;
     border: 1em solid rgb(240, 234, 234);
@@ -41,37 +51,39 @@ body{
 }
 
 .aboutTextDiv{
-    
+
     position: relative;
     opacity: 0;
-   
+    color : white;
     /* font-size: 100%; */
     padding-top: 0%;
     transform: translate(-1000px,0px);
   transition: transform 1100ms .15s cubic-bezier(0,1.5,.3,1), opacity 700ms ease-in-out;
 }
 
- 
+
 
 .aboutTextDiv.is-visible{
   opacity: 1;
   transform: translate(0px,0px);
- 
-} 
+
+}
 
 .carouselDiv{
     position:absolute;
-    height:50%;
-    left:12vw;
-    
+    height:100%;
+    margin-left: auto;
+    margin-right: auto;
+
+
 }
 
 
 .eventTextDiv{
     position: relative;
-    top:30%;
-    right:0%;
-    
+    top:55%;
+
+
 
 }
 
@@ -80,8 +92,8 @@ body{
     color : white;
     font-weight: 800;
     transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
-    font-family: "Staatliches";
-    
+    font-family: 'Staatliches' , cursive;
+
 }
 
 
@@ -91,22 +103,36 @@ body{
     font-size: 140%;
     transition: opacity 500ms ease-in-out ;
     transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
-    font-family: "Staatliches";
+    font-family: 'Bebas Neue', cursive;
 }
 
 .regBtn{
     position: absolute;
-    left:41.5%;
+    left:39%;
     top:-50px;
     transition: all 500ms ease-in-out;
     border-radius: 100px;
-    
+
+}
+
+.linBtn{
+  position: absolute;
+  left:42.5%;
+  top:300px;
+  transition: all 500ms ease-in-out;
+  border-radius: 100px;
+
+}
+
+#lineupBut{
+  height: 40px;
 }
 
 #regBtnText{
   font-family: 'Staatliches';
   font-weight: 600;
-  
+
+
 }
 
 /*BUTTON CSS*/
@@ -116,8 +142,8 @@ body{
   margin-top: 42vh;
 } */
 
-#btnReg:link,
-#btnReg:visited {
+.evtbtn:link,
+.evtbtn:visited {
   text-transform: uppercase;
   text-decoration: none;
   padding: 15px 40px;
@@ -128,25 +154,26 @@ body{
   position: absolute;
 }
 
-#btnReg:hover {
+.evtbtn:hover {
   -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 
-#btnReg:active {
+.evtbtn:active {
   -webkit-transform: translateY(-1px);
           transform: translateY(-1px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.btn-white {
-  background-color: rgb(247, 4, 4);
-  color:#fff;
+.btn-white:hover {
+
+  background-color:#9dd0e5;
+
 }
 
-#btnReg::after {
+.evtbtn::after {
   content: "";
   display: inline-block;
   height: 100%;
@@ -160,17 +187,18 @@ body{
   transition: all .4s;
 }
 
-.btn-white::after {
-  background-color: rgb(247, 22, 22);
+/* .btn-white::after {
+  background-color:#3589AD
 }
-
-#btnReg:hover::after {
+*/
+.evtbtn:hover::after {
   -webkit-transform: scaleX(1.4) scaleY(1.6);
           transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
+  background-color: #3589AD;
 }
 
-.btn-animated {
+ .btn-animated {
   -webkit-animation: moveInBottom 5s ease-out;
           animation: moveInBottom 5s ease-out;
   -webkit-animation-fill-mode: backwards;
@@ -211,7 +239,7 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    
+
 }
 
 
@@ -230,19 +258,19 @@ body{
         -ms-flex-pack: center;
             justify-content: center; }
 
-        
+
 .awssld__bullets button{
     background-color:white;
     border-radius: 50%;
     height: 10px;
     width:10px;
-    
+
 }
 
 .awssld__bullets .awssld__bullets--active {
     -webkit-transform: scale(1.5);
-            transform: scale(1.5); 
-            background-color:var(--orangeText);
+            transform: scale(1.5);
+            background-color:var(--headerBackground);
         }
 
  .awssld__controls__arrow-left, .awssld__controls__arrow-right {
@@ -262,7 +290,7 @@ body{
                 height: 100%;
                 border-radius: 100%;
                 width: 5px;
-                background-color: var(--orangeText);
+                background-color: white;
                 -webkit-transition: background-color 0.15s ease-out, -webkit-transform 0.15s ease-out;
                 transition: background-color 0.15s ease-out, -webkit-transform 0.15s ease-out;
                 transition: transform 0.15s ease-out, background-color 0.15s ease-out;
@@ -339,7 +367,7 @@ body{
       background-image: url('../Home/recording_room.jpeg');
       background-size: cover;
       background-repeat: no-repeat;
-  } 
+  }
 
   .modalBack{
     background-image: url('../Home/Studio_Room.jpg');
@@ -347,7 +375,7 @@ body{
     background-repeat: no-repeat;
   }
 
-  
+
   .modalTitle{
       font-weight: 800;
       color : white;
@@ -359,6 +387,14 @@ body{
 :before,
 :after {
   box-sizing: border-box;
+}
+
+.wrapper-home{
+  display: block;
+  flex-direction: row;
+  width: 200vw;
+  /* transform: rotate(90deg) translateY(-100vh);
+  transform-origin: top left; */
 }
 
 form {
@@ -382,7 +418,7 @@ form {
     position: relative;
     margin: 45px 0;
   }
-  
+
   textarea {
     resize: none;
   }
@@ -486,41 +522,41 @@ input[type="password"] {
     position:relative;
     right:50px;
   }
-  
 
-  
+
+
 
   /*MODAL CSS END*/
 
  @media screen and (max-width:574px){
-    
-     #image{
-         height: 400px; 
-    } 
 
-} 
+     #image{
+         height: 400px;
+    }
+
+}
 
 @media screen and (max-width:975px){
 
-  
+
     /* .carousel{
         height:890px;
     } */
 
      .eventTextDiv{
-        top:50%;
-    } 
-    
+        top:65%;
+    }
+
      .eventTitle{
-        font-size: 720%;
-        
+        font-size: 820%;
+
         font-weight: 800;
     }
-    
+
     .eventDesc{
         font-weight: 800;
         font-size: 130%;
-    } 
+    }
 
     .aboutTextDiv{
       transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
@@ -529,9 +565,18 @@ input[type="password"] {
     }
     .regBtn{
       position: absolute;
-      left:38.5%;
+      left:33.5%;
       top:-50px;
       transition: all 500ms ease-in-out;
+    }
+
+    .linBtn{
+      position: absolute;
+      left:38.7%;
+      top:220px;
+      transition: all 500ms ease-in-out;
+
+
     }
 }
 
@@ -559,66 +604,85 @@ input[type="password"] {
 
     .aboutHeadDiv{
       position: relative;
-      font-size: 400%;
-      font-family: 'Courier New', Courier, monospace;
+      font-size: 600%;
+
       padding: 2vh 0em 0em 0em;
-      
+
   }
-    .regBtn{
+    /* .regBtn{
       position: absolute;
       left:30%;
       top:-50px;
       transition: all 500ms ease-in-out;
     }
+
+    .linBtn{
+      position: absolute;
+      left:30%;
+      top:180px;
+      transition: all 500ms ease-in-out;
+
+
+    } */
 }
 
 @media screen and (max-width:480px){
-    
+
 
     /* .eventTextDiv{
         top:320px;
     } */
-    
+
     #tickDiv{
       width:150px;
       height:200px;
     }
-    
+
     .aboutTextDiv{
       transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
       position: relative;
       font-size: 80%;
     }
-    
+
     .eventTitle{
         font-size: 420%;
-        
+
         font-weight: 800;
     }
-    
+
     .eventDesc{
         font-weight: 800;
         font-size: 80%;
     }
 
     #regBtnText{
-      font-size: 70%;
+      font-size: 90%;
     }
 
-    
+
 
     .aboutHeadDiv{
       position: relative;
-      font-size: 300%;
-      font-family: 'Courier New', Courier, monospace;
+      font-size: 500%;
+
       padding: 2vh 0em 0em 0em;
-      
+
     }
     .regBtn{
       position: absolute;
-      left:25%;
+      left:23%;
       top:-50px;
       transition: all 500ms ease-in-out;
     }
-}
 
+    .linBtn{
+      position: absolute;
+      left:32.5%;
+      top:140px;
+      transition: all 500ms ease-in-out;
+    }
+
+    /* #lineupBut{
+      height: 35px;
+    } */
+}
