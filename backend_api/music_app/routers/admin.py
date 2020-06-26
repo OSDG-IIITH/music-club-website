@@ -1,6 +1,8 @@
-from fastapi import APIRouter, Query, Body, Path, Header, Depends, HTTPException, status
+from fastapi import APIRouter, Query, Body, Path, Header, Depends, HTTPException, status , File , UploadFile
 from fastapi.encoders import jsonable_encoder
+from fastapi.responses import HTMLResponse
 from typing import List, Dict
+import base64
 from modules import schemas
 from modules import models
 from sqlalchemy import desc
@@ -48,7 +50,7 @@ async def change_password(*, db: Session = Depends(get_db), user : schemas.Admin
         return "username and password is updated"
     return "confirm password did't match"
 
-@router.post('/login', response_model=List[schemas.AdminDetail])
+@router.post('/login')
 async def get_password(db: Session = Depends(get_db)):
     # from /login form
     name=user.username
@@ -56,8 +58,8 @@ async def get_password(db: Session = Depends(get_db)):
     # from database table named User
     db_ok = db.query(models.User).filter(models.User.id == 1 )
     if db_ok.username == name and verify_password(paas, db_ok.password) :
-        return true  # value neede to be used in login.js
-    return false
+        return True # value neede to be used in login.js
+    return False
 
 
 @router.post('/addEvent')
@@ -100,12 +102,23 @@ async def set_new_state(new_event_state = Body(...) , db: Session = Depends(get_
 
 
 @router.post('/addPhoto')
-async def add_photo(newPhoto : schemas.AddPhoto = Body(...) , db: Session = Depends(get_db)):
-    db_img = models.Photos(**newPhoto.dict())
-    db.add(db_img)
-    db.commit()
-    db.refresh(db_img)
-    return "photo has been added to db!"
+async def add_photo(*, img_files : List[UploadFile] = File(...) , db : Session = Depends(get_db) , eventId : int = Body(...)):
+    for f in img_files:
+        data = await f.read(10)
+        b64data = base64.b64encode(data)
+        newImage = {
+            'event_id' : eventId,
+            'label' : "test",
+            'image' : b64data
+        }
+        
+        newImageRow = schemas.AddPhoto(**newImage)
+        db_img = models.Photos(**newImageRow.dict())
+        db.add(db_img)
+        db.commit()
+        db.refresh(db_img)
+
+    return "photo saved in db"
 
 @router.post('/delPhoto')
 async def add_photo(photo_id  : int = Body(...) , db: Session = Depends(get_db)):

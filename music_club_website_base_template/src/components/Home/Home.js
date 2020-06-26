@@ -326,10 +326,10 @@ class Home extends Component {
               <div className="eventTextDiv" >
                 <h1 className={"eventTitle text-center"} ref={this.eventTitle1}>{this.state.latestEvent ?  this.state.latestEvent.name : ""}</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc1}>{this.state.latestEvent ?  this.state.latestEvent.description : ""}</p>
-                {this.state.showRegister ?  <button type="button" className="btn btn-white btn-animate btn-outline-light regBtn evtbtn"  ref={this.regBtn1} data-toggle="modal" data-target="#regModal" onClick={this.modalReset}>
+                {this.state.showRegister ?  <button type="button" className="btn btn-white btn-animate  regBtn evtbtn"  ref={this.regBtn1} data-toggle="modal" data-target="#regModal" onClick={this.modalReset}>
                       <span id="regBtnText">Register For Event</span>
                     </button>  : null}
-                    <button type="button" className="btn btn-white btn-animate btn-outline-light linBtn evtbtn" id="lineupBut"  ref={this.linBtn1} data-toggle="modal" data-target="#lineupModal">
+                    <button type="button" className="btn btn-white btn-animate  linBtn evtbtn" id="lineupBut"  ref={this.linBtn1} data-toggle="modal" data-target="#lineupModal">
                       <span id="regBtnText">See Lineup</span>
                     </button>
               </div>

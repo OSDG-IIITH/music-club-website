@@ -1,9 +1,21 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
 import './style.css'
+import axios from 'axios'
 // const bcrypt = require('bcryptjs');
 
 export default class Login extends Component {
+
+    
+    async getCondition(){
+        const test = await axios.get('/admin/login')
+        console.log(test.data)
+        return test.data
+        // .then(res =>{
+        //     console.log(res.data)
+        //     this.setState({})
+        // })
+    }
     constructor(props){
         super(props)
         let loggedIn=false
@@ -20,11 +32,13 @@ export default class Login extends Component {
             [e.target.name]:e.target.value
         })
     }
-    submitForm(e){
+    async submitForm(e){
         e.preventDefault()
         const {username,password} = this.state
+        var condition = await this.getCondition()
+        console.log(condition)
         
-        if(0){
+        if(condition){
             localStorage.setItem("token","esrdcfyvubicuvidxcyrxuihbivvivjhcxkcjcgucuc@jgv5(&%jkb")
             this.setState({
                 loggedIn: true
