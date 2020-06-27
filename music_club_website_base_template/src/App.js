@@ -1,14 +1,14 @@
-import React,{Component} from 'react';
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
-import SimpleReactLightbox from 'simple-react-lightbox'
+import React,{Component} from 'react';	
+import { BrowserRouter, Route, Switch} from 'react-router-dom';	
+import SimpleReactLightbox from 'simple-react-lightbox'	
 
-// import './App.css';
-import 'bootstrap/dist/css/bootstrap.css';
-//@ts-ignore
-import 'bootstrap/dist/js/bootstrap';
-// to import react-bootstrap import {...} from 'react-bootstrap'
-import 'jquery';
-import 'popper.js';
+// import './App.css';	
+import 'bootstrap/dist/css/bootstrap.css';	
+//@ts-ignore	
+import 'bootstrap/dist/js/bootstrap';	
+// to import react-bootstrap import {...} from 'react-bootstrap'	
+import 'jquery';	
+import 'popper.js';	
 
 import Home from './components/Home/Home';
  import Timeline from './components/Timeline/Timeline';
@@ -17,7 +17,7 @@ import Event from './components/Gallery/Events/event';
  import Login from './components/login/Login';
  import Admin from './components/login/Admin';
  import Logout from './components/login/Logout';
-
+import CreateEvent from './components/admin/create_event';
 
 class App extends Component {
   render(){
@@ -35,6 +35,7 @@ class App extends Component {
               <Route path="/login" component={Login} exact/>  
               <Route path="/logout" component={Logout} exact/>  
               <Route path="/admin" component={Admin} exact/>   
+              <Route path="/admin/create_event" component={CreateEvent} exact/>   
             </Switch>
           </div>
         </BrowserRouter>
