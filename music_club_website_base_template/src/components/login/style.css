@@ -146,7 +146,6 @@ body{
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     padding: 15px 0px;
-    border: #fff solid ;
 }
 #admin-button{
     background-color: orange;
