@@ -1,7 +1,5 @@
-.ok{
-    overflow: hidden;
-}
-#name,#gallery_link,#ping_link,#state,#poster,#venue,#time,#date, select {
+
+#id,#name,#gallery_link,#ping_link,#state,#poster,#venue,#time,#date,#username1,#password1,#confirm_password1, select {
     width: 100%;
     height: 30px;
     font-size: smaller;
