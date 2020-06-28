@@ -33,7 +33,7 @@ export default class Admin extends Component {
                     </div>
                     <div id="content-box-2">
                         <Link id="create-event" to="/admin/create_event">Create an event</Link><br/>
-                        <Link id="update-event-state" to="/admin/change_state">Update event state</Link><br/>
+                        <Link id="update-event-state" to="/admin/change_event">Update event state</Link><br/>
                         <Link id="delete-event" to="/admin/delete_event">Delete an event</Link><br/>
                     </div>
                 </div>
