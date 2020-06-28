@@ -58,7 +58,7 @@ export default class Admin extends Component {
                 <div id="punk">
                     
                     <Link id="admin-button"  to="/logout">Logout from admin</Link><br/>
-                    <Link id="admin-button" to="/admin/create_event">Change Password</Link><br/>
+                    <Link id="admin-button" to="/admin/change_password">Change Password</Link><br/>
                 </div>
                 </div>
             </div>
