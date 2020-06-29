@@ -47,7 +47,7 @@ class Home extends Component {
       })
       console.log("after sorting" , event_arr)
       this.setState({events : event_arr})
-      // console.log(this.state.events)
+      console.log(this.state.events)
       // var d = new Date(this.state.events[0].db_time)
       // console.log(d)
       for(var i=0;i<this.state.events.length;i++){

@@ -3,28 +3,16 @@ import {Link,Redirect} from 'react-router-dom'
  import './admin.css'
 
 export default class PassChange extends Component {
-    constructor(props){
-        super(props)
-
-        const token = localStorage.getItem("token")
-        
-
-        let loggedIn =true
-
-        if(token==null)
-        {
-            loggedIn=false
-        }
-
-        this.state = {
+    
+    state = {
             username:'',
             password:'',
             confirm_password:'',
-            loggedIn
+            loggedIn : true,
+            access_token : null
         }
-        this.onChange=this.onChange.bind(this)
-    }
-    onChange(e){
+
+    onChange = (e) =>{
         this.setState({
             [e.target.name]:e.target.value
         })

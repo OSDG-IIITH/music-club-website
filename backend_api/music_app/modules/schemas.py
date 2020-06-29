@@ -34,14 +34,15 @@ class EventCreate(BaseModel):
     
 
 
-class AdminDetail(BaseModel):
+class UserDB(BaseModel):
     username :str = ''
-    password :str = ''
+    hashed_password :str = ''
 
-class AdminPassword(BaseModel):
-    username :str = ''
-    password :str = ''
-    confirmpassword :str = ''
+class User(BaseModel):
+    username : str = ''
+    password : str = ''
+
+
         
 class AddPhoto(BaseModel):
     event_id : int
