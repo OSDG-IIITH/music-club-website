@@ -15,6 +15,11 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from pydantic import BaseModel
 
 router = APIRouter()
+import onedrivesdk
+from onedrivesdk.helpers import GetAuthCodeServer
+
+
+
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -30,6 +35,7 @@ def get_db():
 
     finally:
         db.close()
+
 
 class Token(BaseModel):
     access_token: str
@@ -63,6 +69,10 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     )
     return {"access_token": access_token, "token_type": "bearer"}
     
+
+
+
+
 # @router.post('/admin')
 # async def add_event(registered: schemas.EventCreate = Body(...), db: Session = Depends(get_db)):
 #     print(registered)
@@ -71,11 +81,16 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
 #     db.commit()
 #     db.refresh(db_registered)
 #     return "photo has been added to db!"
+
+
 def get_password_hash(password):
     return pwd_context.hash(password)
 
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
+
+
+
 
 @router.post('/changepassword')
 async def change_password(*, db: Session = Depends(get_db), user : schemas.AdminPassword):
