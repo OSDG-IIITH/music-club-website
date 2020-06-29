@@ -12,6 +12,11 @@ from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 from modules.database import SessionLocal
 router = APIRouter()
+import onedrivesdk
+from onedrivesdk.helpers import GetAuthCodeServer
+
+
+
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -25,6 +30,7 @@ def get_db():
 
 
 
+
 # @router.post('/admin')
 # async def add_event(registered: schemas.EventCreate = Body(...), db: Session = Depends(get_db)):
 #     print(registered)
@@ -33,11 +39,16 @@ def get_db():
 #     db.commit()
 #     db.refresh(db_registered)
 #     return "photo has been added to db!"
+
+
 def get_password_hash(password):
     return pwd_context.hash(password)
 
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
+
+
+
 
 @router.post('/changepassword')
 async def change_password(*, db: Session = Depends(get_db), user : schemas.AdminPassword):
