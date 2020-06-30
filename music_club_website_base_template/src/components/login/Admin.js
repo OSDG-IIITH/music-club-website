@@ -3,25 +3,22 @@ import {Link,Redirect} from 'react-router-dom'
 import './style.css'
 
 export default class Admin extends Component {
-    constructor(props)
-    {
-        super(props)
-        const token = localStorage.getItem("token")
-        
-
-        let loggedIn =true
-
-        if(token==null)
-        {
-            loggedIn=false
-        }
-        this.state={loggedIn}
+    
+    state = {
+        access_token : this.props.location.state.token,
+        loggedIn : true
     }
+    
     render() {
-        if(this.state.loggedIn === false)
-        {
-            return <Redirect to="/login" />
-        }
+        
+        console.log('in admin.js the token is..')
+        console.log(this.state.access_token)
+       
+         if(this.state.loggedIn === false)
+         {
+             console.log(this.state.loggedIn)
+             return <Redirect to="/login" />
+         }
         return (
             <div id="log">
             <div id="ok">

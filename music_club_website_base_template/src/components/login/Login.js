@@ -7,10 +7,16 @@ import axios from 'axios'
 export default class Login extends Component {
 
     
-    async getCondition(){
-        const test = await axios.get('/admin/login')
-        console.log(test.data)
-        return test.data
+    async getToken(username , password){
+        const headers = {
+            'Content-Type' : 'application/x-www-form-urlencoded'
+        }
+        const token  = await axios.post('/admin/token' , {
+            username : username,
+            password : password
+        } , {headers : headers})
+        console.log(token.data)
+        return token.data
         // .then(res =>{
         //     console.log(res.data)
         //     this.setState({})
@@ -22,7 +28,8 @@ export default class Login extends Component {
         this.state = {
             username:'',
             password:'',
-            loggedIn
+            loggedIn,
+            access_token : null
         }
         this.onChange=this.onChange.bind(this)
         this.submitForm=this.submitForm.bind(this)
@@ -35,11 +42,12 @@ export default class Login extends Component {
     async submitForm(e){
         e.preventDefault()
         const {username,password} = this.state
-        var condition = await this.getCondition()
-        console.log(condition)
+        var token = await this.getToken(username,password)
+        this.setState({access_token : token})
+        console.log(this.state.access_token)
         
-        if(condition){
-            localStorage.setItem("token","esrdcfyvubicuvidxcyrxuihbivvivjhcxkcjcgucuc@jgv5(&%jkb")
+        if(this.state.access_token){
+            
             this.setState({
                 loggedIn: true
             })
@@ -53,7 +61,10 @@ export default class Login extends Component {
     render() {
             if(this.state.loggedIn)
             {
-                return <Redirect to="/admin"/>
+                return <Redirect to={{
+                    pathname : '/admin',
+                    state : {token : this.state.access_token}
+                }}/>
             }
         return (
             <div id="log">

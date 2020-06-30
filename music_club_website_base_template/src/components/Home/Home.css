@@ -382,12 +382,29 @@ body{
     background-repeat: no-repeat;
   }
 
+  .lin_mainModal{
+    background-color: var(--aboutBackground);
+  background-image: url('/images/Gallery/breadcrumb.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:-27vw center;
+  }
+
 
   .modalTitle{
       font-weight: 800;
       color : white;
       padding-left: 5rem;
       font-family: 'Staatliches';
+  }
+
+  .lin_modalTitle{
+    position: relative;
+    font-size: 500%;
+    text-shadow: red 4px 4px;
+    font-family: 'Staatliches',cursive;
+    padding-left: 3vw;
+    color : white
   }
 
   *,
@@ -457,13 +474,13 @@ textarea::placeholder{
 input:not(:placeholder-shown) ~label{
   top:-14px;
   font-size: 12px;
-  color : rgb(250, 94, 21);
+  color : rgb(250, 21, 21);
 }
 
 textarea:not(:placeholder-shown) ~label{
   top:-14px;
   font-size: 12px;
-  color : rgb(250, 94, 21);
+  color : rgb(250, 21, 21);
 }
 
 input:focus ~ label, input:valid ~ label,
@@ -471,7 +488,7 @@ textarea:focus ~ label,
 textarea:valid ~ label {
   top: -14px;
   font-size: 12px;
-  color: rgb(250, 94, 21);
+  color: rgb(250, 21, 21);
 }
 input:focus ~ .bar:before,
 textarea:focus ~ .bar:before {

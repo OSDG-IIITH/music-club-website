@@ -47,7 +47,7 @@ class Home extends Component {
       })
       console.log("after sorting" , event_arr)
       this.setState({events : event_arr})
-      // console.log(this.state.events)
+      console.log(this.state.events)
       // var d = new Date(this.state.events[0].db_time)
       // console.log(d)
       for(var i=0;i<this.state.events.length;i++){
@@ -429,17 +429,47 @@ class Home extends Component {
 
                     <div className="modal fade modalBack" id="lineupModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div className="modal-dialog modal-dialog-centered" role="document">
-                        <div className="modal-content mainModal">
+                        <div className="modal-content lin_mainModal">
 
                           <div className="modal-header">
-                            <h2 className="modal-title modalTitle mx-auto">Lineup</h2>
+                            <h2 className="modal-title lin_modalTitle mx-auto">Lineup</h2>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                       
                           <div  className="modal-body">
-                          
+                               <div className="table-hover table-responsive">
+                                 <table className = "table">
+                                   <thead>
+                                   <tr>
+                                     <td><h4 className="text-white">Slot number</h4></td>
+                                     <td><h4 className="text-white">BandName</h4></td>
+                                     <td><h4 className="text-white">Start time</h4></td>
+                                     </tr>
+                                   </thead>
+                                   <tbody>
+                                     <tr>
+                                       <td><h5 className="text-white">1</h5></td>
+                                       <td><h5 className="text-white">Band1</h5></td>
+                                       <td><h5 className="text-white">8:00pm</h5></td>
+                                     </tr>
+
+                                     <tr>
+                                       <td><h5 className="text-white">2</h5></td>
+                                       <td><h5 className="text-white">Band2</h5></td>
+                                       <td><h5 className="text-white">9:00pm</h5></td>
+                                     </tr>
+
+                                     <tr>
+                                       <td><h5 className="text-white">3</h5></td>
+                                       <td><h5 className="text-white">Band3</h5></td>
+                                       <td><h5 className="text-white">10:00pm</h5></td>
+                                     </tr>
+                                   </tbody>
+                                 </table>
+                               </div>
+
                           </div>
                           <div className="modal-footer">
 

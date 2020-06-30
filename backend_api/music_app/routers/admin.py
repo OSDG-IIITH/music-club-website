@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Query, Body, Path, Header, Depends, HTTPException, status , File , UploadFile
+from fastapi import APIRouter, Query, Body, Path, Header, Depends, HTTPException, status , File , UploadFile , Form
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import HTMLResponse
 from typing import List, Dict
@@ -13,12 +13,18 @@ from sqlalchemy.orm import Session
 from modules.database import SessionLocal
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from pydantic import BaseModel
+from datetime import timedelta , datetime
 
 router = APIRouter()
+# import onedrivesdk
+# from onedrivesdk.helpers import GetAuthCodeServer
+
+
+
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/admin/token")
 
 SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
 ALGORITHM = "HS256"
@@ -30,6 +36,30 @@ def get_db():
 
     finally:
         db.close()
+
+def get_password_hash(password):
+    return pwd_context.hash(password)
+
+def verify_password(plain_password, hashed_password):
+    return pwd_context.verify(plain_password, hashed_password)
+
+def get_user_fromDB(username : str , db : Session):
+    user_requested = db.query(models.User).filter(models.User.username == username).first()
+    if user_requested:
+        return schemas.UserDB(**(user_requested.__dict__))
+    
+    
+
+def authenticate(username : str , password : str , db : Session):
+    user = get_user_fromDB(username , db)
+    if not user:
+        return False
+
+    if not verify_password(password , user.hashed_password):
+        return False
+
+    return user
+
 
 class Token(BaseModel):
     access_token: str
@@ -48,68 +78,65 @@ def create_access_token(data: dict, expires_delta: timedelta = None):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-@app.post("/token", response_model=Token)
-async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
-    user = get_password(db: Session = Depends(get_db))         
+credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+
+@router.post("/token", response_model=Token)
+async def login_for_access_token(*, form_data = Body(...) , db : Session = Depends(get_db)):
+    print(form_data)
+    user = authenticate(form_data['username'] , form_data['password'] , db)         
     if not user:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect username or password",
-            headers={"WWW-Authenticate": "Bearer"},
-        )
+        return None
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
         data={"sub": user.username}, expires_delta=access_token_expires
     )
     return {"access_token": access_token, "token_type": "bearer"}
     
-# @router.post('/admin')
-# async def add_event(registered: schemas.EventCreate = Body(...), db: Session = Depends(get_db)):
-#     print(registered)
-#     db_img = models.Event(**registered.dict())
-#     db.add(db_img)
-#     db.commit()
-#     db.refresh(db_registered)
-#     return "photo has been added to db!"
-def get_password_hash(password):
-    return pwd_context.hash(password)
 
-def verify_password(plain_password, hashed_password):
-    return pwd_context.verify(plain_password, hashed_password)
+
 
 @router.post('/changepassword')
-async def change_password(*, db: Session = Depends(get_db), user : schemas.AdminPassword):
-    if user.password == user.confirmpassword :
-        new_username = user.username['username']
-        new_password = get_password_hash(user.password)['password']
-        db.query(models.User).filter(models.User.id == 1).update({models.User.username : new_username , models.User.password : new_password} , synchronize_session= False)
-        # db_user.update({models.User : new_username , new_password})
-        db.commit()
-        return "username and password is updated"
-    return "confirm password did't match"
+async def change_password(*, db: Session = Depends(get_db), user : schemas.User):
+    
+    username = user.username
+    new_password = get_password_hash(user.password)
+    db.query(models.User).filter(models.User.username == username).update({models.User.hashed_password : new_password} , synchronize_session= False)
+    # db_user.update({models.User : new_username , new_password})
+    db.commit()
+    return "username and password is updated"
+   
 
-@router.post('/login')
-async def get_password(db: Session = Depends(get_db)):
-    # from /login form
-    name=user.username
-    paas=user.password 
-    # from database table named User
-    db_ok = db.query(models.User).filter(models.User.id == 1 )
-    if db_ok.username == name and verify_password(paas, db_ok.password) :
-        return True # value neede to be used in login.js
-    return False
+@router.post('/createAccount')
+async def make_new_user(* , db : Session = Depends(get_db) , new_user : schemas.User = Body(...)):
+    new_hashed_password = get_password_hash(new_user.password)
+    db_user = models.User(username = new_user.username , hashed_password=new_hashed_password)
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    return "account created successfully"
+
+
 
 
 @router.post('/addEvent')
-async def add_event(newEvent : schemas.EventCreate = Body(...) , db : Session = Depends(get_db)):
-    db_event = models.Event(**newEvent.dict())
-    db.add(db_event)
-    db.commit()
-    db.refresh(db_event)
-    return "event added successfully"
+async def add_event(newEvent : schemas.EventCreate = Body(...) , db : Session = Depends(get_db) , token : str = Body(...)):
+    payload = jwt.decode(token , SECRET_KEY , algorithms=[ALGORITHM])
+    username : str = payload.get('sub')
+    if username is None:
+        raise credentials_exception
+    else:
+        db_event = models.Event(**newEvent.dict())
+        db.add(db_event)
+        db.commit()
+        db.refresh(db_event)
+        return "event added successfully"
 
 @router.post('/delEvent')
-async def delete_event(event_id  : int = Body(...) , db: Session = Depends(get_db)):
+async def delete_event(* , event_id  : int = Body(...) , db: Session = Depends(get_db)):
     event_to_delete = db.query(models.Event).get(event_id)
     db.delete(event_to_delete)
     db.commit()

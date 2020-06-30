@@ -10,6 +10,7 @@ from routers import landingPageEvents,adminevent,adminphoto,adminuser , admin
 
 app = FastAPI(debug=True)
 
+# models.Base.metadata.create_all(bind=engine)
 models.Base.metadata.create_all(bind=engine)
 
 def get_db():
