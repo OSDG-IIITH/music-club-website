@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import axios from 'axios'
+import {NavLink} from 'react-router-dom'
 // import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import 'bootstrap/dist/css/bootstrap.css';
@@ -194,6 +195,7 @@ class Home extends Component {
       this.eventDesc2.current.style.opacity = '20%';
       this.eventTitle2.current.style.transform = 'translate(0px , -900px)';
       this.eventDesc2.current.style.transform = 'translate(-1100px , 0px)';
+      this.moreBtn1.current.style.transform = 'translate(-1100px,0px)';
     }
 
     if (this.eventTitle3.current) {
@@ -201,6 +203,7 @@ class Home extends Component {
       this.eventDesc3.current.style.opacity = '20%';
       this.eventTitle3.current.style.transform = 'translate(0px , -900px)';
       this.eventDesc3.current.style.transform = 'translate(-1100px , 0px)';
+      this.moreBtn2.current.style.transform = 'translate(-1100px,0px)';
     }
 
     if (this.eventTitle4.current) {
@@ -208,6 +211,7 @@ class Home extends Component {
       this.eventDesc4.current.style.opacity = '20%';
       this.eventTitle4.current.style.transform = 'translate(0px , -900px)';
       this.eventDesc4.current.style.transform = 'translate(-1100px , 0px)';
+      this.moreBtn3.current.style.transform = 'translate(-1100px,0px)';
     }
 
 
@@ -235,6 +239,7 @@ class Home extends Component {
       this.eventDesc2.current.style.opacity = '100%';
       this.eventTitle2.current.style.transform = 'translate(0px , 0px)';
       this.eventDesc2.current.style.transform = 'translate(0px , 0px)';
+      this.moreBtn1.current.style.transform = 'translate(0px,0px)';
     }
 
     if (this.eventTitle3.current) {
@@ -242,6 +247,7 @@ class Home extends Component {
       this.eventDesc3.current.style.opacity = '100%';
       this.eventTitle3.current.style.transform = 'translate(0px , 0px)';
       this.eventDesc3.current.style.transform = 'translate(0px , 0px)';
+      this.moreBtn2.current.style.transform = 'translate(0px,0px)';
 
     }
 
@@ -250,6 +256,7 @@ class Home extends Component {
       this.eventDesc4.current.style.opacity = '100%';
       this.eventTitle4.current.style.transform = 'translate(0px , 0px)';
       this.eventDesc4.current.style.transform = 'translate(0px , 0px)';
+      this.moreBtn3.current.style.transform = 'translate(0px,0px)';
     }
 
   }
@@ -264,6 +271,9 @@ class Home extends Component {
   eventDesc4 = React.createRef();
   regBtn1 = React.createRef();
   linBtn1 = React.createRef();
+  moreBtn1 = React.createRef();
+  moreBtn2 = React.createRef();
+  moreBtn3 = React.createRef();
   aboutImg = React.createRef();
   aboutDesc = React.createRef();
   regForm = React.createRef();
@@ -361,7 +371,7 @@ class Home extends Component {
             <div className="carouselDiv" id="img1">
               <div className="eventTextDiv" >
                 <h1 className={"eventTitle text-center"} ref={this.eventTitle1}>{this.state.latestEvent ?  this.state.latestEvent.name : ""}</h1>
-                <p className="text-white text-center eventDesc" ref={this.eventDesc1}>{this.state.latestEvent ?  this.state.latestEvent.description : ""}</p>
+                <p className="text-white text-center eventDesc" ref={this.eventDesc1}>{this.state.latestEvent ?  this.state.latestEvent.date + " at " + this.state.latestEvent.time : ""}</p>
                 {this.state.showRegister ?  <button type="button" className="btn btn-white btn-animate  regBtn evtbtn"  ref={this.regBtn1} data-toggle="modal" data-target="#regModal" onClick={this.modalReset}>
                       <span id="regBtnText">Register For Event</span>
                     </button>  : null}
@@ -374,12 +384,18 @@ class Home extends Component {
               <div className="eventTextDiv">
                 <h1 className=" eventTitle text-center" ref={this.eventTitle2}>{this.state.pastevent1 ? this.state.pastevent1.name : ""}</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc2}>{this.state.pastevent1 ? this.state.pastevent1.description : ""}</p>
+                <NavLink to = '/event'><button type="button" className="btn btn-white btn-animate  regBtn evtbtn " id="seeMore1" ref={this.moreBtn1}>
+                      <span id="regBtnText">See More<i class="fa fa-info-circle" style={{'color' : 'white', 'fontSize' : '18px' , 'paddingLeft' : '11px'}}></i></span>
+                    </button></NavLink>
               </div>
             </div>
             <div className="carouselDiv" id="img3">
               <div className="eventTextDiv">
                 <h1 className=" eventTitle text-center" ref={this.eventTitle3}>{this.state.pastevent2 ? this.state.pastevent2.name : ""}</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc3}>{this.state.pastevent2 ? this.state.pastevent2.description : ""}</p>
+                <NavLink to = '/event'><button type="button" className="btn btn-white btn-animate  regBtn evtbtn "  id="seeMore2" ref={this.moreBtn2}>
+                      <span id="regBtnText">See More<i class="fa fa-info-circle" style={{'color' : 'white', 'fontSize' : '18px' , 'paddingLeft' : '11px'}}></i></span>
+                    </button></NavLink>
               </div>
             </div>
 
@@ -387,6 +403,9 @@ class Home extends Component {
               <div className="eventTextDiv">
                 <h1 className=" eventTitle text-center" ref={this.eventTitle4}>{this.state.pastevent3 ? this.state.pastevent3.name : ""}</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc4}>{this.state.pastevent3 ? this.state.pastevent3.description : ""}</p>
+                <NavLink to = '/event'><button type="button" className="btn btn-white btn-animate  regBtn evtbtn "  id="seeMore3" ref={this.moreBtn3}>
+                      <span id="regBtnText">See More<i class="fa fa-info-circle" style={{'color' : 'white', 'fontSize' : '18px' , 'paddingLeft' : '11px'}}></i></span>
+                    </button></NavLink>
               </div>
             </div>
           </AwesomeSlider>
