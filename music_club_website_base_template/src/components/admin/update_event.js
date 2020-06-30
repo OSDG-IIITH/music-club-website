@@ -47,11 +47,11 @@ export default class UpdateEvent extends Component {
                                 </div>
                                 <div class="col-75">
                                     <select id="state" name="state" value={this.state.state} onChange={this.onChange}>
-                                        <option value="open" selected>open</option>
-                                        <option value="canada">Canada</option>
-                                        <option value="usa">USA</option>
-                                        <option value="usa">USA</option>
-                                        <option value="usa">USA</option>
+                                        <option value="upcoming" selected>Upcoming</option>
+                                        <option value="completed">Completed</option>
+                                        <option value="regOpen">Registration Open</option>
+                                        <option value="regClosed">Registration Closed</option>
+                                        <option value="lineupAnnounced">Lineup Announced</option>
                                     </select> 
                                 </div>
                             </div>

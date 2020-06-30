@@ -21,6 +21,8 @@ import CreateEvent from './components/admin/create_event';
 import UpdateEvent from './components/admin/update_event';
 import DeleteEvent from './components/admin/delete_event';
 import PassChange from './components/admin/change_password';
+import AddLineup from './components/admin/add_lineup';
+
 
 class App extends Component {
   render(){
@@ -42,6 +44,7 @@ class App extends Component {
               <Route path="/admin/change_event" component={UpdateEvent} exact/>   
               <Route path="/admin/delete_event" component={DeleteEvent} exact/> 
               <Route path="/admin/change_password" component={PassChange} exact/>
+              <Route path="/admin/add_lineup" component={AddLineup} exact/>   
             </Switch>
           </div>
         </BrowserRouter>
