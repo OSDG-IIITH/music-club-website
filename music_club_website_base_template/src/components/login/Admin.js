@@ -5,7 +5,7 @@ import './style.css'
 export default class Admin extends Component {
     
     state = {
-        access_token : this.props.location.state.token,
+        access_token : this.props.location.state ? this.props.location.state.token : null,
         loggedIn : true
     }
     
@@ -13,6 +13,10 @@ export default class Admin extends Component {
         
         console.log('in admin.js the token is..')
         console.log(this.state.access_token)
+
+        if(!this.state.access_token){
+            this.setState({loggedIn : false})
+        }
        
          if(this.state.loggedIn === false)
          {

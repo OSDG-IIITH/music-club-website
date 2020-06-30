@@ -50,27 +50,53 @@ class Home extends Component {
       console.log(this.state.events)
       // var d = new Date(this.state.events[0].db_time)
       // console.log(d)
-      for(var i=0;i<this.state.events.length;i++){
-        if(this.state.events[i].state !== 'completed'){
-          this.setState({latestEvent : this.state.events[i]})
-          if(this.state.events[i].state === 'regOpen'){
-            this.setState({showRegister : true})
-          }
-          
+      var latest = this.state.events.find(e =>{
+        return e.state !== 'completed'
+      })
+      console.log(latest)
+      var all_pastevents = []
+      if(latest){
+        all_pastevents = this.state.events.filter(e =>{
+          return e.state === 'completed'
+        })
+        this.setState({latestEvent : latest})
+        if(latest.state === 'regOpen'){
+          this.setState({showRegister : true})
         }
-        else{
-          if(!this.state.pastevent1){
-            this.setState({pastevent1 : this.state.events[i]})
-          }
-          else{
-            if(!this.state.pastevent2){
-              this.setState({pastevent2 : this.state.events[i]})
-            }
-            else{
-                this.setState({pastevent3 : this.state.events[i]})
-            }
-          }
+        if(latest.state === 'lineupAnnounced'){
+          this.setState({showLineup : true})
         }
+        all_pastevents.sort((a,b) =>{
+          return -(a.db_time - b.db_time)
+        })
+
+        this.setState({
+          pastevent1 : all_pastevents[0],
+          pastevent2 : all_pastevents[1],
+          pastevent3 : all_pastevents[2]
+        })
+      }
+      else{
+        this.setState({
+          latestEvent : {
+            name : 'WELCOME',
+            description : 'To the music club'
+          }
+        })
+
+        all_pastevents = this.state.events.filter(e =>{
+          return e.state === 'completed'
+        })
+
+        all_pastevents.sort((a,b) =>{
+          return -(a.db_time - b.db_time)
+        })
+
+        this.setState({
+          pastevent1 : all_pastevents[0],
+          pastevent2 : all_pastevents[1],
+          pastevent3 : all_pastevents[2]
+        })
       }
       
       console.log(this.state)
@@ -154,8 +180,13 @@ class Home extends Component {
       this.eventDesc1.current.style.opacity = '20%';
       this.eventTitle1.current.style.transform = 'translate(0px , -900px)';
       this.eventDesc1.current.style.transform = 'translate(-1100px , 0px)';
-      this.regBtn1.current.style.transform = 'translate(-1100px, 0px)';
-      this.linBtn1.current.style.transform = 'translate(-1100px, 0px)';
+      if(this.regBtn1.current){
+        this.regBtn1.current.style.transform = 'translate(-1100px, 0px)';
+      }
+      if(this.linBtn1.current){
+        this.linBtn1.current.style.transform = 'translate(-1100px, 0px)';
+      }
+      
     }
 
     if (this.eventTitle2.current) {
@@ -189,8 +220,13 @@ class Home extends Component {
       this.eventDesc1.current.style.opacity = '100%';
       this.eventTitle1.current.style.transform = 'translate(0px , 0px)';
       this.eventDesc1.current.style.transform = 'translate(0px , 0px)';
-      this.regBtn1.current.style.transform = 'translate(0px, 0px)';
-      this.linBtn1.current.style.transform = 'translate(0px, 0px)';
+      if(this.regBtn1.current){
+        this.regBtn1.current.style.transform = 'translate(0px, 0px)';
+      }
+      if(this.linBtn1.current){
+        this.linBtn1.current.style.transform = 'translate(0px, 0px)';
+      }
+      
 
     }
 
