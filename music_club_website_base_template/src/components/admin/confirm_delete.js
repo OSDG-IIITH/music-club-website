@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {Link,Redirect} from 'react-router-dom'
  import './admin.css'
   
+//  change image src , event name , label as per db
+// use confirm_delete router
 
  export default class ConfirmDelete extends Component {
     state = {
@@ -9,8 +11,6 @@ import {Link,Redirect} from 'react-router-dom'
             loggedIn : true,
             access_token : null
         }
-
-//    on confirm use router confirm delete
     render() {
         if(this.state.loggedIn === false)
         {
@@ -24,7 +24,7 @@ import {Link,Redirect} from 'react-router-dom'
 
                                 <div class="pre">
                                    <div>
-                                        <img id="prep" src={require('./No-Image-Found.png')}></img>
+                                        <img id="prep" src={require('./No-Image-Found.png')}></img>   
                                    </div>
                                    <div id="dis">
                                         <div class="row">
@@ -32,7 +32,7 @@ import {Link,Redirect} from 'react-router-dom'
                                                 <label id="label2" for="name">Event Name:</label>
                                             </div>
                                             <div class="col-75">
-                                                <label id="label3" name="name" >Not Found ( or event name from db)</label>                                            
+                                                <label id="label3" name="name" >( event name from db)</label>                                            
                                             </div>
                                         </div>
                                         <div class="row">
@@ -40,7 +40,7 @@ import {Link,Redirect} from 'react-router-dom'
                                                 <label id="label2" for="name">Image Label:</label>
                                             </div>
                                             <div class="col-75">
-                                                <label id="label3" name="name" >Not Found (or label from db)</label>                                            
+                                                <label id="label3" name="name" >( label from db)</label>                                            
                                             </div>
                                         </div>
                                    </div>
