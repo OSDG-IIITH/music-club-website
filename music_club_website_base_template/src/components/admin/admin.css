@@ -82,6 +82,19 @@
     display: table;
     clear: both;
   }
+
+  .event_table{
+    padding-left : 18vw;
+    background-color: yellow;
+    
+    
+  }
+  
+  table,tr,td{
+    border : 2px black solid;
+    text-align: center;
+    padding: 10px;
+  }
   
   /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
   @media screen and (max-width: 600px) {
@@ -93,3 +106,15 @@
         overflow: hidden;
     }
   }
+
+  @media screen and (max-width: 768px){
+    .event_table{
+      padding-left: 10vw;
+    }
+
+    table,tr,td{
+      padding : 5px;
+    }
+  }
+
+ 

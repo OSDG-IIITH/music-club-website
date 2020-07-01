@@ -1,19 +1,13 @@
 const initialState = {
-    registeredUsers : [
-        {id : null ,name : '' , email : '' , password : '' , number : null }
-    ]
+    access_token : null
 }
 
 const rootReducer = (state=initialState , action) =>{
-    if(action.type === 'ADD_USER'){
-        action.user.id = state.registeredUsers.length;
-        let newArr = [...state.registeredUsers];
-        newArr.push(action.user);
-        
-
+    if(action.type === 'ADD_TOKEN'){
+        console.log('yes will add token now')        
         return{
             ...state,
-            registeredUsers : newArr
+            access_token : action.access_token
         }
         
     }

@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Query, Body, Path, Header, Depends, HTTPException, status , File , UploadFile , Form
+from fastapi import APIRouter, Query, Body, Path, Header, Depends, HTTPException, status , File , UploadFile , Form , Response
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import HTMLResponse
 from typing import List, Dict
@@ -28,7 +28,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/admin/token")
 
 SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 15
+ACCESS_TOKEN_EXPIRE_MINUTES = 100
 def get_db():
     db = SessionLocal()
     try:
@@ -123,8 +123,14 @@ async def make_new_user(* , db : Session = Depends(get_db) , new_user : schemas.
 
 
 @router.post('/addEvent')
-async def add_event(newEvent : schemas.EventCreate = Body(...) , db : Session = Depends(get_db) , token : str = Body(...)):
-    payload = jwt.decode(token , SECRET_KEY , algorithms=[ALGORITHM])
+async def add_event(*,newEvent : schemas.EventCreate = Body(...) , db : Session = Depends(get_db) , token : str = Body(...) , res : Response):
+    
+    try:
+        payload = jwt.decode(token , SECRET_KEY , algorithms=[ALGORITHM])
+    except:
+        return "TOKEN EXPIRED"
+        
+    
     username : str = payload.get('sub')
     if username is None:
         raise credentials_exception
@@ -136,11 +142,24 @@ async def add_event(newEvent : schemas.EventCreate = Body(...) , db : Session = 
         return "event added successfully"
 
 @router.post('/delEvent')
-async def delete_event(* , event_id  : int = Body(...) , db: Session = Depends(get_db)):
-    event_to_delete = db.query(models.Event).get(event_id)
-    db.delete(event_to_delete)
-    db.commit()
-    return "event deleted"
+async def delete_event(* , event_id  : int = Body(...) , db: Session = Depends(get_db) , token : str = Body(...)):
+
+    try:
+        payload = jwt.decode(token , SECRET_KEY , algorithms=[ALGORITHM])
+    except:
+        return "TOKEN EXPIRED"
+    
+    username : str = payload.get('sub')
+    expiry_time = payload.get('exp')
+    expiry_time = datetime.fromtimestamp(expiry_time)
+    print((expiry_time - datetime.now()).seconds)
+    if username is None:
+        raise credentials_exception
+    else: 
+        event_to_delete = db.query(models.Event).get(event_id)
+        db.delete(event_to_delete)
+        db.commit()
+        return "event deleted"
 
 
 @router.post('/addLineup')
@@ -190,4 +209,7 @@ async def add_photo(photo_id  : int = Body(...) , db: Session = Depends(get_db))
     db.delete(image_to_delete)
     db.commit()
     return "photo has been deleted to db!"
+
+
+
 

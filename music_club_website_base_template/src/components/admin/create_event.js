@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import {Link,Redirect} from 'react-router-dom'
  import './admin.css'
+import { connect } from 'react-redux'
+import axios from 'axios'
 
-export default class CreateEvent extends Component {
+class CreateEvent extends Component {
     
     state = {
             name:'',
@@ -15,16 +17,62 @@ export default class CreateEvent extends Component {
             gallery_link:'',
             ping_link:'',
             loggedIn : true,
-            access_token : null
+            access_token : localStorage.getItem('access_token')
+            
         }
 
     onChange = (e) =>{
         this.setState({
             [e.target.name]:e.target.value
         })
+        console.log(this.state)
+    }
+
+    handleSubmit = async (e) =>{
+        e.preventDefault()
+        const success_message  = await axios.post('/admin/addEvent' , {
+            newEvent : {
+                name : this.state.name,
+                description : this.state.description,
+                state : this.state.state,
+                poster : this.state.poster,
+                date : this.state.date,
+                time : this.state.time,
+                venue : this.state.venue,
+                gallery_link : this.state.gallery_link,
+                ping_link : this.state.ping_link
+            },
+            token : this.state.access_token
+        })
+        
+        console.log(success_message.data)
+        if(success_message.data === "TOKEN EXPIRED"){
+            console.log('token expired login again')
+           this.setState({loggedIn : false})
+        }
+        else{
+            this.setState({
+                name:'',
+                description:'',
+                date:'',
+                time:'',
+                venue:'',
+                state:'',
+                poster:'',
+                gallery_link:'',
+                ping_link:'',
+                
+            })
+        }
     }
   
     render() {
+        console.log('create event got access token in props as ' , this.state.access_token)
+        if(!this.state.access_token){
+            this.setState({loggedIn : false})
+        }
+
+
         if(this.state.loggedIn === false)
         {
             return <Redirect to="/login" />
@@ -35,7 +83,7 @@ export default class CreateEvent extends Component {
                     <div class="container">
                     <h6 id="mes">*Fill the following form to create an event by following instruction (if any)</h6>
 
-                        <form >
+                        <form onSubmit = {this.handleSubmit}>
 
                             <div class="row">
                                 <div class="col-25">
@@ -137,3 +185,8 @@ export default class CreateEvent extends Component {
         )
     }
 }
+
+
+
+
+export default CreateEvent

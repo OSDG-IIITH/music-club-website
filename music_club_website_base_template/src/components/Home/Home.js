@@ -9,8 +9,8 @@ import 'bootstrap/dist/js/bootstrap';
 import AwesomeSlider from 'react-awesome-slider'
 import styles from 'react-awesome-slider/dist/styles.css'
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
-import {connect} from 'react-redux';
-import {addUser} from '../../actions/userActions' 
+
+
 
 
 // import "bootstrap-css-only/css/bootstrap.min.css";
@@ -568,18 +568,8 @@ class Home extends Component {
 
 }
 
-const mapStateToProps = (state) =>{
-  return{
-    registeredUsers : state.registeredUsers
-  }
-}
 
-const mapDispatchToProps = (dispatch) =>{
-  return{
-    addReg : (obj) =>{dispatch(addUser(obj))}
-  }
-}
 
 // test comment
 
-export default connect(mapStateToProps,mapDispatchToProps)(Home);
+export default Home;
