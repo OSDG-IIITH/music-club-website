@@ -29,7 +29,7 @@ import {Link,Redirect} from 'react-router-dom'
             return (
                 <div class="ok">
                         <div class="container">
-                        <h6 id="mes">*Enter id of respective event which you want to delete</h6>
+                        <h6 id="mes">*Enter id of respective photo which you want to delete</h6>
                             <form action="admin/confirm_delete" >
 
                                 <div class="row">
