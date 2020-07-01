@@ -17,7 +17,7 @@ import {Link,Redirect} from 'react-router-dom'
         })
     }
     onSubmit = (e) =>{
-        //  return value of router delete_photo
+        //  return value of router delete_photo if image is present then redirected to admin/delete_photo/confirm_delete else 
         
     }
     render() {
