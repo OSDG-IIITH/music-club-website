@@ -10,6 +10,7 @@ import {Link,Redirect} from 'react-router-dom'
             access_token : null
         }
 
+//    on confirm use router confirm delete
     render() {
         if(this.state.loggedIn === false)
         {
@@ -31,14 +32,16 @@ import {Link,Redirect} from 'react-router-dom'
                                                 <label id="label2" for="name">Event Name:</label>
                                             </div>
                                             <div class="col-75">
-                                                <label id="label3" name="name" > (event name from db)</label>                                            </div>
+                                                <label id="label3" name="name" >Not Found ( or event name from db)</label>                                            
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-25">
                                                 <label id="label2" for="name">Image Label:</label>
                                             </div>
                                             <div class="col-75">
-                                                <label id="label3" name="name" > (label from db)</label>                                            </div>
+                                                <label id="label3" name="name" >Not Found (or label from db)</label>                                            
+                                            </div>
                                         </div>
                                    </div>
                                 </div>                            
