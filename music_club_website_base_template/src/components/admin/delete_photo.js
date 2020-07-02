@@ -95,7 +95,7 @@ class DeletePhoto extends Component {
             return (
                 <div class="ok">
                         <div class="container">
-                        <h6 id="mes">Choose the photo(s) you want to delete</h6>
+                        <h6 id="mes">Choose the photo(s) you want to delete(search by event name)</h6>
 
                         <form>
                         <i class="fa fa-search admin_search_icon"></i>
