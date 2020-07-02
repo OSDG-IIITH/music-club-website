@@ -197,13 +197,13 @@ async def set_new_state(* , updated_event : schemas.UpdatedEvent = Body(...) , d
         return "state updated!"
 
 @router.post('/addPhoto')
-async def add_photo(*, img_files : List[UploadFile] = File(...) , db : Session = Depends(get_db) , eventId : int = Body(...)):
+async def add_photo(*, img_files : List[UploadFile] = File(...) , db : Session = Depends(get_db) , eventId : int = Body(...) , photoLabel : str = Body(...)):
     for f in img_files:
         data = await f.read()
         b64data = base64.b64encode(data)
         newImage = {
             'event_id' : eventId,
-            'label' : "test",
+            'label' : photoLabel,
             'image' : b64data
         }
         
@@ -224,6 +224,9 @@ async def delete_photo(*,photo_id  : int = Body(...) , db: Session = Depends(get
         return "TOKEN EXPIRED"
         
     username : str = payload.get('sub')
+    expiry_time = payload.get('exp')
+    expiry_time = datetime.fromtimestamp(expiry_time)
+    print((expiry_time - datetime.now()).seconds)
     if username is None:
         raise credentials_exception
     else:

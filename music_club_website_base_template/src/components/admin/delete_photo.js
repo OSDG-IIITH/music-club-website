@@ -22,6 +22,7 @@ class DeletePhoto extends Component {
         const allPhotos = await axios.get('/landingPage/photos')
         console.log(allPhotos.data)
         this.setState({freshPhotos : allPhotos.data})
+        
     }
 
     
@@ -30,18 +31,35 @@ class DeletePhoto extends Component {
         this.getFreshPhotos()
     }
     state = {
+            showAll : true,
             photo_id:'',
             loggedIn : true,
             access_token : localStorage.getItem('access_token'),
-            freshPhotos : []
+            freshPhotos : [],
+            searchVal : '',
+            searchedImages : []
         }
 
-    onChange = (e) =>{
-        this.setState({
-            [e.target.name]:e.target.value
+    onSearch = (e) =>{
+
+        let str  = e.target.value
+        var re = new RegExp(`^${str}` , 'i')
+        var filteredPhotos = this.state.freshPhotos.filter(fp =>{
+            if(fp.label.search(re) === -1){
+                return false
+            }
+            else{
+                return true
+            }
         })
+        this.setState({
+            [e.target.name] : e.target.value,
+            showAll : false,
+            searchedImages : filteredPhotos
+        })
+        console.log(this.state.searchVal)
     }
-    deleteThisPhoto = async (id) =>{
+    deleteThisPhoto = async (id , str) =>{
        const successMessage = await axios.post('/admin/delPhoto' , {
            photo_id : Number(id),
            token : this.state.access_token
@@ -53,10 +71,17 @@ class DeletePhoto extends Component {
            this.setState({loggedIn : false})
         }
         else{
-            this.setState({photo_id : ''})
+            this.setState({showAll : true})
             this.getFreshPhotos()
+            var re = new RegExp(`^${str}` , 'i')
+            
         }
         
+    }
+
+    handleReset = (e) =>{
+        e.preventDefault()
+        this.setState({showAll : true})
     }
     render() {
 
@@ -71,11 +96,17 @@ class DeletePhoto extends Component {
                 <div class="ok">
                         <div class="container">
                         <h6 id="mes">Choose the photo(s) you want to delete</h6>
+
+                        <form>
+                        <i class="fa fa-search admin_search_icon"></i>
+                            <input name="searchVal" className="admin_search_field" type="text" onChange={this.onSearch}/>
+                            <button className="my-4" style={{'marginLeft' : '6vw','backgroundColor' : 'green'}} onClick={this.handleReset}>Show All</button>
+                        </form>
                             
-                            <div className="row">
+                            <div className="row admin_image_row">
                             
                                 
-                                    {this.state.freshPhotos.map(fp =>{
+                                    {this.state.freshPhotos.length ? (this.state.showAll ? this.state.freshPhotos.map(fp =>{
 
                                         const byteChars = atob(fp.image)
                                         //console.log(`bytechars of ${fp.id} are ` + byteChars.substr(0,20))
@@ -89,13 +120,36 @@ class DeletePhoto extends Component {
                                         return (
                                             <React.Fragment key={fp.id}>
                                             <div className="col-sm-12 col-md-4 col-lg-4 col-12 admin_image_div">
-                                            <img className="admin_image" src = {photoUrl}/>
+                                            <img title={fp.label} className="admin_image" src = {photoUrl}/>
                                             <button onClick = {() =>this.deleteThisPhoto(fp.id)} className="admin_photo_delete_button">Delete</button>
                                             </div>
                                             
                                             </React.Fragment>
                                         )
-                                    })}
+                                    }) : (this.state.searchedImages.length ? this.state.searchedImages.map(sp =>{
+                                        const byteChars = atob(sp.image)
+                                        //console.log(`bytechars of ${fp.id} are ` + byteChars.substr(0,20))
+                                        const byteNumbers = new Array(byteChars.length)
+                                        for(let i = 0;i<byteChars.length;i++){
+                                            byteNumbers[i] = byteChars.charCodeAt(i)
+                                        }
+                                        const byteArray = new Uint8Array(byteNumbers)
+                                        const blob = new Blob([byteArray])
+                                        let photoUrl = getBlobUrl(blob)
+                                        return (
+                                            <React.Fragment key={sp.id}>
+                                            <div className="col-sm-12 col-md-4 col-lg-4 col-12 admin_image_div">
+                                            <img title={sp.label} className="admin_image" src = {photoUrl}/>
+                                            <button onClick = {() =>this.deleteThisPhoto(sp.id , this.state.searchVal)} className="admin_photo_delete_button">Delete</button>
+                                            </div>
+                                            
+                                            </React.Fragment>
+                                        )
+                                    }) :  (<div className="noDiv"><h1 className="text-white noMsg">Searched event doesnt exist</h1></div>) )) : (
+                                        <div className="noDiv">
+                                        <h1 className="text-white noMsg">No Photos in DB !</h1>
+                                        </div>
+                                    )}
                                    
                             </div>
                         </div>
