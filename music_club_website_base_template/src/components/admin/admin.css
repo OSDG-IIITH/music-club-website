@@ -10,9 +10,28 @@
     resize: vertical;
   }
 
+  .admin_image_div{
+    background-color: var(--aboutBackground);
+    background-image: url('/images/Gallery/breadcrumb.png');
+    background-attachment: fixed;
+    padding-left: 3vw;
+    padding-bottom: 5vw;
+    
+  }
+  
   .admin_image{
-    width: 100px;
-    height: 100px;
+    width: 310px;
+    height: 310px;
+    border : 4px ridge red;
+  }
+
+  .admin_photo_delete_button{
+    background-color: red;
+    color : white;
+    width:90px;
+    height : 40px;
+    margin-left: 5vw;
+    margin-top: 1vw;
   }
 
   #mes{
@@ -138,6 +157,13 @@
 
     table,tr,td{
       padding : 5px;
+    }
+  }
+
+  @media screen and (max-width: 993px){
+    .admin_image{
+      width: 200px;
+      height: 200px;
     }
   }
 
