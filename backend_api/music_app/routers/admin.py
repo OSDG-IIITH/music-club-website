@@ -204,7 +204,13 @@ async def add_photo(*, img_files : List[UploadFile] = File(...) , db : Session =
     return "photo saved in db"
 
 @router.post('/delPhoto')
-async def add_photo(photo_id  : int = Body(...) , db: Session = Depends(get_db)):
+async def delete_photo(photo_id  : int = Body(...) , db: Session = Depends(get_db)):
+    image_to_delete = db.query(models.Photos).get(photo_id)
+    if image_to_delete :
+        return image_to_delete
+
+@router.post('/confirm')
+async def confirm_delete(photo_id  : int = Body(...) , db: Session = Depends(get_db)):
     image_to_delete = db.query(models.Photos).get(photo_id)
     db.delete(image_to_delete)
     db.commit()
