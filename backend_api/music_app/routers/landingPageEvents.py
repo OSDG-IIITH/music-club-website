@@ -46,7 +46,16 @@ async def get_event(db: Session = Depends(get_db)):
 
     return data
 
+@router.get('/photos' , response_model = List[schemas.Photo])
+async def get_photos(db : Session = Depends(get_db)):
+    data = []
+    photos = db.query(models.Photos).all()
+    if photos!= None:
+        for p in photos:
+            data.append(p.__dict__)
 
+    return data
+    
 
 
 @router.get('/lineupEvent' , response_model=List[schemas.Lineup])

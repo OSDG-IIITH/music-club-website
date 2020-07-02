@@ -46,12 +46,14 @@ class Login extends Component {
         const {username,password} = this.state
         var token = await this.getToken(username,password)
         this.setState({access_token : token})
-        console.log('token  from backend is' , this.state.access_token.access_token)
-        localStorage.setItem('access_token' , this.state.access_token.access_token)
-        console.log("token set in local storage")
+        console.log('token  from backend is' ,this.state.access_token ?  this.state.access_token.access_token : null)
+        
+        
         
         if(this.state.access_token){
             
+            localStorage.setItem('access_token' , this.state.access_token.access_token)
+            console.log("token set in local storage")
             this.setState({
                 loggedIn: true
             })

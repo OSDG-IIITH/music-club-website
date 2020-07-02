@@ -175,19 +175,31 @@ async def add_lineup(db : Session = Depends(get_db) , new_lineup : List[schemas.
     return "lineup added"
 
 @router.put('/updateState')
-async def set_new_state(new_event_state = Body(...) , db: Session = Depends(get_db)):
-    ev_id = new_event_state['event_id']
-    newState = new_event_state['state']
-    event_to_change = db.query(models.Event).filter(models.Event.id == ev_id )
-    print(event_to_change)
-    event_to_change.update({models.Event.state : newState} , synchronize_session = False)
-    db.commit()
-    return "state updated!"
+async def set_new_state(* , updated_event : schemas.UpdatedEvent = Body(...) , db: Session = Depends(get_db) , token : str = Body(...)):
+
+    try:
+        payload = jwt.decode(token , SECRET_KEY , algorithms=[ALGORITHM])
+    except:
+        return "TOKEN EXPIRED"
+        
+    username : str = payload.get('sub')
+    if username is None:
+        raise credentials_exception
+    else:   
+        ev_id = updated_event.id
+        newState = updated_event.state
+        newGalLink = updated_event.gallery_link
+        newPingLink = updated_event.ping_link
+        event_to_change = db.query(models.Event).filter(models.Event.id == ev_id )
+        print(event_to_change)
+        event_to_change.update({models.Event.state : newState , models.Event.gallery_link : newGalLink , models.Event.ping_link : newPingLink} , synchronize_session = False)
+        db.commit()
+        return "state updated!"
 
 @router.post('/addPhoto')
 async def add_photo(*, img_files : List[UploadFile] = File(...) , db : Session = Depends(get_db) , eventId : int = Body(...)):
     for f in img_files:
-        data = await f.read(10)
+        data = await f.read()
         b64data = base64.b64encode(data)
         newImage = {
             'event_id' : eventId,
@@ -204,10 +216,22 @@ async def add_photo(*, img_files : List[UploadFile] = File(...) , db : Session =
     return "photo saved in db"
 
 @router.post('/delPhoto')
-async def delete_photo(photo_id  : int = Body(...) , db: Session = Depends(get_db)):
-    image_to_delete = db.query(models.Photos).get(photo_id)
-    if image_to_delete :
-        return image_to_delete
+async def delete_photo(*,photo_id  : int = Body(...) , db: Session = Depends(get_db) , token : str = Body(...)):
+
+    try:
+        payload = jwt.decode(token , SECRET_KEY , algorithms=[ALGORITHM])
+    except:
+        return "TOKEN EXPIRED"
+        
+    username : str = payload.get('sub')
+    if username is None:
+        raise credentials_exception
+    else:
+        image_to_delete = db.query(models.Photos).get(photo_id)
+        db.delete(image_to_delete)
+        db.commit()
+        return "image deleted"
+   
 
 @router.post('/confirm')
 async def confirm_delete(photo_id  : int = Body(...) , db: Session = Depends(get_db)):

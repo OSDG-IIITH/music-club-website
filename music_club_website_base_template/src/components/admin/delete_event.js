@@ -37,6 +37,7 @@ export default class DeleteEvent extends Component {
         })
         console.log(success_message.data)
         if(success_message.data === "TOKEN EXPIRED"){
+            localStorage.removeItem('access_token')
             console.log('token expired login again')
            this.setState({loggedIn : false})
         }
@@ -85,9 +86,11 @@ export default class DeleteEvent extends Component {
                                 </tr>
                                     {this.state.freshEvents.map(fe =>{
                                         return (
+                                            <React.Fragment key={fe.id}>
                                             <tr>
                                                 <td>{fe.id}</td><td>{fe.name}</td><td>{JSON.stringify(fe.db_time)}</td><td>{fe.date}</td>
                                             </tr>
+                                            </React.Fragment>
                                         )
                                     })}
                                 

@@ -10,6 +10,11 @@
     resize: vertical;
   }
 
+  .admin_image{
+    width: 100px;
+    height: 100px;
+  }
+
   #mes{
       margin: 50px;
       color: red;
@@ -104,7 +109,7 @@
 
   .event_table{
     padding-left : 18vw;
-    background-color: yellow;
+    
     
     
   }

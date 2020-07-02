@@ -47,6 +47,7 @@ class CreateEvent extends Component {
         
         console.log(success_message.data)
         if(success_message.data === "TOKEN EXPIRED"){
+            localStorage.removeItem('access_token')
             console.log('token expired login again')
            this.setState({loggedIn : false})
         }
