@@ -31,6 +31,12 @@ class EventCreate(BaseModel):
     venue : str = ''
     gallery_link : str = ''
     ping_link : str = ''
+
+class UpdatedEvent(BaseModel):
+    id : int
+    state : str = ''
+    gallery_link : str = ''
+    ping_link : str = ''
     
 
 
@@ -48,6 +54,9 @@ class AddPhoto(BaseModel):
     event_id : int
     label : str = ""
     image : bytes
+
+class Photo(AddPhoto):
+    id : int
     
 class Event(EventCreate):
     id : int

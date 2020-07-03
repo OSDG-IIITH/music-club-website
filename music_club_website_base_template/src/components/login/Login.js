@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {addToken} from '../../actions/tokenActions'
 import './style.css'
 import axios from 'axios'
 // const bcrypt = require('bcryptjs');
 
-export default class Login extends Component {
+class Login extends Component {
 
     
     async getToken(username , password){
@@ -15,7 +17,7 @@ export default class Login extends Component {
             username : username,
             password : password
         } , {headers : headers})
-        console.log(token.data)
+        //console.log(token.data)
         return token.data
         // .then(res =>{
         //     console.log(res.data)
@@ -44,10 +46,14 @@ export default class Login extends Component {
         const {username,password} = this.state
         var token = await this.getToken(username,password)
         this.setState({access_token : token})
-        console.log(this.state.access_token)
+        console.log('token  from backend is' ,this.state.access_token ?  this.state.access_token.access_token : null)
+        
+        
         
         if(this.state.access_token){
             
+            localStorage.setItem('access_token' , this.state.access_token.access_token)
+            console.log("token set in local storage")
             this.setState({
                 loggedIn: true
             })
@@ -83,3 +89,7 @@ export default class Login extends Component {
         );
     }
 }
+
+
+
+export default Login
