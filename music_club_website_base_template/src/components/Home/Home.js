@@ -430,32 +430,32 @@ class Home extends Component {
                           
                             
                             <div className="group">
-                              <input name='player_names' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                              <label>Player Names</label>
+                              <input className="homeInput" name='player_names' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label className="homeLabel">Player Names</label>
                             </div>
                             <div className="group">
-                              <input name='band_name' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                              <label>Band Name</label>
+                              <input className="homeInput" name='band_name' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label className="homeLabel">Band Name</label>
                             </div>
                             <div className="group">
-                              <input name='email' type="email" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                              <label>Email (Preferrably College Id)</label>
+                              <input className="homeInput" name='email' type="email" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label className="homeLabel">Email (Preferrably College Id)</label>
                             </div>
                             <div className="group">
-                              <input name='year' type="number"  required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                              <label>Year</label>
+                              <input className="homeInput" name='year' type="number"  required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label className="homeLabel">Year</label>
                             </div>
                             <div className="group">
-                              <input name='contact_number' type="tel" pattern="[0-9]{10}" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                              <label>Phone Number (10-digit)</label>
+                              <input className="homeInput" name='contact_number' type="tel" pattern="[0-9]{10}" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label className="homeLabel">Phone Number (10-digit)</label>
                             </div>
                             <div className="group">
-                              <textarea name='instrument_names' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
-                              <label>Instruments/Vocalists</label>
+                              <textarea className = "homeTextarea" name='instrument_names' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
+                              <label className="homeLabel">Instruments/Vocalists</label>
                             </div>
                             <div className="group">
-                              <textarea name='song_names' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
-                              <label>Song List</label>
+                              <textarea className="homeTextarea" name='song_names' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
+                              <label className="homeLabel">Song List</label>
                             </div>
                             
                           

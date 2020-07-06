@@ -1,39 +1,64 @@
 import React, { Component } from 'react'
 import {Link,Redirect} from 'react-router-dom'
- import './admin.css'
+import './admin.css'
+import axios from 'axios'
 
 export default class CreateEvent extends Component {
-    constructor(props){
-        super(props)
+    
 
-        const token = localStorage.getItem("token")
-        
-
-        let loggedIn =true
-
-        if(token==null)
-        {
-            loggedIn=false
+    getFreshEvents = async () =>{
+        const all_events = await axios.get('/landingPage/events')
+        all_events.data.sort((a,b) =>{
+            return -(a.db_time - b.db_time)
+          })
+        console.log(all_events.data)
+        var lineupEvent = []
+        for(let i = 0;i<all_events.data.length;i++){
+            if(all_events.data[i].state === 'lineupAnnounced'){
+                lineupEvent.push(all_events.data[i])
+            }
         }
 
-        this.state = {
+        if(lineupEvent.length){
+            this.setState({lineupEvent : lineupEvent[0]})
+        }
+        
+    }
+    async componentDidMount(){
+        this.getFreshEvents()
+        
+                
+        
+    }
+    
+        state = {
+            lineupEvent : null,
             id:'',
             band_name:'',
             slot_given:'',
             slot_number:'',
             song_name:'',
-            loggedIn
+            loggedIn : true,
+            access_token : localStorage.getItem('access_token')
         }
-        this.onChange=this.onChange.bind(this)
-        // this.submitForm=this.submitForm.bind(this)
-    }
-    onChange(e){
-        this.setState({
-            [e.target.name]:e.target.value
-        })
-    }
+       
+        onChange = (e) =>{
+            this.setState({
+                [e.target.name] : e.target.value
+            })
+            console.log(this.state)
+        }
+
+        addLineup = (e) =>{
+            e.preventDefault()
+            const successMessage = axios.post()
+        }
+   
   
     render() {
+        if(!(this.state.access_token)){
+            this.setState({loggedIn : false})
+        }
         if(this.state.loggedIn === false)
         {
             return <Redirect to="/login" />
@@ -41,10 +66,10 @@ export default class CreateEvent extends Component {
         return (
             <div class="ok">
 
-                    <div class="container">
+                    <div class="lineupContainer container">
                     <h6 id="mes">*Fill the following form to add lineup for event by following instruction (if any)</h6>
 
-                        <form >
+                        <form onSubmit = {this.addLineup}>
 
                             <div class="row">
                                 <div class="col-25">
@@ -84,7 +109,7 @@ export default class CreateEvent extends Component {
 
                             <div class="row">
                                 <div class="col-25">
-                                    <label id="label2" for="song_name">Song Name:</label>
+                                    <label id="label2" for="song_name">Song Name(s):</label>
                                 </div>
                                 <div class="col-75">
                                     <input type="text" id="song_name" name="song_name" value={this.state.song_name} onChange={this.onChange}  ></input>
@@ -94,10 +119,12 @@ export default class CreateEvent extends Component {
                            
 
                             <div class="row">
-                                <input type="submit" id="create" value="Create"></input>
+                                <button type="submit" id="create" value="Create">Create</button>
                             </div>
 
                         </form>
+
+                        <h2>{this.state.lineupEvent ? this.state.lineupEvent[0].id : 'No event with open lineup yet'}</h2>
                     </div>
 
             </div>      

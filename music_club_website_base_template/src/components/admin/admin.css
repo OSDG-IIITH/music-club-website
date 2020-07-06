@@ -21,14 +21,16 @@
     color: white;
     font-size: 150%;
     position: relative;
-    left : 300px;
-    top : 55px;
+    left : 310px;
+    top : 5px;
   }
 
   .admin_search_field{
     background-color:transparent;
-    height: 70px;
+    height: 30px;
+    width: 270px;
     position: relative;
+    color: white;
   }
 
   .admin_image_row{
@@ -73,7 +75,7 @@
   #mes{
       font-size: 250%;
       margin: 50px;
-      color: white;
+      color: red;
       text-align: center;
   }
   
@@ -94,21 +96,21 @@
     position: relative;
     height: 12px;
     color: #000;
-    /* padding: 12px; */
+    
   }
     #label3 {
     width: 100%;
     position: relative;
     height: 12px;
     color: blue;
-    /* padding: 12px; */
+    
   }
   #label4 {
     width: 100%;
     position: relative;
     height: 12px;
     color: red;
-    /* padding: 12px; */
+    
   }
    #prep{
       margin-left: 0;
@@ -134,9 +136,41 @@
     background-color: #45a049;
   }
   
-  .container {
+  .createContainer {
     border-radius: 5px;
-    background-color: var(--aboutBackground);
+    background-color: white;
+    padding: 20px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  .deleteContainer {
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  .updateContainer {
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  .addPhotoContainer {
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  .lineupContainer {
+    border-radius: 5px;
+    background-color: white;
     padding: 20px;
     margin-top: 80px;
     margin-bottom: 80px;

@@ -455,11 +455,11 @@ form {
     margin: 45px 0;
   }
 
-  textarea {
+  .homeTextarea {
     resize: none;
   }
 
-  input, textarea {
+  .homeInput, .homeTextarea {
   background: none;
   color: #c6c6c6;
   font-size: 18px;
@@ -470,48 +470,48 @@ form {
   border-radius: 0;
   border-bottom: 1px solid #c6c6c6;
 }
-input:focus,
-textarea:focus {
+.homeInput:focus,
+.homeTextarea:focus {
   outline: none;
 }
 
-input::placeholder{
+.homeInput::placeholder{
   color:transparent;
 }
 
-textarea::placeholder{
+.homeTextarea::placeholder{
   color:transparent;
 }
 
-input:not(:placeholder-shown) ~label{
+.homeInput:not(:placeholder-shown) ~.homeLabel{
   top:-14px;
   font-size: 12px;
   color : rgb(250, 21, 21);
 }
 
-textarea:not(:placeholder-shown) ~label{
+.homeTextarea:not(:placeholder-shown) ~.homeLabel{
   top:-14px;
   font-size: 12px;
   color : rgb(250, 21, 21);
 }
 
-input:focus ~ label, input:valid ~ label,
-textarea:focus ~ label,
-textarea:valid ~ label {
+.homeInput:focus ~ .homeLabel, input:valid ~ .homeLabel,
+.homeTextarea:focus ~ .homeLabel,
+.homeTextarea:valid ~ .homeLabel {
   top: -14px;
   font-size: 12px;
   color: rgb(250, 21, 21);
 }
-input:focus ~ .bar:before,
-textarea:focus ~ .bar:before {
+.homeInput:focus ~ .bar:before,
+.homeTextarea:focus ~ .bar:before {
   width: 320px;
 }
 
-input[type="password"] {
+.homeInput[type="password"] {
     letter-spacing: 0.3em;
   }
 
-  label {
+  .homeLabel {
     color: #c6c6c6;
     font-size: 16px;
     font-weight: normal;

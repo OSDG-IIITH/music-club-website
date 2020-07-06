@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Link,Redirect} from 'react-router-dom'
- import './admin.css'
+import './admin.css'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
@@ -81,11 +81,11 @@ class CreateEvent extends Component {
         return (
             <div class="ok">
 
-                    <div class="container">
+                    <div className="createContainer container">
                     <h6 id="mes">*Fill the following form to create an event by following instruction (if any)</h6>
 
                         <form onSubmit = {this.handleSubmit}>
-
+                            
                             <div class="row">
                                 <div class="col-25">
                                     <label id="label2" for="name">Event Name:</label>
