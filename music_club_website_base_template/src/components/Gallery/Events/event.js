@@ -124,7 +124,7 @@ class Event extends Component {
             time={10} /* time of animation
             size={'96px'} /* size of the rendered images
             background={'white'} /* color of background */}
-          />
+          
         </div>
       </div>
 

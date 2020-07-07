@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {Link,Redirect} from 'react-router-dom'
- import './admin.css'
+import './admin.css'
+import axios from 'axios'
+
 
 export default class AddLineup extends Component {
     constructor(props){
@@ -19,12 +21,15 @@ export default class AddLineup extends Component {
         let eveid = localStorage.getItem("event_id")
         this.state = {
             id:eveid,
+
             band_name:'',
             slot_given:'',
             slot_number:'',
             song_name:'',
-            loggedIn
+            loggedIn : true,
+            access_token : localStorage.getItem('access_token')
         }
+
         this.onChange=this.onChange.bind(this)
         this.onFinish=this.onFinish.bind(this)
     }
@@ -36,8 +41,12 @@ export default class AddLineup extends Component {
     onFinish(e){
         localStorage.removeItem('event_id')
     }
+
   
     render() {
+        if(!(this.state.access_token)){
+            this.setState({loggedIn : false})
+        }
         if(this.state.loggedIn === false)
         {
             return <Redirect to="/login" />
@@ -45,10 +54,11 @@ export default class AddLineup extends Component {
         return (
             <div class="ok">
 
-                    <div class="container">
+                    <div class="lineupContainer container">
                     <h6 id="mes">*Fill the following form to add lineup for event by following instruction (if any)</h6>
 
                         <form >
+
                             <div class="row">
                                 <div class="col-25">
                                     <label id="label2" for="band_name">Band Name:</label>
@@ -78,7 +88,7 @@ export default class AddLineup extends Component {
 
                             <div class="row">
                                 <div class="col-25">
-                                    <label id="label2" for="song_name">Song Name:</label>
+                                    <label id="label2" for="song_name">Song Name(s):</label>
                                 </div>
                                 <div class="col-75">
                                     <input type="text" id="song_name" name="song_name" value={this.state.song_name} onChange={this.onChange}  ></input>
@@ -88,13 +98,17 @@ export default class AddLineup extends Component {
                            
 
                             <div class="row">
+
                                 <input type="submit" id="create" value="Add"></input>
                             </div>
                             <div class="row">
                                 <input type="submit" id="create2" onClick={this.onFinish} value="Finish"></input>
+
                             </div>
 
                         </form>
+
+                        <h2>{this.state.lineupEvent ? this.state.lineupEvent[0].id : 'No event with open lineup yet'}</h2>
                     </div>
 
             </div>      

@@ -197,23 +197,36 @@ async def set_new_state(* , updated_event : schemas.UpdatedEvent = Body(...) , d
         return "state updated!"
 
 @router.post('/addPhoto')
-async def add_photo(*, img_files : List[UploadFile] = File(...) , db : Session = Depends(get_db) , eventId : int = Body(...) , photoLabel : str = Body(...)):
-    for f in img_files:
-        data = await f.read()
-        b64data = base64.b64encode(data)
-        newImage = {
-            'event_id' : eventId,
-            'label' : photoLabel,
-            'image' : b64data
-        }
-        
-        newImageRow = schemas.AddPhoto(**newImage)
-        db_img = models.Photos(**newImageRow.dict())
-        db.add(db_img)
-        db.commit()
-        db.refresh(db_img)
+async def add_photo(*, img_files : List[UploadFile] = File(...) , db : Session = Depends(get_db) , eventId : int = Form(2) , photoLabel : str = Form(...) , token : str = Form(...)):
+    
+    try:
+        payload = jwt.decode(token , SECRET_KEY , algorithms=[ALGORITHM])
+    except:
+        return "TOKEN EXPIRED"
 
-    return "photo saved in db"
+    username : str = payload.get('sub')
+    if username is None:
+        raise credentials_exception
+    else:
+        for f in img_files:
+            data = await f.read()
+            b64data = base64.b64encode(data)
+            newImage = {
+                'event_id' : eventId,
+                'label' : photoLabel,
+                'image' : b64data
+            }
+            
+            newImageRow = schemas.AddPhoto(**newImage)
+            db_img = models.Photos(**newImageRow.dict())
+            db.add(db_img)
+            db.commit()
+            db.refresh(db_img)
+
+        return "photo saved in db"
+        
+    
+    
 
 @router.post('/delPhoto')
 async def delete_photo(*,photo_id  : int = Body(...) , db: Session = Depends(get_db) , token : str = Body(...)):

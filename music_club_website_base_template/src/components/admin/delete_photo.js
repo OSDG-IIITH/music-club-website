@@ -60,22 +60,27 @@ class DeletePhoto extends Component {
         console.log(this.state.searchVal)
     }
     deleteThisPhoto = async (id , str) =>{
-       const successMessage = await axios.post('/admin/delPhoto' , {
-           photo_id : Number(id),
-           token : this.state.access_token
-       })
-       console.log(successMessage.data)
-        if(successMessage.data === "TOKEN EXPIRED"){
-            localStorage.removeItem('access_token')
-            console.log('token expired login again')
-           this.setState({loggedIn : false})
-        }
-        else{
-            this.setState({showAll : true})
-            this.getFreshPhotos()
-            var re = new RegExp(`^${str}` , 'i')
-            
-        }
+
+       if(window.confirm("Confirm Delete?")){
+           
+        const successMessage = await axios.post('/admin/delPhoto' , {
+            photo_id : Number(id),
+            token : this.state.access_token
+        })
+        console.log(successMessage.data)
+         if(successMessage.data === "TOKEN EXPIRED"){
+             localStorage.removeItem('access_token')
+             console.log('token expired login again')
+            this.setState({loggedIn : false})
+         }
+         else{
+             this.setState({showAll : true})
+             this.getFreshPhotos()
+             var re = new RegExp(`^${str}` , 'i')
+             
+         }
+       } 
+       
         
     }
 

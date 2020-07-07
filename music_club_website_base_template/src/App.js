@@ -24,6 +24,7 @@ import PassChange from './components/admin/change_password';
 import DeletePhoto from './components/admin/delete_photo';
 import Lineup from './components/admin/lineup';
 import AddLineup from './components/admin/add_lineup'
+import AddPhoto from './components/admin/addPhoto';
 import ConfirmDelete from './components/admin/confirm_delete';
 import NotFound from './components/admin/Not_found'
 
@@ -50,6 +51,7 @@ class App extends Component {
               <Route path="/admin/lineup" component={Lineup} exact/> 
               <Route path="/admin/add_lineup" component={AddLineup} exact/> 
               <Route path="/admin/delete_photo" component={DeletePhoto} exact/>
+              <Route path="/admin/add_photo" component={AddPhoto} exact/>
               <Route path="/admin/delete_photo/confirm_delete" component={ConfirmDelete} exact/>
               <Route path="/admin/delete_photo/not_found" component={NotFound} exact/>
             </Switch>
