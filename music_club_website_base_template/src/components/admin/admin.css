@@ -73,7 +73,7 @@
   }
 
   #mes{
-      font-size: 250%;
+      font-size: 20px;
       margin: 50px;
       color: red;
       text-align: center;
@@ -131,9 +131,54 @@
     text-align: center;
     border-radius: 20px;
   }
-  
+  #create1 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    margin-top: 20px;
+    width: 65%;
+    margin-left: 80px;
+    height: 45px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 20px;
+  }
+  #create1 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    margin-top: 20px;
+    width: 65%;
+    margin-left: 80px;
+    height: 45px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 20px;
+  }
+  #create2 {
+    background-color: #ee0000;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    margin-top: 20px;
+    width: 50%;
+    margin-left: 80px;
+    height: 45px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 20px;
+  }
   #create[type=submit]:hover {
     background-color: #45a049;
+  }
+
+  #create1[type=submit]:hover {
+    background-color: #45a049;
+  } 
+  #create2[type=submit]:hover {
+    background-color: #b00000;
   }
   
   .createContainer {
@@ -173,6 +218,7 @@
     background-color: white;
     padding: 20px;
     margin-top: 80px;
+    background:#fff;
     margin-bottom: 80px;
   }
   

@@ -3,37 +3,25 @@ import {Link,Redirect} from 'react-router-dom'
 import './admin.css'
 import axios from 'axios'
 
-export default class CreateEvent extends Component {
-    
 
-    getFreshEvents = async () =>{
-        const all_events = await axios.get('/landingPage/events')
-        all_events.data.sort((a,b) =>{
-            return -(a.db_time - b.db_time)
-          })
-        console.log(all_events.data)
-        var lineupEvent = []
-        for(let i = 0;i<all_events.data.length;i++){
-            if(all_events.data[i].state === 'lineupAnnounced'){
-                lineupEvent.push(all_events.data[i])
-            }
-        }
+export default class AddLineup extends Component {
+    constructor(props){
+        super(props)
 
-        if(lineupEvent.length){
-            this.setState({lineupEvent : lineupEvent[0]})
+        const token = localStorage.getItem("token")
+        
+        
+
+        let loggedIn =true
+
+        if(token==null)
+        {
+            loggedIn=false
         }
-        
-    }
-    async componentDidMount(){
-        this.getFreshEvents()
-        
-                
-        
-    }
-    
-        state = {
-            lineupEvent : null,
-            id:'',
+        let eveid = localStorage.getItem("event_id")
+        this.state = {
+            id:eveid,
+
             band_name:'',
             slot_given:'',
             slot_number:'',
@@ -41,19 +29,19 @@ export default class CreateEvent extends Component {
             loggedIn : true,
             access_token : localStorage.getItem('access_token')
         }
-       
-        onChange = (e) =>{
-            this.setState({
-                [e.target.name] : e.target.value
-            })
-            console.log(this.state)
-        }
 
-        addLineup = (e) =>{
-            e.preventDefault()
-            const successMessage = axios.post()
-        }
-   
+        this.onChange=this.onChange.bind(this)
+        this.onFinish=this.onFinish.bind(this)
+    }
+    onChange(e){
+        this.setState({
+            [e.target.name]:e.target.value
+        })
+    }
+    onFinish(e){
+        localStorage.removeItem('event_id')
+    }
+
   
     render() {
         if(!(this.state.access_token)){
@@ -69,16 +57,7 @@ export default class CreateEvent extends Component {
                     <div class="lineupContainer container">
                     <h6 id="mes">*Fill the following form to add lineup for event by following instruction (if any)</h6>
 
-                        <form onSubmit = {this.addLineup}>
-
-                            <div class="row">
-                                <div class="col-25">
-                                    <label id="label2" for="id">Event Id:</label>
-                                </div>
-                                <div class="col-75">
-                                    <input type="text" id="id" name="id" value={this.state.id} onChange={this.onChange}  ></input>
-                                </div>
-                            </div>
+                        <form >
 
                             <div class="row">
                                 <div class="col-25">
@@ -119,7 +98,12 @@ export default class CreateEvent extends Component {
                            
 
                             <div class="row">
-                                <button type="submit" id="create" value="Create">Create</button>
+
+                                <input type="submit" id="create" value="Add"></input>
+                            </div>
+                            <div class="row">
+                                <input type="submit" id="create2" onClick={this.onFinish} value="Finish"></input>
+
                             </div>
 
                         </form>
