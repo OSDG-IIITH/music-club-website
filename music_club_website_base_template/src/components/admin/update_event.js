@@ -69,7 +69,7 @@ export default class UpdateEvent extends Component {
         return (
             <div class="ok">
 
-                    <div class="container">
+                    <div class="container updateContainer">
                     <h6 id="mes">*Fill the following form to change event details </h6>
 
                         <form onSubmit = {this.updateEvent}>

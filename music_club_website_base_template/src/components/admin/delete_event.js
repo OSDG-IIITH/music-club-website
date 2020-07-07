@@ -60,7 +60,7 @@ export default class DeleteEvent extends Component {
         }
         return (
             <div class="ok">
-                    <div class="container">
+                    <div class="deleteContainer container">
                     <h6 id="mes">*Enter id of respective event which you want to delete</h6>
                         <form onSubmit={this.handleSubmit}>
 

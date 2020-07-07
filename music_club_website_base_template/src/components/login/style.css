@@ -58,24 +58,24 @@ body{
 }
 
 #loglabel1 {
-    margin-top: 118px;
+    margin-top: 0px;
     margin-left: 10px;
     text-align: center;
     width: 90%;
     font-size: medium;
     letter-spacing: 1.5px;
-    padding: 8px ;
+    padding: 0px ;
     color: black;
     font-weight: bold;
 }
 #loglabel2 {
     margin-left: 10px;
-    margin-top: 230px;
+    margin-top: 0px;
     text-align: center;
     letter-spacing: 1.5px;
     font-size: medium;
     width: 90%;
-    padding: 8px ;
+    padding: 0px ;
     color: black;
     font-weight: bold;
 }
@@ -91,7 +91,7 @@ body{
     font-weight: bold;
     padding: 8px;
     background: transparent;
-    margin-top: 68px;
+    margin-top: 8px;
     letter-spacing: 0.2px;
 }
 
