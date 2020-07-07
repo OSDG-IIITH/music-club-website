@@ -22,7 +22,8 @@ import UpdateEvent from './components/admin/update_event';
 import DeleteEvent from './components/admin/delete_event';
 import PassChange from './components/admin/change_password';
 import DeletePhoto from './components/admin/delete_photo';
-import AddLineup from './components/admin/add_lineup';
+import Lineup from './components/admin/lineup';
+import AddLineup from './components/admin/add_lineup'
 import ConfirmDelete from './components/admin/confirm_delete';
 import NotFound from './components/admin/Not_found'
 
@@ -46,6 +47,7 @@ class App extends Component {
               <Route path="/admin/change_event" component={UpdateEvent} exact/>   
               <Route path="/admin/delete_event" component={DeleteEvent} exact/> 
               <Route path="/admin/change_password" component={PassChange} exact/>
+              <Route path="/admin/lineup" component={Lineup} exact/> 
               <Route path="/admin/add_lineup" component={AddLineup} exact/> 
               <Route path="/admin/delete_photo" component={DeletePhoto} exact/>
               <Route path="/admin/delete_photo/confirm_delete" component={ConfirmDelete} exact/>

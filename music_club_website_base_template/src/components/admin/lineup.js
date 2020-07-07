@@ -21,14 +21,16 @@ export default class Lineup extends Component {
             loggedIn
         }
         this.onChange=this.onChange.bind(this)
-        // this.submitForm=this.submitForm.bind(this)
+        this.onSubmit=this.onSubmit.bind(this)
     }
     onChange(e){
         this.setState({
             [e.target.name]:e.target.value
         })
     }
-  
+    onSubmit(e){
+        localStorage.setItem('event_id', this.state.id)
+    }
     render() {
         if(this.state.loggedIn === false)
         {
@@ -51,7 +53,9 @@ export default class Lineup extends Component {
                                 </div>
                             </div>
                             <div class="row">
-                                <input type="submit" id="create" value="Create Lineup"></input>
+                                <Link to="/admin/add_lineup" >
+                                <input type="submit" id="create1" value="Create Lineup" onClick={this.onSubmit}></input>
+                                </Link>
                             </div>
 
                         </form>

@@ -16,7 +16,7 @@ export default class AddLineup extends Component {
         {
             loggedIn=false
         }
-        let eveid = 
+        let eveid = localStorage.getItem("event_id")
         this.state = {
             id:eveid,
             band_name:'',
@@ -26,12 +26,15 @@ export default class AddLineup extends Component {
             loggedIn
         }
         this.onChange=this.onChange.bind(this)
-        // this.submitForm=this.submitForm.bind(this)
+        this.onFinish=this.onFinish.bind(this)
     }
     onChange(e){
         this.setState({
             [e.target.name]:e.target.value
         })
+    }
+    onFinish(e){
+        localStorage.removeItem('event_id')
     }
   
     render() {
@@ -88,7 +91,7 @@ export default class AddLineup extends Component {
                                 <input type="submit" id="create" value="Add"></input>
                             </div>
                             <div class="row">
-                                <input type="submit" id="create" value="Finish"></input>
+                                <input type="submit" id="create2" onClick={this.onFinish} value="Finish"></input>
                             </div>
 
                         </form>
