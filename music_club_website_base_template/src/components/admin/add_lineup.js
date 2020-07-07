@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import {Link,Redirect} from 'react-router-dom'
  import './admin.css'
 
-export default class CreateEvent extends Component {
+export default class AddLineup extends Component {
     constructor(props){
         super(props)
 
         const token = localStorage.getItem("token")
+        
         
 
         let loggedIn =true
@@ -15,9 +16,9 @@ export default class CreateEvent extends Component {
         {
             loggedIn=false
         }
-
+        let eveid = 
         this.state = {
-            id:'',
+            id:eveid,
             band_name:'',
             slot_given:'',
             slot_number:'',
@@ -45,16 +46,6 @@ export default class CreateEvent extends Component {
                     <h6 id="mes">*Fill the following form to add lineup for event by following instruction (if any)</h6>
 
                         <form >
-
-                            <div class="row">
-                                <div class="col-25">
-                                    <label id="label2" for="id">Event Id:</label>
-                                </div>
-                                <div class="col-75">
-                                    <input type="text" id="id" name="id" value={this.state.id} onChange={this.onChange}  ></input>
-                                </div>
-                            </div>
-
                             <div class="row">
                                 <div class="col-25">
                                     <label id="label2" for="band_name">Band Name:</label>
@@ -94,7 +85,10 @@ export default class CreateEvent extends Component {
                            
 
                             <div class="row">
-                                <input type="submit" id="create" value="Create"></input>
+                                <input type="submit" id="create" value="Add"></input>
+                            </div>
+                            <div class="row">
+                                <input type="submit" id="create" value="Finish"></input>
                             </div>
 
                         </form>
