@@ -9,6 +9,7 @@ import 'bootstrap/dist/js/bootstrap';
 import AwesomeSlider from 'react-awesome-slider'
 import styles from 'react-awesome-slider/dist/styles.css'
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
+import StockImage from '../Home/Stock_Concert.jpg'
 
 
 
@@ -126,6 +127,9 @@ class Home extends Component {
     var elemntsToShow = [];
     elemntsToShow.push(this.aboutImg.current);
     elemntsToShow.push(this.aboutDesc.current);
+    elemntsToShow.push(this.coordinator1.current);
+    elemntsToShow.push(this.coordImage1.current);
+    elemntsToShow.push(this.coordText1.current);
 
     function loop(){
       elemntsToShow.forEach(function(el){
@@ -279,6 +283,9 @@ class Home extends Component {
   regForm = React.createRef();
   tickMark = React.createRef();
   modalBod = React.createRef();
+  coordinator1 = React.createRef();
+  coordImage1  = React.createRef();
+  coordText1 = React.createRef();
 
   handleChange = (e)=>{
     var {name , value} = e.target;
@@ -551,15 +558,37 @@ class Home extends Component {
               Morbi eu leo diam. Fusce enim arta libero viverra, non auctor odio ultrices.
               sdavvavsaavavbadsfdggfadffhggefgffgegdgfhgrgsfdgfbv
               grwrdgfsefdgfgrgfhfgrwdgfnfgrwdgfnfgrw Nulla cursus eget elit vitae tincidunt. Nam a nibh ut nunc lobortis egestas quis sed lacus. Curabitur viverra lectus enim, ac malesuada lorem laoreet venenatis. Sed dui tellus, aliquam laoreet interdum et, gravida eu dui. Sed rhoncus auctor mi eget placerat. Integer nec lacus et mi luctus interdum quis at nisl. Cras a leo vitae arcu iaculis facilisis. Nam et dignissim neque. Nam varius varius accumsan. Vestibulum rutrum fringilla fermentum.</span> </div>
-            <div ref={this.aboutImg}  className='col-sm-4 view overlay card card-img-top' id='image'>
+            <div ref={this.aboutImg}  className='aboutImage col-sm-4 view overlay card card-img-top' id='aboutGenImage'>
+            </div>
+            
+          </div>
+            
+          <hr style={{'backgroundColor' : 'white' , 'width' : '100%' , 'height' : '3px'}}/>
+          <h2 className='aboutHeadDiv py-5 px-4'>
+              The Team
+            </h2>
+          <div className="row">
+            
+            <div className="col-sm-8">
+            <h1 ref={this.coordinator1} className='coordinatorHeadDiv py-5 px-4'>
+              Name1 : Coordinator
+            </h1>
+
+            <div ref = {this.coordText1} className='coordinatorTextDiv card-blockquote' >
+              <span  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit pellentesque bibendum. Donec eu ornare ex. Etiam pharetra dui elementum euismod mattis. Ut sollicitudin congue odio, sed tempor justo hendrerit vel. Vivamus fringilla dui a quam tincidunt finibus. Nullam sapien enim, ornare non condimentum in, pellentesque ac dolor. Donec vitae nibh eu magna accumsan maximus in sed magna. Ut accumsan gravida lectus. Maecenas eleifend nunc nisl, nec interdum augue fermentum a. Cras non ante quis turpis rhoncus eleifend. Aliquam ut facilisis diam. Nam egestas vehicula sem a pellentesque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum tempus bibendum justo a fermentum. Praesent a mollis velit. Pellentesque euismod dui id leo finibus ullamcorper.
+              Morbi eu leo diam. Fusce enim arta libero viverra, non auctor odio ultrices.
+              sdavvavsaavavbadsfdggfadffhggefgffgegdgfhgrgsfdgfbv
+              grwrdgfsefdgfgrgfhfgrwdgfnfgrwdgfnfgrw Nulla cursus eget elit vitae tincidunt. Nam a nibh ut nunc lobortis egestas quis sed lacus. Curabitur viverra lectus enim, ac malesuada lorem laoreet venenatis. Sed dui tellus, aliquam laoreet interdum et, gravida eu dui. Sed rhoncus auctor mi eget placerat. Integer nec lacus et mi luctus interdum quis at nisl. Cras a leo vitae arcu iaculis facilisis. Nam et dignissim neque. Nam varius varius accumsan. Vestibulum rutrum fringilla fermentum.
+              </span> </div>
+              </div>
+              <div ref={this.coordImage1} className='coordinatorImageDiv col-sm-4 view overlay card card-img-top'>
+              <img src={StockImage} className="coordinatorImage"/>
+            </div>
+
+            
             </div>
           </div>
-          </div>
-          {/* <div className='jumbotron landingPageFooter'>
-            <div className='text-center footer'> */}
-              
-            {/* </div>
-          </div> */}
+          
       </React.Fragment>
     )
   }
