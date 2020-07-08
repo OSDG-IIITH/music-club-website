@@ -5,23 +5,9 @@ import axios from 'axios'
 
 
 export default class AddLineup extends Component {
-    constructor(props){
-        super(props)
 
-        const token = localStorage.getItem("token")
-        
-        
-
-        let loggedIn =true
-
-        if(token==null)
-        {
-            loggedIn=false
-        }
-        let eveid = localStorage.getItem("event_id")
-        this.state = {
-            id:eveid,
-
+        state = {
+            id:localStorage.getItem("event_id"),
             band_name:'',
             slot_given:'',
             slot_number:'',
@@ -29,20 +15,15 @@ export default class AddLineup extends Component {
             loggedIn : true,
             access_token : localStorage.getItem('access_token')
         }
-
-        this.onChange=this.onChange.bind(this)
-        this.onFinish=this.onFinish.bind(this)
-    }
-    onChange(e){
+    
+    onChange=(e)=>{
         this.setState({
             [e.target.name]:e.target.value
         })
     }
-    onFinish(e){
+    onFinish=(e)=>{
         localStorage.removeItem('event_id')
     }
-
-  
     render() {
         if(!(this.state.access_token)){
             this.setState({loggedIn : false})
@@ -54,7 +35,7 @@ export default class AddLineup extends Component {
         return (
             <div class="ok">
 
-                    <div class="lineupContainer container">
+                    <div class="lineupContainer">
                     <h6 id="mes">*Fill the following form to add lineup for event by following instruction (if any)</h6>
 
                         <form >

@@ -9,7 +9,7 @@ export default class PassChange extends Component {
             password:'',
             confirm_password:'',
             loggedIn : true,
-            access_token : null
+            access_token : localStorage.getItem('access_token')
         }
 
     onChange = (e) =>{
@@ -18,6 +18,9 @@ export default class PassChange extends Component {
         })
     }
     render() {
+        if(!this.state.access_token){
+            this.setState({loggedIn : false})
+        }
         if(this.state.loggedIn === false)
         {
             return <Redirect to="/login" />

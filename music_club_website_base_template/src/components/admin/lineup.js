@@ -3,25 +3,12 @@ import {Link,Redirect} from 'react-router-dom'
  import './admin.css'
 
 export default class Lineup extends Component {
-    constructor(props){
-        super(props)
-
-        const token = localStorage.getItem("token")
+    
+    state = {
+        id:'',
+        loggedIn : true,
+        access_token : localStorage.getItem('access_token')
         
-
-        let loggedIn =true
-
-        if(token==null)
-        {
-            loggedIn=false
-        }
-
-        this.state = {
-            id:'',
-            loggedIn
-        }
-        this.onChange=this.onChange.bind(this)
-        this.onSubmit=this.onSubmit.bind(this)
     }
     onChange(e){
         this.setState({
@@ -32,6 +19,9 @@ export default class Lineup extends Component {
         localStorage.setItem('event_id', this.state.id)
     }
     render() {
+        if(!this.state.access_token){
+            this.setState({loggedIn : false})
+        }
         if(this.state.loggedIn === false)
         {
             return <Redirect to="/login" />
@@ -39,7 +29,7 @@ export default class Lineup extends Component {
         return (
             <div class="ok">
 
-                    <div class="container">
+                    <div class="lineupContainer">
                     <h6 id="mes">*Enter event id to create a line up for the same</h6>
 
                         <form >

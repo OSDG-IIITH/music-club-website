@@ -59,7 +59,7 @@ class Admin extends Component {
                         <h3>Lineup</h3>
                     </div>
                     <div id="content-box-2">
-                        <Link id="add-lineup" to="/admin/add_lineup">Add a lineup</Link><br/>
+                        <Link id="add-lineup" to="/admin/lineup">Add a lineup</Link><br/>
                     </div> 
                 </div>
                 <div></div>
