@@ -163,16 +163,27 @@ async def delete_event(* , event_id  : int = Body(...) , db: Session = Depends(g
 
 
 @router.post('/addLineup')
-async def add_lineup(db : Session = Depends(get_db) , new_lineup : List[schemas.LineupCreate] = Body(...)):
-    lineup_event = db.query(models.Event).order_by(desc(models.Event.db_time)).first()
-    ev_id = lineup_event.id
-    for slot in new_lineup:
-        db_slot = models.Lineup(**slot.dict() , event_id = ev_id)
-        db.add(db_slot)
-    
-    db.commit()
+async def add_lineup(db : Session = Depends(get_db) , new_lineup : List[schemas.LineupCreate] = Body(...) , token : str = Body(...)):
 
-    return "lineup added"
+    try:
+        payload = jwt.decode(token , SECRET_KEY , algorithms=[ALGORITHM])
+    except:
+        return "TOKEN EXPIRED"
+        
+    
+    username : str = payload.get('sub')
+    if username is None:
+        raise credentials_exception
+    else:    
+        lineup_event = db.query(models.Event).order_by(desc(models.Event.db_time)).first()
+        ev_id = lineup_event.id
+        for slot in new_lineup:
+            db_slot = models.Lineup(**slot.dict() , event_id = ev_id)
+            db.add(db_slot)
+        
+        db.commit()
+
+        return "lineup added"
 
 @router.put('/updateState')
 async def set_new_state(* , updated_event : schemas.UpdatedEvent = Body(...) , db: Session = Depends(get_db) , token : str = Body(...)):
@@ -190,9 +201,18 @@ async def set_new_state(* , updated_event : schemas.UpdatedEvent = Body(...) , d
         newState = updated_event.state
         newGalLink = updated_event.gallery_link
         newPingLink = updated_event.ping_link
-        event_to_change = db.query(models.Event).filter(models.Event.id == ev_id )
+        event_to_change = db.query(models.Event).filter(models.Event.id == ev_id)
         print(event_to_change)
-        event_to_change.update({models.Event.state : newState , models.Event.gallery_link : newGalLink , models.Event.ping_link : newPingLink} , synchronize_session = False)
+        if newState != '':
+            event_to_change.update({models.Event.state : newState} , synchronize_session = False)
+
+        if newPingLink != '':
+            event_to_change.update({models.Event.ping_link : newPingLink} , synchronize_session = False)
+
+        if newGalLink != '':
+            event_to_change.update({models.Event.gallery_link : newGalLink} , synchronize_session = False)
+        
+        # event_to_change.update({models.Event.state : newState , models.Event.gallery_link : newGalLink , models.Event.ping_link : newPingLink} , synchronize_session = False)
         db.commit()
         return "state updated!"
 
