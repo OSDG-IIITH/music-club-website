@@ -320,7 +320,6 @@ class Home extends Component {
         this.setState({
           registered:true,
           newRegister : {
-            event_id : 404,
             band_name : '',
             player_names : '',
             instrument_names : '',

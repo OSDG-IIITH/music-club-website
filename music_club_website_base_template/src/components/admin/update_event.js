@@ -15,14 +15,20 @@ export default class UpdateEvent extends Component {
     }
     
     state = {
-            id:'',
-            state:'upcoming',
-            gallery_link:'',
-            ping_link:'',
+            id:null,
+            state:null,
+            gallery_link:null,
+            ping_link:null,
             loggedIn : true,
             access_token : localStorage.getItem('access_token'),
-            freshEvents : []
+            freshEvents : [],
+            stateEnable : false,
+            galEnable : false,
+            pingEnable : false
         }
+
+        galRef = React.createRef()
+        pingRef = React.createRef()
 
     onChange = (e) =>{
         this.setState({
@@ -37,9 +43,9 @@ export default class UpdateEvent extends Component {
 
             updated_event : {
                 id : this.state.id,
-                state : this.state.state,
-                gallery_link : this.state.gallery_link,
-                ping_link : this.state.ping_link
+                state : this.state.state ? this.state.state : '',
+                gallery_link : this.state.gallery_link ? this.state.gallery_link : '',
+                ping_link : this.state.ping_link ? this.state.ping_link : ''
             },
             token : this.state.access_token
             
@@ -51,13 +57,14 @@ export default class UpdateEvent extends Component {
             this.setState({loggedIn : false})
         }
         else{
-            this.setState({id : '' , state : '' , gallery_link : '' , ping_link : ''})
+            this.setState({id : '' , state : null , gallery_link : null , ping_link : null , stateEnable : false , galEnable : false , pingEnable : false})
             this.getFreshEvents()
         } 
     }
   
     render() {
         console.log(this.state.freshEvents)
+        console.log(this.state.state)
 
         if(!(this.state.access_token)){
             this.setState({loggedIn : false})
@@ -88,13 +95,16 @@ export default class UpdateEvent extends Component {
                                     <label id="label2" for="state">Event State:</label>
                                 </div>
                                 <div class="col-75">
-                                    <select id="state" name="state" value={this.state.state}  onChange={this.onChange}>
+                                    <select disabled={!this.state.stateEnable} id="state" name="state"   onChange={this.onChange}>
+                                        <option disabled selected value = ""> -- select a state -- </option>
                                         <option value="upcoming">Upcoming</option>
                                         <option value="completed">Completed</option>
                                         <option value="regOpen">Registration Open</option>
                                         <option value="regClosed">Registration Closed</option>
                                         <option value="lineupAnnounced">Lineup Announced</option>
-                                    </select> 
+                                    </select>
+                                    <button onClick = {(e) => {e.preventDefault();this.setState({stateEnable : true})}}>Change state</button>
+                                    {this.state.stateEnable ? (<button onClick = {(e) => {e.preventDefault();this.setState({stateEnable : false , state:null})}}>Cancel</button>) : ''} 
                                 </div>
                             </div>
 
@@ -103,7 +113,9 @@ export default class UpdateEvent extends Component {
                                     <label id="label2" for="gallery_link">Gallery Link:</label>
                                 </div>
                                 <div class="col-75">
-                                    <input type="text" id="gallery_link" name="gallery_link" value={this.state.gallery_link} onChange={this.onChange}  ></input>
+                                    <input ref={this.galRef} disabled={!this.state.galEnable} type="text" id="gallery_link" name="gallery_link" value={this.state.gallery_link} onChange={this.onChange}  ></input>
+                                    <button onClick = {(e) => {e.preventDefault();this.setState({galEnable : true})}}>Change gallery link</button>
+                                    {this.state.galEnable ? (<button onClick = {(e) => {e.preventDefault();this.setState({galEnable : false , gallery_link:null});this.galRef.current.value = ''}}>Cancel</button>) : ''}
                                 </div>
                             </div>
 
@@ -112,7 +124,9 @@ export default class UpdateEvent extends Component {
                                     <label id="label2" for="ping_link">Ping Link:</label>
                                 </div>
                                 <div class="col-75">
-                                    <input type="text" id="ping_link" name="ping_link" value={this.state.ping_link} onChange={this.onChange}  ></input>
+                                    <input ref={this.pingRef} disabled={!this.state.pingEnable} type="text" id="ping_link" name="ping_link" value={this.state.ping_link} onChange={this.onChange}  ></input>
+                                    <button onClick = {(e) => {e.preventDefault();this.setState({pingEnable : true})}}>Change ping link</button>
+                                    {this.state.pingEnable ? (<button onClick = {(e) => {e.preventDefault();this.setState({pingEnable : false , ping_link:null});this.pingRef.current.value = ''}}>Cancel</button>) : ''}
                                 </div>
                             </div>
 

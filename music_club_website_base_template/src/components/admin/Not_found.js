@@ -6,11 +6,14 @@ import {Link,Redirect} from 'react-router-dom'
     state = {
             photo_id:'',
             loggedIn : true,
-            access_token : null
+            access_token : localStorage.getItem('access_token')
         }
 
     
     render() {
+        if(!this.state.access_token){
+            this.setState({loggedIn : false})
+        }
         if(this.state.loggedIn === false)
         {
             return <Redirect to="/login" />
