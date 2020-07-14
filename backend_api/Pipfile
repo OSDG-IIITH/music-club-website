@@ -19,4 +19,4 @@ onedrivesdk = {file = "https://github.com/OneDrive/onedrive-sdk-python/archive/m
 onedrivesdk-fork = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.8.2"
