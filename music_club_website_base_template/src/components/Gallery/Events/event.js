@@ -19,13 +19,6 @@ const ratingChanged = (newRating) => {
   console.log(newRating)
 }
 
-const images = ['https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350',
-    'https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg',
-    'https://cdn.pixabay.com/photo/2016/10/27/22/53/heart-1776746_960_720.jpg',
-    'https://images.pexels.com/photos/257840/pexels-photo-257840.jpeg?auto=compress&cs=tinysrgb&h=350',
-    "https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&h=350",
-    "https://wallpaperbrowse.com/media/images/3848765-wallpaper-images-download.jpg"]
-
 class Event extends Component {
   render() {
     return (
@@ -35,7 +28,7 @@ class Event extends Component {
             <div className="wrap w-100 d-flex align-items-center event-header">
               <div className="d-flex flex-column align-items-center w-100">
                 <div className="event-title">
-                Event Name
+                Event Name {this.props.match.params.id}
                 </div>
                 <div className="event-path">
                   <div className="event-path-trail"><a href="/">Home</a></div> &gt; <div className="event-path-trail"><a href="/timeline">Timeline</a></div> &gt; <div className="event-title-path">Event Name</div>
@@ -50,7 +43,7 @@ class Event extends Component {
             <div className="row">
               <div className="col-lg-6">
                 <div className="poster">
-                  <img src='./images/Gallery/sample_poster.jpg'></img>
+                  <img src='/images/Gallery/sample_poster.jpg'></img>
                 </div>
               </div>
               <div className="col-lg-6">
@@ -92,13 +85,13 @@ class Event extends Component {
                   <SRLWrapper>
                     <div className="row">
                     <div className="col-sm-12 col-md-12 col-lg-4 col-12">
-                      <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
+                      <img src='/images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
                     <div className="col-sm-12 col-md-12 col-lg-4 col-12">
-                      <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
+                      <img src='/images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
                     <div className="col-sm-12 col-md-12 col-lg-4 col-12">
-                     <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
+                     <img src='/images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
                     </div>
                   </SRLWrapper>
@@ -124,7 +117,7 @@ class Event extends Component {
             time={10} /* time of animation
             size={'96px'} /* size of the rendered images
             background={'white'} /* color of background */}
-          />
+
         </div>
       </div>
 

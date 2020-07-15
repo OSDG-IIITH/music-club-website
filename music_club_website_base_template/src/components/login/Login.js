@@ -1,16 +1,37 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {addToken} from '../../actions/tokenActions'
 import './style.css'
+import axios from 'axios'
 // const bcrypt = require('bcryptjs');
 
-export default class Login extends Component {
+class Login extends Component {
+
+    
+    async getToken(username , password){
+        const headers = {
+            'Content-Type' : 'application/x-www-form-urlencoded'
+        }
+        const token  = await axios.post('/admin/token' , {
+            username : username,
+            password : password
+        } , {headers : headers})
+        //console.log(token.data)
+        return token.data
+        // .then(res =>{
+        //     console.log(res.data)
+        //     this.setState({})
+        // })
+    }
     constructor(props){
         super(props)
         let loggedIn=false
         this.state = {
             username:'',
             password:'',
-            loggedIn
+            loggedIn,
+            access_token : null
         }
         this.onChange=this.onChange.bind(this)
         this.submitForm=this.submitForm.bind(this)
@@ -20,12 +41,19 @@ export default class Login extends Component {
             [e.target.name]:e.target.value
         })
     }
-    submitForm(e){
+    async submitForm(e){
         e.preventDefault()
         const {username,password} = this.state
+        var token = await this.getToken(username,password)
+        this.setState({access_token : token})
+        console.log('token  from backend is' ,this.state.access_token ?  this.state.access_token.access_token : null)
         
-        if(0){
-            localStorage.setItem("token","esrdcfyvubicuvidxcyrxuihbivvivjhcxkcjcgucuc@jgv5(&%jkb")
+        
+        
+        if(this.state.access_token){
+            
+            localStorage.setItem('access_token' , this.state.access_token.access_token)
+            console.log("token set in local storage")
             this.setState({
                 loggedIn: true
             })
@@ -39,7 +67,10 @@ export default class Login extends Component {
     render() {
             if(this.state.loggedIn)
             {
-                return <Redirect to="/admin"/>
+                return <Redirect to={{
+                    pathname : '/admin',
+                    state : {token : this.state.access_token}
+                }}/>
             }
         return (
             <div id="log">
@@ -58,3 +89,7 @@ export default class Login extends Component {
         );
     }
 }
+
+
+
+export default Login

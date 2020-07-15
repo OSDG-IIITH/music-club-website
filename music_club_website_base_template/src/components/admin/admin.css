@@ -1,0 +1,287 @@
+
+#id,#photo_id,#band_name,#slot_given,#slot_number,#song_name,#name,#gallery_link,#ping_link,#state,#poster,#venue,#time,#date,#username1,#password1,#confirm_password1, select {
+    width: 100%;
+    height: 30px;
+    font-size: smaller;
+    padding: 12px;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 4px;
+    resize: vertical;
+  }
+
+  .admin_image_div{
+    
+    padding-left: 3vw;
+    padding-bottom: 5vw;
+    
+  }
+
+  .admin_search_icon{
+    color: white;
+    font-size: 150%;
+    position: relative;
+    left : 310px;
+    top : 5px;
+  }
+
+  .admin_search_field{
+    background-color:transparent;
+    height: 30px;
+    width: 270px;
+    position: relative;
+    color: white;
+  }
+
+  .admin_image_row{
+    background-color: var(--aboutBackground);
+    background-image: url('/images/Gallery/breadcrumb.png');
+    background-attachment: fixed;
+    background-size: cover;
+    
+  }
+
+ 
+
+  .noDiv{
+    background-color: var(--aboutBackground);
+    background-image: url('/images/Gallery/breadcrumb.png');
+    background-size: contain;
+    width : 100%;
+    height: 200px;
+
+  }
+
+  .noMsg{
+    padding-left: 20vw;
+    padding-top: 3vw;
+  }
+
+  .admin_image{
+    width: 310px;
+    height: 310px;
+    border : 4px ridge red;
+  }
+
+  .admin_photo_delete_button{
+    background-color: red;
+    color : white;
+    width:90px;
+    height : 40px;
+    margin-left: 5vw;
+    margin-top: 1vw;
+  }
+
+  #mes{
+      font-size: 20px;
+      margin: 50px;
+      color: red;
+      text-align: center;
+  }
+  
+  #description{
+    width: 100%;
+    padding: 12px;
+    border: #000 solid;
+    color: #000;
+    font-size: smaller;
+    height: 85px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+  #label2 {
+    width: 100%;
+    position: relative;
+    height: 12px;
+    color: #000;
+    
+  }
+    #label3 {
+    width: 100%;
+    position: relative;
+    height: 12px;
+    color: blue;
+    
+  }
+  #label4 {
+    width: 100%;
+    position: relative;
+    height: 12px;
+    color: red;
+    
+  }
+   #prep{
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+      height: 100%;
+   }
+ #create {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    margin-top: 20px;
+    width: 50%;
+    margin-left: 80px;
+    height: 45px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 20px;
+  }
+  #create1 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    margin-top: 20px;
+    width: 65%;
+    margin-left: 80px;
+    height: 45px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 20px;
+  }
+  #create1 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    margin-top: 20px;
+    width: 65%;
+    margin-left: 80px;
+    height: 45px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 20px;
+  }
+  #create2 {
+    background-color: #ee0000;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    margin-top: 20px;
+    width: 50%;
+    margin-left: 80px;
+    height: 45px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 20px;
+  }
+  #create[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  #create1[type=submit]:hover {
+    background-color: #45a049;
+  } 
+  #create2[type=submit]:hover {
+    background-color: #b00000;
+  }
+  
+  .createContainer {
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  .deleteContainer {
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  .updateContainer {
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  .addPhotoContainer {
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  .lineupContainer {
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+    margin-top: 80px;
+    background:#fff;
+    margin-bottom: 80px;
+  }
+  
+  .col-25 {
+    text-align: left;
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .event_table{
+    padding-left : 18vw;
+    
+    
+    
+  }
+  
+  table,tr,td{
+    border : 2px black solid;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .col-25, .col-75{
+      width: 100%;
+      margin-top: 0;
+    }
+    .container{
+        overflow: hidden;
+    }
+  }
+
+  @media screen and (max-width: 768px){
+    .event_table{
+      padding-left: 10vw;
+    }
+
+    table,tr,td{
+      padding : 5px;
+    }
+  }
+
+  @media screen and (max-width: 993px){
+    .admin_image{
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+ 

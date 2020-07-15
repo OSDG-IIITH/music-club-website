@@ -31,22 +31,32 @@ class EventCreate(BaseModel):
     venue : str = ''
     gallery_link : str = ''
     ping_link : str = ''
+
+class UpdatedEvent(BaseModel):
+    id : int
+    state : str = ''
+    gallery_link : str = ''
+    ping_link : str = ''
     
 
 
-class AdminDetail(BaseModel):
+class UserDB(BaseModel):
     username :str = ''
-    password :str = ''
+    hashed_password :str = ''
 
-class AdminPassword(BaseModel):
-    username :str = ''
-    password :str = ''
-    confirmpassword :str = ''
+class User(BaseModel):
+    username : str = ''
+    password : str = ''
+
+
         
 class AddPhoto(BaseModel):
     event_id : int
     label : str = ""
-    link: str = ""
+    image : bytes
+
+class Photo(AddPhoto):
+    id : int
     
 class Event(EventCreate):
     id : int

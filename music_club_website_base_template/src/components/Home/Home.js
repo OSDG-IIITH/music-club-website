@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import axios from 'axios'
+import {NavLink} from 'react-router-dom'
 // import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import 'bootstrap/dist/css/bootstrap.css';
@@ -8,8 +9,9 @@ import 'bootstrap/dist/js/bootstrap';
 import AwesomeSlider from 'react-awesome-slider'
 import styles from 'react-awesome-slider/dist/styles.css'
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
-import {connect} from 'react-redux';
-import {addUser} from '../../actions/userActions' 
+import StockImage from '../Home/Stock_Concert.jpg'
+
+
 
 
 // import "bootstrap-css-only/css/bootstrap.min.css";
@@ -47,30 +49,56 @@ class Home extends Component {
       })
       console.log("after sorting" , event_arr)
       this.setState({events : event_arr})
-      // console.log(this.state.events)
+      console.log(this.state.events)
       // var d = new Date(this.state.events[0].db_time)
       // console.log(d)
-      for(var i=0;i<this.state.events.length;i++){
-        if(this.state.events[i].state !== 'completed'){
-          this.setState({latestEvent : this.state.events[i]})
-          if(this.state.events[i].state === 'regOpen'){
-            this.setState({showRegister : true})
-          }
-          
+      var latest = this.state.events.find(e =>{
+        return e.state !== 'completed'
+      })
+      console.log(latest)
+      var all_pastevents = []
+      if(latest){
+        all_pastevents = this.state.events.filter(e =>{
+          return e.state === 'completed'
+        })
+        this.setState({latestEvent : latest})
+        if(latest.state === 'regOpen'){
+          this.setState({showRegister : true})
         }
-        else{
-          if(!this.state.pastevent1){
-            this.setState({pastevent1 : this.state.events[i]})
-          }
-          else{
-            if(!this.state.pastevent2){
-              this.setState({pastevent2 : this.state.events[i]})
-            }
-            else{
-                this.setState({pastevent3 : this.state.events[i]})
-            }
-          }
+        if(latest.state === 'lineupAnnounced'){
+          this.setState({showLineup : true})
         }
+        all_pastevents.sort((a,b) =>{
+          return -(a.db_time - b.db_time)
+        })
+
+        this.setState({
+          pastevent1 : all_pastevents[0],
+          pastevent2 : all_pastevents[1],
+          pastevent3 : all_pastevents[2]
+        })
+      }
+      else{
+        this.setState({
+          latestEvent : {
+            name : 'WELCOME',
+            description : 'To the music club'
+          }
+        })
+
+        all_pastevents = this.state.events.filter(e =>{
+          return e.state === 'completed'
+        })
+
+        all_pastevents.sort((a,b) =>{
+          return -(a.db_time - b.db_time)
+        })
+
+        this.setState({
+          pastevent1 : all_pastevents[0],
+          pastevent2 : all_pastevents[1],
+          pastevent3 : all_pastevents[2]
+        })
       }
       
       console.log(this.state)
@@ -99,6 +127,9 @@ class Home extends Component {
     var elemntsToShow = [];
     elemntsToShow.push(this.aboutImg.current);
     elemntsToShow.push(this.aboutDesc.current);
+    elemntsToShow.push(this.coordinator1.current);
+    elemntsToShow.push(this.coordImage1.current);
+    elemntsToShow.push(this.coordText1.current);
 
     function loop(){
       elemntsToShow.forEach(function(el){
@@ -154,8 +185,13 @@ class Home extends Component {
       this.eventDesc1.current.style.opacity = '20%';
       this.eventTitle1.current.style.transform = 'translate(0px , -900px)';
       this.eventDesc1.current.style.transform = 'translate(-1100px , 0px)';
-      this.regBtn1.current.style.transform = 'translate(-1100px, 0px)';
-      this.linBtn1.current.style.transform = 'translate(-1100px, 0px)';
+      if(this.regBtn1.current){
+        this.regBtn1.current.style.transform = 'translate(-1100px, 0px)';
+      }
+      if(this.linBtn1.current){
+        this.linBtn1.current.style.transform = 'translate(-1100px, 0px)';
+      }
+      
     }
 
     if (this.eventTitle2.current) {
@@ -163,6 +199,7 @@ class Home extends Component {
       this.eventDesc2.current.style.opacity = '20%';
       this.eventTitle2.current.style.transform = 'translate(0px , -900px)';
       this.eventDesc2.current.style.transform = 'translate(-1100px , 0px)';
+      this.moreBtn1.current.style.transform = 'translate(-1100px,0px)';
     }
 
     if (this.eventTitle3.current) {
@@ -170,6 +207,7 @@ class Home extends Component {
       this.eventDesc3.current.style.opacity = '20%';
       this.eventTitle3.current.style.transform = 'translate(0px , -900px)';
       this.eventDesc3.current.style.transform = 'translate(-1100px , 0px)';
+      this.moreBtn2.current.style.transform = 'translate(-1100px,0px)';
     }
 
     if (this.eventTitle4.current) {
@@ -177,6 +215,7 @@ class Home extends Component {
       this.eventDesc4.current.style.opacity = '20%';
       this.eventTitle4.current.style.transform = 'translate(0px , -900px)';
       this.eventDesc4.current.style.transform = 'translate(-1100px , 0px)';
+      this.moreBtn3.current.style.transform = 'translate(-1100px,0px)';
     }
 
 
@@ -189,8 +228,13 @@ class Home extends Component {
       this.eventDesc1.current.style.opacity = '100%';
       this.eventTitle1.current.style.transform = 'translate(0px , 0px)';
       this.eventDesc1.current.style.transform = 'translate(0px , 0px)';
-      this.regBtn1.current.style.transform = 'translate(0px, 0px)';
-      this.linBtn1.current.style.transform = 'translate(0px, 0px)';
+      if(this.regBtn1.current){
+        this.regBtn1.current.style.transform = 'translate(0px, 0px)';
+      }
+      if(this.linBtn1.current){
+        this.linBtn1.current.style.transform = 'translate(0px, 0px)';
+      }
+      
 
     }
 
@@ -199,6 +243,7 @@ class Home extends Component {
       this.eventDesc2.current.style.opacity = '100%';
       this.eventTitle2.current.style.transform = 'translate(0px , 0px)';
       this.eventDesc2.current.style.transform = 'translate(0px , 0px)';
+      this.moreBtn1.current.style.transform = 'translate(0px,0px)';
     }
 
     if (this.eventTitle3.current) {
@@ -206,6 +251,7 @@ class Home extends Component {
       this.eventDesc3.current.style.opacity = '100%';
       this.eventTitle3.current.style.transform = 'translate(0px , 0px)';
       this.eventDesc3.current.style.transform = 'translate(0px , 0px)';
+      this.moreBtn2.current.style.transform = 'translate(0px,0px)';
 
     }
 
@@ -214,6 +260,7 @@ class Home extends Component {
       this.eventDesc4.current.style.opacity = '100%';
       this.eventTitle4.current.style.transform = 'translate(0px , 0px)';
       this.eventDesc4.current.style.transform = 'translate(0px , 0px)';
+      this.moreBtn3.current.style.transform = 'translate(0px,0px)';
     }
 
   }
@@ -228,11 +275,17 @@ class Home extends Component {
   eventDesc4 = React.createRef();
   regBtn1 = React.createRef();
   linBtn1 = React.createRef();
+  moreBtn1 = React.createRef();
+  moreBtn2 = React.createRef();
+  moreBtn3 = React.createRef();
   aboutImg = React.createRef();
   aboutDesc = React.createRef();
   regForm = React.createRef();
   tickMark = React.createRef();
   modalBod = React.createRef();
+  coordinator1 = React.createRef();
+  coordImage1  = React.createRef();
+  coordText1 = React.createRef();
 
   handleChange = (e)=>{
     var {name , value} = e.target;
@@ -267,7 +320,6 @@ class Home extends Component {
         this.setState({
           registered:true,
           newRegister : {
-            event_id : 404,
             band_name : '',
             player_names : '',
             instrument_names : '',
@@ -325,11 +377,11 @@ class Home extends Component {
             <div className="carouselDiv" id="img1">
               <div className="eventTextDiv" >
                 <h1 className={"eventTitle text-center"} ref={this.eventTitle1}>{this.state.latestEvent ?  this.state.latestEvent.name : ""}</h1>
-                <p className="text-white text-center eventDesc" ref={this.eventDesc1}>{this.state.latestEvent ?  this.state.latestEvent.description : ""}</p>
-                {this.state.showRegister ?  <button type="button" className="btn btn-white btn-animate btn-outline-light regBtn evtbtn"  ref={this.regBtn1} data-toggle="modal" data-target="#regModal" onClick={this.modalReset}>
+                <p className="text-white text-center eventDesc" ref={this.eventDesc1}>{this.state.latestEvent ?  this.state.latestEvent.date + " at " + this.state.latestEvent.time : ""}</p>
+                {this.state.showRegister ?  <button type="button" className="btn btn-white btn-animate  regBtn evtbtn"  ref={this.regBtn1} data-toggle="modal" data-target="#regModal" onClick={this.modalReset}>
                       <span id="regBtnText">Register For Event</span>
                     </button>  : null}
-                    <button type="button" className="btn btn-white btn-animate btn-outline-light linBtn evtbtn" id="lineupBut"  ref={this.linBtn1} data-toggle="modal" data-target="#lineupModal">
+                    <button type="button" className="btn btn-white btn-animate  linBtn evtbtn" id="lineupBut"  ref={this.linBtn1} data-toggle="modal" data-target="#lineupModal">
                       <span id="regBtnText">See Lineup</span>
                     </button>
               </div>
@@ -338,12 +390,18 @@ class Home extends Component {
               <div className="eventTextDiv">
                 <h1 className=" eventTitle text-center" ref={this.eventTitle2}>{this.state.pastevent1 ? this.state.pastevent1.name : ""}</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc2}>{this.state.pastevent1 ? this.state.pastevent1.description : ""}</p>
+                <NavLink to = '/event'><button type="button" className="btn btn-white btn-animate  regBtn evtbtn " id="seeMore1" ref={this.moreBtn1}>
+                      <span id="regBtnText">See More<i class="fa fa-info-circle" style={{'color' : 'white', 'fontSize' : '18px' , 'paddingLeft' : '11px'}}></i></span>
+                    </button></NavLink>
               </div>
             </div>
             <div className="carouselDiv" id="img3">
               <div className="eventTextDiv">
                 <h1 className=" eventTitle text-center" ref={this.eventTitle3}>{this.state.pastevent2 ? this.state.pastevent2.name : ""}</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc3}>{this.state.pastevent2 ? this.state.pastevent2.description : ""}</p>
+                <NavLink to = '/event'><button type="button" className="btn btn-white btn-animate  regBtn evtbtn "  id="seeMore2" ref={this.moreBtn2}>
+                      <span id="regBtnText">See More<i class="fa fa-info-circle" style={{'color' : 'white', 'fontSize' : '18px' , 'paddingLeft' : '11px'}}></i></span>
+                    </button></NavLink>
               </div>
             </div>
 
@@ -351,6 +409,9 @@ class Home extends Component {
               <div className="eventTextDiv">
                 <h1 className=" eventTitle text-center" ref={this.eventTitle4}>{this.state.pastevent3 ? this.state.pastevent3.name : ""}</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc4}>{this.state.pastevent3 ? this.state.pastevent3.description : ""}</p>
+                <NavLink to = '/event'><button type="button" className="btn btn-white btn-animate  regBtn evtbtn "  id="seeMore3" ref={this.moreBtn3}>
+                      <span id="regBtnText">See More<i class="fa fa-info-circle" style={{'color' : 'white', 'fontSize' : '18px' , 'paddingLeft' : '11px'}}></i></span>
+                    </button></NavLink>
               </div>
             </div>
           </AwesomeSlider>
@@ -375,32 +436,32 @@ class Home extends Component {
                           
                             
                             <div className="group">
-                              <input name='player_names' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                              <label>Player Names</label>
+                              <input className="homeInput" name='player_names' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label className="homeLabel">Player Names</label>
                             </div>
                             <div className="group">
-                              <input name='band_name' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                              <label>Band Name</label>
+                              <input className="homeInput" name='band_name' type="text" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label className="homeLabel">Band Name</label>
                             </div>
                             <div className="group">
-                              <input name='email' type="email" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                              <label>Email (Preferrably College Id)</label>
+                              <input className="homeInput" name='email' type="email" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label className="homeLabel">Email (Preferrably College Id)</label>
                             </div>
                             <div className="group">
-                              <input name='year' type="number"  required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                              <label>Year</label>
+                              <input className="homeInput" name='year' type="number"  required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label className="homeLabel">Year</label>
                             </div>
                             <div className="group">
-                              <input name='contact_number' type="tel" pattern="[0-9]{10}" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
-                              <label>Phone Number (10-digit)</label>
+                              <input className="homeInput" name='contact_number' type="tel" pattern="[0-9]{10}" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} /><span className="highlight"></span><span className="bar"></span>
+                              <label className="homeLabel">Phone Number (10-digit)</label>
                             </div>
                             <div className="group">
-                              <textarea name='instrument_names' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
-                              <label>Instruments/Vocalists</label>
+                              <textarea className = "homeTextarea" name='instrument_names' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
+                              <label className="homeLabel">Instruments/Vocalists</label>
                             </div>
                             <div className="group">
-                              <textarea name='song_names' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
-                              <label>Song List</label>
+                              <textarea className="homeTextarea" name='song_names' type="textarea" rows="3" required="required" placeholder="." disabled={this.state.registered} onChange={this.handleChange} ></textarea><span className="highlight"></span><span className="bar"></span>
+                              <label className="homeLabel">Song List</label>
                             </div>
                             
                           
@@ -429,17 +490,47 @@ class Home extends Component {
 
                     <div className="modal fade modalBack" id="lineupModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div className="modal-dialog modal-dialog-centered" role="document">
-                        <div className="modal-content mainModal">
+                        <div className="modal-content lin_mainModal">
 
                           <div className="modal-header">
-                            <h2 className="modal-title modalTitle mx-auto">Lineup</h2>
+                            <h2 className="modal-title lin_modalTitle mx-auto">Lineup</h2>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                       
                           <div  className="modal-body">
-                          
+                               <div className="table-hover table-responsive">
+                                 <table className = "table">
+                                   <thead>
+                                   <tr>
+                                     <td><h4 className="text-white">Slot number</h4></td>
+                                     <td><h4 className="text-white">BandName</h4></td>
+                                     <td><h4 className="text-white">Start time</h4></td>
+                                     </tr>
+                                   </thead>
+                                   <tbody>
+                                     <tr>
+                                       <td><h5 className="text-white">1</h5></td>
+                                       <td><h5 className="text-white">Band1</h5></td>
+                                       <td><h5 className="text-white">8:00pm</h5></td>
+                                     </tr>
+
+                                     <tr>
+                                       <td><h5 className="text-white">2</h5></td>
+                                       <td><h5 className="text-white">Band2</h5></td>
+                                       <td><h5 className="text-white">9:00pm</h5></td>
+                                     </tr>
+
+                                     <tr>
+                                       <td><h5 className="text-white">3</h5></td>
+                                       <td><h5 className="text-white">Band3</h5></td>
+                                       <td><h5 className="text-white">10:00pm</h5></td>
+                                     </tr>
+                                   </tbody>
+                                 </table>
+                               </div>
+
                           </div>
                           <div className="modal-footer">
 
@@ -466,15 +557,37 @@ class Home extends Component {
               Morbi eu leo diam. Fusce enim arta libero viverra, non auctor odio ultrices.
               sdavvavsaavavbadsfdggfadffhggefgffgegdgfhgrgsfdgfbv
               grwrdgfsefdgfgrgfhfgrwdgfnfgrwdgfnfgrw Nulla cursus eget elit vitae tincidunt. Nam a nibh ut nunc lobortis egestas quis sed lacus. Curabitur viverra lectus enim, ac malesuada lorem laoreet venenatis. Sed dui tellus, aliquam laoreet interdum et, gravida eu dui. Sed rhoncus auctor mi eget placerat. Integer nec lacus et mi luctus interdum quis at nisl. Cras a leo vitae arcu iaculis facilisis. Nam et dignissim neque. Nam varius varius accumsan. Vestibulum rutrum fringilla fermentum.</span> </div>
-            <div ref={this.aboutImg}  className='col-sm-4 view overlay card card-img-top' id='image'>
+            <div ref={this.aboutImg}  className='aboutImage col-sm-4 view overlay card card-img-top' id='aboutGenImage'>
+            </div>
+            
+          </div>
+            
+          <hr style={{'backgroundColor' : 'white' , 'width' : '100%' , 'height' : '3px'}}/>
+          <h2 className='aboutHeadDiv py-5 px-4'>
+              The Team
+            </h2>
+          <div className="row">
+            
+            <div className="col-sm-8">
+            <h1 ref={this.coordinator1} className='coordinatorHeadDiv py-5 px-4'>
+              Name1 : Coordinator
+            </h1>
+
+            <div ref = {this.coordText1} className='coordinatorTextDiv card-blockquote' >
+              <span  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit pellentesque bibendum. Donec eu ornare ex. Etiam pharetra dui elementum euismod mattis. Ut sollicitudin congue odio, sed tempor justo hendrerit vel. Vivamus fringilla dui a quam tincidunt finibus. Nullam sapien enim, ornare non condimentum in, pellentesque ac dolor. Donec vitae nibh eu magna accumsan maximus in sed magna. Ut accumsan gravida lectus. Maecenas eleifend nunc nisl, nec interdum augue fermentum a. Cras non ante quis turpis rhoncus eleifend. Aliquam ut facilisis diam. Nam egestas vehicula sem a pellentesque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum tempus bibendum justo a fermentum. Praesent a mollis velit. Pellentesque euismod dui id leo finibus ullamcorper.
+              Morbi eu leo diam. Fusce enim arta libero viverra, non auctor odio ultrices.
+              sdavvavsaavavbadsfdggfadffhggefgffgegdgfhgrgsfdgfbv
+              grwrdgfsefdgfgrgfhfgrwdgfnfgrwdgfnfgrw Nulla cursus eget elit vitae tincidunt. Nam a nibh ut nunc lobortis egestas quis sed lacus. Curabitur viverra lectus enim, ac malesuada lorem laoreet venenatis. Sed dui tellus, aliquam laoreet interdum et, gravida eu dui. Sed rhoncus auctor mi eget placerat. Integer nec lacus et mi luctus interdum quis at nisl. Cras a leo vitae arcu iaculis facilisis. Nam et dignissim neque. Nam varius varius accumsan. Vestibulum rutrum fringilla fermentum.
+              </span> </div>
+              </div>
+              <div ref={this.coordImage1} className='coordinatorImageDiv col-sm-4 view overlay card card-img-top'>
+              <img src={StockImage} className="coordinatorImage"/>
+            </div>
+
+            
             </div>
           </div>
-          </div>
-          {/* <div className='jumbotron landingPageFooter'>
-            <div className='text-center footer'> */}
-              
-            {/* </div>
-          </div> */}
+          
       </React.Fragment>
     )
   }
@@ -483,18 +596,8 @@ class Home extends Component {
 
 }
 
-const mapStateToProps = (state) =>{
-  return{
-    registeredUsers : state.registeredUsers
-  }
-}
 
-const mapDispatchToProps = (dispatch) =>{
-  return{
-    addReg : (obj) =>{dispatch(addUser(obj))}
-  }
-}
 
 // test comment
 
-export default connect(mapStateToProps,mapDispatchToProps)(Home);
+export default Home;

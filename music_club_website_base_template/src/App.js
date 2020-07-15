@@ -27,6 +27,16 @@ import Navbar from './components/Navbar/Navbar'
 // const Admin = React.lazy(() => import('./components/login/Admin'));
 // const Logout = React.lazy(() => import('./components/login/Logout'));
 
+import CreateEvent from './components/admin/create_event';
+import UpdateEvent from './components/admin/update_event';
+import DeleteEvent from './components/admin/delete_event';
+import PassChange from './components/admin/change_password';
+import DeletePhoto from './components/admin/delete_photo';
+import Lineup from './components/admin/lineup';
+import AddLineup from './components/admin/add_lineup'
+import AddPhoto from './components/admin/addPhoto';
+import ConfirmDelete from './components/admin/confirm_delete';
+import NotFound from './components/admin/Not_found'
 
 class App extends Component {
   render() {
@@ -36,18 +46,25 @@ class App extends Component {
       <SimpleReactLightbox>
         <BrowserRouter>
           <div>
-            {/* <Suspense fallback={<div>Loading...</div>}> */}
-            <Navbar />
-              <Switch>
-                <Route path="/" component={Home} exact />
-                <Route path="/timeline" component={Timeline} exact />
-                <Route path="/event" component={Event} exact />
-                <Route path="/gallery" component={Gallery} exact />
-                <Route path="/login" component={Login} exact />
-                <Route path="/logout" component={Logout} exact />
-                <Route path="/admin" component={Admin} exact />
-              </Switch>
-            {/* </Suspense> */}
+            <Switch>
+              <Route path="/" component={Home} exact/>
+              <Route path="/timeline" component={Timeline} exact/>
+              <Route path="/event/:id" component={Event} exact/>
+              <Route path="/gallery" component={Gallery} exact/>
+              <Route path="/login" component={Login} exact/>
+              <Route path="/logout" component={Logout} exact/>
+              <Route path="/admin" component={Admin} exact/>
+              <Route path="/admin/create_event" component={CreateEvent} exact/>
+              <Route path="/admin/change_event" component={UpdateEvent} exact/>
+              <Route path="/admin/delete_event" component={DeleteEvent} exact/>
+              <Route path="/admin/change_password" component={PassChange} exact/>
+              <Route path="/admin/lineup" component={Lineup} exact/>
+              <Route path="/admin/add_lineup" component={AddLineup} exact/>
+              <Route path="/admin/delete_photo" component={DeletePhoto} exact/>
+              <Route path="/admin/add_photo" component={AddPhoto} exact/>
+              <Route path="/admin/delete_photo/confirm_delete" component={ConfirmDelete} exact/>
+              <Route path="/admin/delete_photo/not_found" component={NotFound} exact/>
+            </Switch>
           </div>
         </BrowserRouter>
       </SimpleReactLightbox>
