@@ -60,6 +60,17 @@ async def get_event(db: Session = Depends(get_db)):
 
     return data
 
+@router.get('/events/{eventId}' , response_model = schemas.Event)
+async def get_event(eventId : int ,db: Session = Depends(get_db)):
+
+    event = db.query(models.Event).filter(models.Event.id == eventId).first()
+    
+    if event is None:
+        return "No event found"
+
+    
+    return event.__dict__
+
 @router.get('/photos' , response_model = List[schemas.Photo])
 async def get_photos(db : Session = Depends(get_db)):
     data = []

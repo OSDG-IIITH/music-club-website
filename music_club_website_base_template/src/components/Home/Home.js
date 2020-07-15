@@ -32,8 +32,13 @@ import './Home.css';
 
 
 
-
 class Home extends Component {
+
+
+// fetchSingleEvent = async () =>{
+//   const event = await axios.get('/landingPage/events/1')
+//   console.log(event.data)
+// }
 
   fetchEvents = () =>{
     axios.get('./landingPage/events')
@@ -108,6 +113,7 @@ class Home extends Component {
  async componentDidMount(){
 
   this.fetchEvents();
+  //this.fetchSingleEvent();
     function isElementInViewport(el){
       // if(typeof jquery === "function" && el instanceof jquery){
       //   el = el[0];
@@ -390,7 +396,7 @@ class Home extends Component {
               <div className="eventTextDiv">
                 <h1 className=" eventTitle text-center" ref={this.eventTitle2}>{this.state.pastevent1 ? this.state.pastevent1.name : ""}</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc2}>{this.state.pastevent1 ? this.state.pastevent1.description : ""}</p>
-                <NavLink to = '/event'><button type="button" className="btn btn-white btn-animate  regBtn evtbtn " id="seeMore1" ref={this.moreBtn1}>
+                <NavLink to = {this.state.pastevent1 ? `/event/${this.state.pastevent1.id}` : `/event`}><button type="button" className="btn btn-white btn-animate  regBtn evtbtn " id="seeMore1" ref={this.moreBtn1}>
                       <span id="regBtnText">See More<i class="fa fa-info-circle" style={{'color' : 'white', 'fontSize' : '18px' , 'paddingLeft' : '11px'}}></i></span>
                     </button></NavLink>
               </div>
@@ -399,7 +405,7 @@ class Home extends Component {
               <div className="eventTextDiv">
                 <h1 className=" eventTitle text-center" ref={this.eventTitle3}>{this.state.pastevent2 ? this.state.pastevent2.name : ""}</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc3}>{this.state.pastevent2 ? this.state.pastevent2.description : ""}</p>
-                <NavLink to = '/event'><button type="button" className="btn btn-white btn-animate  regBtn evtbtn "  id="seeMore2" ref={this.moreBtn2}>
+                <NavLink to = {this.state.pastevent2 ? `/event/${this.state.pastevent2.id}` : `/event`}><button type="button" className="btn btn-white btn-animate  regBtn evtbtn "  id="seeMore2" ref={this.moreBtn2}>
                       <span id="regBtnText">See More<i class="fa fa-info-circle" style={{'color' : 'white', 'fontSize' : '18px' , 'paddingLeft' : '11px'}}></i></span>
                     </button></NavLink>
               </div>
@@ -409,7 +415,7 @@ class Home extends Component {
               <div className="eventTextDiv">
                 <h1 className=" eventTitle text-center" ref={this.eventTitle4}>{this.state.pastevent3 ? this.state.pastevent3.name : ""}</h1>
                 <p className="text-white text-center eventDesc" ref={this.eventDesc4}>{this.state.pastevent3 ? this.state.pastevent3.description : ""}</p>
-                <NavLink to = '/event'><button type="button" className="btn btn-white btn-animate  regBtn evtbtn "  id="seeMore3" ref={this.moreBtn3}>
+                <NavLink to = {this.state.pastevent3 ? `/event/${this.state.pastevent3.id}` : `/event`}><button type="button" className="btn btn-white btn-animate  regBtn evtbtn "  id="seeMore3" ref={this.moreBtn3}>
                       <span id="regBtnText">See More<i class="fa fa-info-circle" style={{'color' : 'white', 'fontSize' : '18px' , 'paddingLeft' : '11px'}}></i></span>
                     </button></NavLink>
               </div>
