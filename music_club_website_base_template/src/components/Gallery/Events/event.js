@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import ReactStars from 'react-rating-stars-component';
 // import FbImageLibrary from 'react-fb-image-grid';
 import 'bootstrap/dist/css/bootstrap.css';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import Sky from 'react-sky';
 import { SRLWrapper } from "simple-react-lightbox";
 //@ts-ignore
 import 'bootstrap/dist/js/bootstrap';
@@ -19,14 +18,20 @@ const ratingChanged = (newRating) => {
   console.log(newRating)
 }
 
-const images = ['https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350',
-    'https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg',
-    'https://cdn.pixabay.com/photo/2016/10/27/22/53/heart-1776746_960_720.jpg',
-    'https://images.pexels.com/photos/257840/pexels-photo-257840.jpeg?auto=compress&cs=tinysrgb&h=350',
-    "https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&h=350",
-    "https://wallpaperbrowse.com/media/images/3848765-wallpaper-images-download.jpg"]
-
 class Event extends Component {
+
+  fetchSingleEvent = async (id) => {
+    const event = await axios.get('/landingPage/events/' + id)
+    //console.log(event.data)
+    this.setState({currEvent: event.data})
+    console.log(this.state.currEvent)
+  }
+
+  async componentDidMount(){
+    let id = this.props.match.params.id;
+    this.fetchSingleEvent(id);
+  }
+
   render() {
     return (
       <div>
@@ -35,10 +40,10 @@ class Event extends Component {
             <div className="wrap w-100 d-flex align-items-center event-header">
               <div className="d-flex flex-column align-items-center w-100">
                 <div className="event-title">
-                Event Name
+                {this.state ?  this.state.currEvent.name : ""}
                 </div>
                 <div className="event-path">
-                  <div className="event-path-trail"><a href="/">Home</a></div> &gt; <div className="event-path-trail"><a href="/timeline">Timeline</a></div> &gt; <div className="event-title-path">Event Name</div>
+                  <div className="event-path-trail"><a href="/">Home</a></div> &gt; <div className="event-path-trail"><a href="/timeline">Timeline</a></div> &gt; <div className="event-title-path">{this.state ?  this.state.currEvent.name : ""}</div>
                 </div>
               </div>
             </div>
@@ -50,27 +55,27 @@ class Event extends Component {
             <div className="row">
               <div className="col-lg-6">
                 <div className="poster">
-                  <img src='./images/Gallery/sample_poster.jpg'></img>
+                  <img src='/images/Gallery/sample_poster.jpg'></img>
                 </div>
               </div>
               <div className="col-lg-6">
                 <div className="event-description">
                   <div className="title">
-                    Event Name 2019
+                    {this.state ?  this.state.currEvent.name : ""}
                   </div>
                   <div className="design-card">
                     <div className="list">
                       <ul>
-                        <li> <b>Date:</b> 07-10-2019</li>
-                        <li> <b>Venue:</b> Vindhya Canteen</li>
+                        <li> <b>Date:</b> {this.state ?  this.state.currEvent.date : ""}</li>
+                        <li> <b>Venue:</b> {this.state ?  this.state.currEvent.venue : ""}</li>
                       </ul>
                     </div>
                     <div className="about">
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    {this.state ?  this.state.currEvent.description : ""}
                     </div>
                   </div>
                   <div className="design-card rating">
-                    Please rate us if you attended this event: <FontAwesomeIcon icon="coffee" />
+                    Please rate us if you attended this event:
                     <ReactStars
                       count={5}
                       onChange={ratingChanged}
@@ -80,7 +85,7 @@ class Event extends Component {
                       halfIcon={<i className='fa fa-star-half-alt'></i>}
                       fullIcon={<i className='fa fa-star'></i>}
                       color2={'#ffd700'} />
-                      <button type="submit" class="btn btn-info btn-rounded btn-fw"><b>Submit</b></button>
+                      <button type="submit" className="btn btn-info btn-rounded btn-fw"><b>Submit</b></button>
                   </div>
                 </div>
               </div>
@@ -92,13 +97,13 @@ class Event extends Component {
                   <SRLWrapper>
                     <div className="row">
                     <div className="col-sm-12 col-md-12 col-lg-4 col-12">
-                      <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
+                      <img src='/images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
                     <div className="col-sm-12 col-md-12 col-lg-4 col-12">
-                      <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
+                      <img src='/images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
                     <div className="col-sm-12 col-md-12 col-lg-4 col-12">
-                     <img src='./images/Gallery/sample_poster.jpg' loading="lazy"></img>
+                     <img src='/images/Gallery/sample_poster.jpg' loading="lazy"></img>
                     </div>
                     </div>
                   </SRLWrapper>
@@ -124,7 +129,7 @@ class Event extends Component {
             time={10} /* time of animation
             size={'96px'} /* size of the rendered images
             background={'white'} /* color of background */}
-          
+
         </div>
       </div>
 
