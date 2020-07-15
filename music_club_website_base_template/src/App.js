@@ -1,5 +1,5 @@
-import React,{Component} from 'react';
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import React, { Component, Suspense } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SimpleReactLightbox from 'simple-react-lightbox'
 
 // import './App.css';
@@ -11,31 +11,43 @@ import 'jquery';
 import 'popper.js';
 
 import Home from './components/Home/Home';
- import Timeline from './components/Timeline/Timeline';
+import Timeline from './components/Timeline/Timeline';
 import Event from './components/Gallery/Events/event';
- import Gallery from './components/Gallery/Mixed/gallery';
- import Login from './components/login/Login';
- import Admin from './components/login/Admin';
- import Logout from './components/login/Logout';
+import Gallery from './components/Gallery/Mixed/gallery';
+import Login from './components/login/Login';
+import Admin from './components/login/Admin';
+import Logout from './components/login/Logout';
+import Navbar from './components/Navbar/Navbar'
+
+// const Home = React.lazy(() => import('./components/Home/Home'));
+// const Timeline = React.lazy(() => import('./components/Timeline/Timeline'));
+// const Event = React.lazy(() => import('./components/Gallery/Events/event'));
+// const Gallery = React.lazy(() => import('./components/Gallery/Mixed/gallery'));
+// const Login = React.lazy(() => import('./components/login/Login'));
+// const Admin = React.lazy(() => import('./components/login/Admin'));
+// const Logout = React.lazy(() => import('./components/login/Logout'));
 
 
 class App extends Component {
-  render(){
-    return(
+  render() {
+    return (
       //the <Nav/> goes above the Switch if navbar is at top
       //add your component to this by Route path = "/{component name}"
       <SimpleReactLightbox>
         <BrowserRouter>
           <div>
-            <Switch>
-              <Route path="/" component={Home} exact/>
-              <Route path="/timeline" component={Timeline} exact/>
-               <Route path="/event" component={Event} exact/>
-              <Route path="/gallery" component={Gallery} exact/>  
-              <Route path="/login" component={Login} exact/>  
-              <Route path="/logout" component={Logout} exact/>  
-              <Route path="/admin" component={Admin} exact/>   
-            </Switch>
+            {/* <Suspense fallback={<div>Loading...</div>}> */}
+            <Navbar />
+              <Switch>
+                <Route path="/" component={Home} exact />
+                <Route path="/timeline" component={Timeline} exact />
+                <Route path="/event" component={Event} exact />
+                <Route path="/gallery" component={Gallery} exact />
+                <Route path="/login" component={Login} exact />
+                <Route path="/logout" component={Logout} exact />
+                <Route path="/admin" component={Admin} exact />
+              </Switch>
+            {/* </Suspense> */}
           </div>
         </BrowserRouter>
       </SimpleReactLightbox>
