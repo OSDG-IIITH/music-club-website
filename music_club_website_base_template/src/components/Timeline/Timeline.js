@@ -1,21 +1,17 @@
 import React,{Component} from 'react'
 import './Timeline.css'
 import Card from './Cards/Cards'
+import axios from 'axios';
 
 class Timeline extends Component {
-  state ={
-      "events": [
-          {id: 1, title:"Felicity Inaugrals 2020",link:"asjkdjasd"},
-          {id: 2, title:"RoadBlock 2020",link:"asjkdjasd"},
-          {id: 3, title:"Unplugged 2019",link:"asjkdjasd"},
-          {id: 4, title:"Euphonic 2019",link:"asjkdjasd"},
-          {id: 5, title:"Meltdown 2019",link:"asjkdjasd"},
-          {id: 6, title:"Felicity inaugrals 2019",link:"asjkdjasd"},
-          {id: 7, title:"Roadblock 2019",link:"dasda"},
-          {id: 8, title:"Unplugged 2019",link:"asdadasd"},
-          {id: 9, title:"Unplugged 2019",link:"asdadasd"},
-          {id: 10, title:"Unplugged 2019",link:"asdadasd"},
-      ],
+
+  fetchEvents = async () => {
+    const event = await axios.get('/landingPage/events')
+    this.setState({allEvents: event.data})
+  }
+
+  async componentDidMount(){
+    this.fetchEvents();
   }
   render(){
       return (
@@ -37,7 +33,7 @@ class Timeline extends Component {
             <div>
               <div className="container-fluid">
                 <div className="timeline container-fluid">
-                    <Card events={this.state.events}/>
+                  {this.state?<Card events={this.state.allEvents}/>:""}
                 </div>
               </div>
             </div>
