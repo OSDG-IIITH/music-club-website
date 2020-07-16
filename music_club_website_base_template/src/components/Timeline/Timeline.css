@@ -15,13 +15,13 @@
 }
 
 .container-fluid{
-    background-color: gray;
+    background-color: black;
 }
 
 .cards{
     position: absolute;
     background-color: transparent;
-    top:84rem;
+    top:104rem;
     width: 100%;
 }
 

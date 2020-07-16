@@ -1,6 +1,7 @@
 import React from 'react'
 import './Cards.css'
 import Fade from 'react-reveal/Fade'
+import {NavLink} from 'react-router-dom'
 
 const Card = ({events}) => {
     const eventsList= events.map(event =>{
@@ -8,10 +9,12 @@ const Card = ({events}) => {
             return(
             <Fade>
                 <div className={`card-container container-fluid ${event.id%2?"left":"right"}`} key={event.id} id={`card${event.id}`}>
+                  <NavLink to = {`/event/${event.id}`}>
                     <div className="content">
-                        <h2>{event.title}</h2>
-                        <p>{event.link}</p>
+                        <h2>{event.name}</h2>
+                        <p>{event.ping_link}</p>
                     </div>
+                  </NavLink>
                 </div>
             </Fade>
             )
@@ -28,7 +31,7 @@ const Card = ({events}) => {
         </Fade>
     )
     return (
-        <Fade>    
+        <Fade>
             <div className="container-fluid cards">
                 {eventsList}
             </div>
