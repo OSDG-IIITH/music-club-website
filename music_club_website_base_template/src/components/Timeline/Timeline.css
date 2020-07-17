@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
+body{
+  overflow-x: hidden;
+}
+
 .heading{
     display: block;
     width: 100%;
@@ -9,19 +13,16 @@
 
 .timeline{
     background-image: url('/images/Timeline/KKW30_FRONT_FULL_1.png');
-    background-position: top;
+    background-position: top center;
     background-repeat: no-repeat;
     min-height: 3700px;
 }
 
-.container-fluid{
-    background-color: black;
-}
 
 .cards{
-    position: absolute;
+    position: relative;
     background-color: transparent;
-    top:104rem;
+    top:81rem;
     width: 100%;
 }
 

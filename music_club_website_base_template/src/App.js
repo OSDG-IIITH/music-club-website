@@ -1,5 +1,5 @@
-import React,{Component} from 'react';
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import React, { Component, Suspense } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SimpleReactLightbox from 'simple-react-lightbox'
 
 // import './App.css';
@@ -17,6 +17,16 @@ import Gallery from './components/Gallery/Mixed/gallery';
 import Login from './components/login/Login';
 import Admin from './components/login/Admin';
 import Logout from './components/login/Logout';
+import Navbar from './components/Navbar/Navbar'
+
+// const Home = React.lazy(() => import('./components/Home/Home'));
+// const Timeline = React.lazy(() => import('./components/Timeline/Timeline'));
+// const Event = React.lazy(() => import('./components/Gallery/Events/event'));
+// const Gallery = React.lazy(() => import('./components/Gallery/Mixed/gallery'));
+// const Login = React.lazy(() => import('./components/login/Login'));
+// const Admin = React.lazy(() => import('./components/login/Admin'));
+// const Logout = React.lazy(() => import('./components/login/Logout'));
+
 import CreateEvent from './components/admin/create_event';
 import UpdateEvent from './components/admin/update_event';
 import DeleteEvent from './components/admin/delete_event';
@@ -29,11 +39,12 @@ import ConfirmDelete from './components/admin/confirm_delete';
 import NotFound from './components/admin/Not_found'
 
 class App extends Component {
-  render(){
-    return(
+  render() {
+    return (
       //the <Nav/> goes above the Switch if navbar is at top
       //add your component to this by Route path = "/{component name}"
       <SimpleReactLightbox>
+        <Navbar />
         <BrowserRouter>
           <div>
             <Switch>
