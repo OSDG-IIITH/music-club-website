@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Timeline.css'
 import Card from './Cards/Cards'
+import axios from 'axios';
 import { CircleIndicator } from '../Utils/Utils'
 
 class Timeline extends Component {
@@ -17,6 +18,14 @@ class Timeline extends Component {
       { id: 9, title: "Unplugged 2019", link: "asdadasd" },
       { id: 10, title: "Unplugged 2019", link: "asdadasd" },
     ],
+
+  fetchEvents = async () => {
+    const event = await axios.get('/landingPage/events')
+    this.setState({allEvents: event.data})
+  }
+
+  async componentDidMount(){
+    this.fetchEvents();
   }
   render() {
 

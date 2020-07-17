@@ -46,6 +46,17 @@ async def get_registerations(* , id : int , db : Session = Depends(get_db)):
     
 
 
+@router.get('/allEvents' , response_model = List[schemas.Event])
+async def get_all_events(db : Session = Depends(get_db)):
+    data = []
+    allEvents = db.query(models.Event).all()
+
+    if allEvents != None:
+        for e in allEvents:
+            data.append(e.__dict__)
+
+    return data
+
 @router.get('/events' , response_model = List[schemas.Event])
 async def get_event(db: Session = Depends(get_db)):
     data = []
@@ -59,6 +70,17 @@ async def get_event(db: Session = Depends(get_db)):
             data.append(e.__dict__)
 
     return data
+
+@router.get('/events/{eventId}' , response_model = schemas.Event)
+async def get_event(eventId : int ,db: Session = Depends(get_db)):
+
+    event = db.query(models.Event).filter(models.Event.id == eventId).first()
+    
+    if event is None:
+        return "No event found"
+
+    
+    return event.__dict__
 
 @router.get('/photos' , response_model = List[schemas.Photo])
 async def get_photos(db : Session = Depends(get_db)):

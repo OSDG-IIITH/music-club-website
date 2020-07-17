@@ -12,8 +12,8 @@ const Card = ({ event }) => {
             <motion.div ref={ref} initial={{ x: event.id % 2 ? -50 : 50, opacity: 0 }} animate={{ x: inView ? 0 : event.id % 2 ? -50 : 50, opacity: inView ? 1 : 0 }} transition={{ duration: 2 }} >
                 <motion.div className={`card-container container-fluid ${event.id % 2 ? "left" : "right"}`} key={event.id} id={`card${event.id}`} whileHover={{ scale: 1.3 }}>
                     <div className="content">
-                        <h2>{event.title}</h2>
-                        <p>{event.link}</p>
+                        <h2>{event.name}</h2>
+                        <p>{event.ping_link}</p>
                     </div>
                 </motion.div>
             </motion.div>
