@@ -52,54 +52,54 @@
     position: relative;
     border-radius: 6px;
   }
-
+/* 
   .content:hover{
       transition: 0.25s;
       transform: scale(1.2);
       height:max-content;
-  }
+  } */
 
   /* Cards on the left */
   #card1{
-      right:17rem;
+      right:14rem;
   }
 
   #card3{
-      right:17.25rem;
+      right:14.25rem;
   }
 
   #card5{
-      right:17.65rem;
+      right:14.70rem;
   }
 
   #card7{
-      right:18.075rem;
+      right:15.125rem;
   }
 
   #card9{
-      right:18.5rem;
+      right:15.50rem;
   }
 
   /* Cards on the rgiht */
 
   #card2{
-      left:12.25rem;
+      left:15.15rem;
   }
 
   #card4{
-      left:12.625rem;
+      left:15.525rem;
   }
 
   #card6{
-      left:13.325rem;
+      left:16.075rem;
   }
 
   #card8{
-      left:13.5rem;
+      left:16.25rem;
   }
 
   #card10{
-      left:13.88rem;
+      left:16.80rem;
   }
 
   @media screen and (max-width:730px){
