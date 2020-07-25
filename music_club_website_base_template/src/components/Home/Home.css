@@ -121,6 +121,15 @@ body{
   box-shadow: 1em 1em 2em .25em rgba(5, 5, 5, 0.9); 
 }
 
+
+.goLeft{
+  left : -400px;
+}
+
+.goRight{
+  float : right;
+}
+
 .aboutImage.is-visible{
   opacity:1;
   transform: rotateZ(-1deg);
