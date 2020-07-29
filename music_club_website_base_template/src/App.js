@@ -44,7 +44,7 @@ class App extends Component {
       //the <Nav/> goes above the Switch if navbar is at top
       //add your component to this by Route path = "/{component name}"
       <SimpleReactLightbox>
-        <Navbar />
+         <Navbar /> 
         <BrowserRouter>
           <div>
             <Switch>
