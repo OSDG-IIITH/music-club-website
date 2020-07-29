@@ -10,24 +10,25 @@
     align-items: center;
   } */
   
-  nav {
-    position: fixed;
-    top: 0;
+    nav {
+     position: fixed;
+     /* top: 0;  */
     left: 0;
-    bottom: 0;
+    bottom: 0; 
     width: 300px;
-  }
+    /* background-color: yellow; */
+  }  
   
-  .background {
+   .background {
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     width: 300px;
     background: #fff;
-  }
+  } 
   
-  button {
+   .navButton {
     outline: none;
     border: none;
     -webkit-user-select: none;
@@ -62,7 +63,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-  }
+  } 
   
   .icon-placeholder {
     width: 40px;
