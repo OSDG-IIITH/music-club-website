@@ -392,7 +392,7 @@ class Home extends Component {
     return (
       <React.Fragment>
         
-          <AwesomeSlider  fillParent={false} className="carousel " cssModule={styles} transitionDelay={500} mobileTouch={true} bullets={true} onTransitionStart={this.fade} onTransitionEnd={this.bringBack}  >
+          <AwesomeSlider  fillParent={false} className="carousel " cssModule={styles} transitionDelay={500} mobileTouch={true} bullets={false} onTransitionStart={this.fade} onTransitionEnd={this.bringBack}  >
             <div className="carouselDiv" id="img1">
               <div className="eventTextDiv" >
                 <h1 className={"eventTitle text-center"} ref={this.eventTitle1}>{this.state.latestEvent ?  this.state.latestEvent.name : ""}</h1>
@@ -585,7 +585,7 @@ class Home extends Component {
           <h2 className='aboutHeadDiv py-5 px-4'>
               The Team
             </h2>
-          <div className="row">
+          <div className="row" id="c1">
             
             <div className="col-sm-8">
             <h1 ref={this.coordinator1} className='coordinatorHeadDiv py-5 px-4'>
@@ -606,7 +606,7 @@ class Home extends Component {
             
             </div>
 
-            <div className="row">
+            <div className="row" id="c2">
             
             <div className="col-sm-8">
             <h1 ref={this.coordinator2} className='coordinatorHeadDiv py-5 px-4'>
@@ -627,7 +627,7 @@ class Home extends Component {
             
             </div>
 
-            <div className="row">
+            <div className="row" id="c3">
             
             <div className="col-sm-8">
             <h1 ref={this.coordinator3} className='coordinatorHeadDiv py-5 px-4'>
