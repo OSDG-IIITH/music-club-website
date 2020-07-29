@@ -63,12 +63,12 @@ class Event extends Component {
                   <div className="title">
                     {this.state ?  this.state.currEvent.name : ""}
                   </div>
-                  <div className="design-card">
+                  <div className="design-card"> 
                     <div className="list">
-                      <ul>
-                        <li> <b>Date:</b> {this.state ?  this.state.currEvent.date : ""}</li>
-                        <li> <b>Venue:</b> {this.state ?  this.state.currEvent.venue : ""}</li>
-                      </ul>
+                      <div>
+                        <b>Date:</b> {this.state ?  this.state.currEvent.date : ""} <br />
+                        <b>Venue:</b> {this.state ?  this.state.currEvent.venue : ""}
+                      </div>
                     </div>
                     <div className="about">
                     {this.state ?  this.state.currEvent.description : ""}
