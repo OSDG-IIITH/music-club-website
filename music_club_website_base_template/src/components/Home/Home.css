@@ -35,7 +35,7 @@ body{
   font-family: 'Staatliches',cursive;
   padding: 2vh 0em 0em 0em;
   color : white;
-  margin-top: -50px;
+  margin-top: -30px;
   opacity: 0;
   transform: translate(-1000px,0px);
   transition: transform 1100ms .15s cubic-bezier(0,1.5,.3,1), opacity 700ms ease-in-out;
@@ -659,6 +659,21 @@ form {
     right:50px;
   }
 
+  #c1{
+    /* background-color: yellow; */
+    border-top: 3px white solid;
+  }
+
+  #c2{
+    /* background-color: red; */
+    border-top: 3px white solid;
+  }
+
+  #c3{
+    /* background-color: blue; */
+    border-top: 3px white solid;
+  }
+
 
 
 
@@ -666,14 +681,30 @@ form {
 
  @media screen and (max-width:574px){
 
-     #aboutGenImage{
+      #c1{
+        height: 700px;
+        margin-bottom: 150px;
+        
+      }
+
+      #c2{
+        height: 700px;
+        margin-bottom: 150px;
+      }
+
+      #c3{
+        height: 700px;
+        margin-bottom: 150px;
+      }
+
+      #aboutGenImage{
          height: 400px;
     }
 
     .coordinatorImage{
-      height : 300px;
+      height : 50vw;
       width : 300px;
-    }
+    } 
 
 }
 
@@ -739,12 +770,7 @@ form {
     /* .eventTextDiv{
         top:400px;
     } */
-    .awssld__bullets button{
-        background-color:white;
-        border-radius: 50%;
-        height: 5px;
-        width:5px;
-    }
+    
 
     .aboutTextDiv{
       transition: opacity 500ms ease-in-out , transform 500ms ease-in-out;
@@ -843,7 +869,7 @@ form {
 
     .coordinatorHeadDiv{
       position: relative;
-      font-size: 90%;
+      font-size: 120%;
 
       padding: 2vh 0em 0em 0em;
 

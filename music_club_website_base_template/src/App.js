@@ -17,7 +17,7 @@ import Gallery from './components/Gallery/Mixed/gallery';
 import Login from './components/login/Login';
 import Admin from './components/login/Admin';
 import Logout from './components/login/Logout';
-//import Navbar from './components/Navbar/Navbar'
+import Navbar from './components/Navbar/Navbar'
 
 // const Home = React.lazy(() => import('./components/Home/Home'));
 // const Timeline = React.lazy(() => import('./components/Timeline/Timeline'));
@@ -44,7 +44,7 @@ class App extends Component {
       //the <Nav/> goes above the Switch if navbar is at top
       //add your component to this by Route path = "/{component name}"
       <SimpleReactLightbox>
-        {/* <Navbar /> */}
+         <Navbar /> 
         <BrowserRouter>
           <div>
             <Switch>
