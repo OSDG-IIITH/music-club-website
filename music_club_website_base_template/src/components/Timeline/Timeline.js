@@ -17,7 +17,8 @@ class Timeline extends Component {
       { id: 8, title: "Unplugged 2019", link: "asdadasd" },
       { id: 9, title: "Unplugged 2019", link: "asdadasd" },
       { id: 10, title: "Unplugged 2019", link: "asdadasd" },
-    ],
+    ]
+  }
 
   fetchEvents = async () => {
     const event = await axios.get('/landingPage/events')
@@ -64,4 +65,4 @@ class Timeline extends Component {
   }
 }
 
-export default Timeline
+export default Timeline;
