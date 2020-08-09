@@ -647,8 +647,25 @@ class Home extends Component {
 
             
             </div>
+            
           </div>
+          
 
+          <div className= "jumbotron jumbotron-fluid text-center footer">
+            <h2 id = "follow_us">Follow us on :-</h2>
+            <p>
+            <i class="fab fa-facebook" style={{'color' : 'blue', 'fontSize' : '28px' , 'paddingLeft' : '11px'}}></i><a href="https://www.facebook.com/music.iiit" className="social">Music Club facebook page</a>
+            </p>
+
+            <p>
+            <i class="fab fa-instagram" style={{'color' : 'orange', 'fontSize' : '28px' , 'paddingLeft' : '11px'}}></i><a href="https://www.instagram.com/the_music_club.iiith/" className="social">Music Club instagram page</a>
+            </p>
+
+            <p>
+            <i class="fas fa-mail-bulk" style={{'color' : 'white', 'fontSize' : '28px' , 'paddingLeft' : '11px'}}></i><a href="" className="social">Music Club Mail</a>
+            </p>
+
+          </div>
           
           
       </React.Fragment>

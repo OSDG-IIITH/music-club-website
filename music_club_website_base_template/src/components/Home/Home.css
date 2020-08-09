@@ -28,6 +28,36 @@ body{
     color : white
 
 }
+#follow_us{
+  color: white;
+  position: relative;
+  top : -20px;
+}
+
+.footer{
+  background-color: var(--aboutBackground);
+  background-image: url('/images/Gallery/breadcrumb.png');
+  background-repeat: repeat;
+  background-size: contain;
+  background-position: auto auto;
+  
+ 
+}
+
+.social{
+  position: relative;
+    font-size: 170%;
+    text-shadow: red 4px 4px;
+    font-family: 'Staatliches',cursive;
+    padding: 2vh 0em 0em 0em;
+    color : white;
+    padding-left: 7px;
+}
+
+.social:hover{
+  color: white;
+  text-shadow: none;
+}
 
 .coordinatorHeadDiv{
   position: relative;
