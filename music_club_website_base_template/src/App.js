@@ -14,7 +14,8 @@ import Home from './components/Home/Home';
 import Timeline from './components/Timeline/Timeline';
 import Event from './components/Gallery/Events/event';
 import Gallery from './components/Gallery/Mixed/gallery';
-import About from './components/About/About';
+import AboutClub from './components/About/AboutClub';
+import AboutTeam from './components/About/AboutTeam';
 import Login from './components/login/Login';
 import Admin from './components/login/Admin';
 import Logout from './components/login/Logout';
@@ -53,7 +54,8 @@ class App extends Component {
               <Route path="/timeline" component={Timeline} exact/>
               <Route path="/event/:id" component={Event} exact/>
               <Route path="/gallery" component={Gallery} exact/>
-              <Route path="/about" component={About} exact/>
+              <Route path="/about-club" component={AboutClub} exact/>
+              <Route path="/about-team" component={AboutTeam} exact/>
               <Route path="/login" component={Login} exact/>
               <Route path="/logout" component={Logout} exact/>
               <Route path="/admin" component={Admin} exact/>
