@@ -9,7 +9,7 @@ import 'popper.js';
 
  import './about.css'
 
-class About extends Component {
+class AboutClub extends Component {
   render() {
     return (
       <div>
@@ -18,10 +18,10 @@ class About extends Component {
             <div className="wrap w-100 d-flex align-items-center event-header">
               <div className="d-flex flex-column align-items-center w-100">
                 <div className="event-title">
-                About
+                About the Club
                 </div>
                 <div className="event-path">
-                <div className="event-path-trail"><a href="/">Home</a></div> &gt; <div className="event-title-path">About</div>
+                <div className="event-path-trail"><a href="/">Home</a></div> &gt; <div className="event-title-path">About the Club</div>
                 </div>
               </div>
             </div>
@@ -62,4 +62,4 @@ class About extends Component {
   }
 }
 
-export default About;
+export default AboutClub;
