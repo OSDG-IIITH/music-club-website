@@ -43,6 +43,7 @@ class Admin extends Component {
                         }}>Create an event</Link><br/>
                         <Link id="update-event-state" to="/admin/change_event">Update event state</Link><br/>
                         <Link id="delete-event" to="/admin/delete_event">Delete an event</Link><br/>
+                        <Link to="/admin/regs">View registrations</Link><br/>
                     </div>
                 </div>
                 <div id="pun">

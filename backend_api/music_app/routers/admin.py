@@ -216,6 +216,28 @@ async def set_new_state(* , updated_event : schemas.UpdatedEvent = Body(...) , d
         db.commit()
         return "state updated!"
 
+
+@router.post('/getRegs' , response_model = List[schemas.Registered])
+async def get_registerations(* ,db : Session = Depends(get_db) , token : str = Body(...) , id : int = Body(...)):
+
+    try:
+        payload = jwt.decode(token , SECRET_KEY , algorithms=[ALGORITHM])
+    except:
+        return "TOKEN EXPIRED"
+
+    username : str = payload.get('sub')
+    if username is None:
+        raise credentials_exception
+    else:
+        registrations = db.query(models.Registration).filter(models.Registration.event_id == id).all()
+        regData = []
+        if registrations != None:
+            for r in registrations:
+                regData.append(r.__dict__)
+
+        
+        return regData
+
 @router.post('/addPhoto')
 async def add_photo(*, img_files : List[UploadFile] = File(...) , db : Session = Depends(get_db) , eventId : int = Form(2) , photoLabel : str = Form(...) , token : str = Form(...)):
     
