@@ -33,16 +33,7 @@ async def get_registered(registered: schemas.RegisteredCreate = Body(...), db: S
     db.refresh(db_registered)
     return "Registration added to db!"
 
-@router.get('/events/getRegs/{id}' , response_model = List[schemas.Registered])
-async def get_registerations(* , id : int , db : Session = Depends(get_db)):
-    registrations = db.query(models.Registration).filter(models.Registration.event_id == id).all()
-    regData = []
-    if registrations != None:
-        for r in registrations:
-            regData.append(r.__dict__)
 
-    
-    return regData
     
 
 

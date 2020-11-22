@@ -14,6 +14,8 @@ import Home from './components/Home/Home';
 import Timeline from './components/Timeline/Timeline';
 import Event from './components/Gallery/Events/event';
 import Gallery from './components/Gallery/Mixed/gallery';
+import AboutClub from './components/About/AboutClub';
+import AboutTeam from './components/About/AboutTeam';
 import Login from './components/login/Login';
 import Admin from './components/login/Admin';
 import Logout from './components/login/Logout';
@@ -37,6 +39,7 @@ import AddLineup from './components/admin/add_lineup'
 import AddPhoto from './components/admin/addPhoto';
 import ConfirmDelete from './components/admin/confirm_delete';
 import NotFound from './components/admin/Not_found'
+import Register from './components/admin/regs'
 
 class App extends Component {
   render() {
@@ -52,6 +55,8 @@ class App extends Component {
               <Route path="/timeline" component={Timeline} exact/>
               <Route path="/event/:id" component={Event} exact/>
               <Route path="/gallery" component={Gallery} exact/>
+              <Route path="/about-club" component={AboutClub} exact/>
+              <Route path="/about-team" component={AboutTeam} exact/>
               <Route path="/login" component={Login} exact/>
               <Route path="/logout" component={Logout} exact/>
               <Route path="/admin" component={Admin} exact/>
@@ -65,6 +70,7 @@ class App extends Component {
               <Route path="/admin/add_photo" component={AddPhoto} exact/>
               <Route path="/admin/delete_photo/confirm_delete" component={ConfirmDelete} exact/>
               <Route path="/admin/delete_photo/not_found" component={NotFound} exact/>
+              <Route path="/admin/regs" component={Register} exact/>
             </Switch>
           </div>
         </BrowserRouter>

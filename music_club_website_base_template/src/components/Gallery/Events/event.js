@@ -12,7 +12,7 @@ import 'bootstrap/dist/js/bootstrap';
 import 'jquery';
 import 'popper.js';
 
- import './event.css'
+import './event.css'
 
 const ratingChanged = (newRating) => {
   console.log(newRating)
@@ -55,7 +55,7 @@ class Event extends Component {
             <div className="row">
               <div className="col-lg-6">
                 <div className="poster">
-                  <img src='/images/Gallery/sample_poster.jpg'></img>
+                  <img src='/images/Gallery/sample1.png'></img>
                 </div>
               </div>
               <div className="col-lg-6">
@@ -63,29 +63,19 @@ class Event extends Component {
                   <div className="title">
                     {this.state ?  this.state.currEvent.name : ""}
                   </div>
-                  <div className="design-card">
+                  <div className="design-card"> 
                     <div className="list">
-                      <ul>
-                        <li> <b>Date:</b> {this.state ?  this.state.currEvent.date : ""}</li>
-                        <li> <b>Venue:</b> {this.state ?  this.state.currEvent.venue : ""}</li>
-                      </ul>
+                      <div>
+                        <b>Date:</b> {this.state ?  this.state.currEvent.date : ""} <br />
+                        <b>Venue:</b> {this.state ?  this.state.currEvent.venue : ""}
+                      </div>
                     </div>
                     <div className="about">
                     {this.state ?  this.state.currEvent.description : ""}
                     </div>
                   </div>
                   <div className="design-card rating">
-                    Please rate us if you attended this event:
-                    <ReactStars
-                      count={5}
-                      onChange={ratingChanged}
-                      size={37}
-                      half={true}
-                      emptyIcon={<i class="fas fa-heart"></i>}
-                      halfIcon={<i className='fa fa-star-half-alt'></i>}
-                      fullIcon={<i className='fa fa-star'></i>}
-                      color2={'#ffd700'} />
-                      <button type="submit" className="btn btn-info btn-rounded btn-fw"><b>Submit</b></button>
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                   </div>
                 </div>
               </div>
@@ -97,13 +87,13 @@ class Event extends Component {
                   <SRLWrapper>
                     <div className="row">
                     <div className="col-sm-12 col-md-12 col-lg-4 col-12">
-                      <img src='/images/Gallery/sample_poster.jpg' loading="lazy"></img>
+                      <img src='/images/Gallery/sample1.png' loading="lazy"></img>
                     </div>
                     <div className="col-sm-12 col-md-12 col-lg-4 col-12">
-                      <img src='/images/Gallery/sample_poster.jpg' loading="lazy"></img>
+                      <img src='/images/Gallery/sample1.png' loading="lazy"></img>
                     </div>
                     <div className="col-sm-12 col-md-12 col-lg-4 col-12">
-                     <img src='/images/Gallery/sample_poster.jpg' loading="lazy"></img>
+                     <img src='/images/Gallery/sample1.png' loading="lazy"></img>
                     </div>
                     </div>
                   </SRLWrapper>
