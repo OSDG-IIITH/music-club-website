@@ -47,30 +47,30 @@ class App extends Component {
       //the <Nav/> goes above the Switch if navbar is at top
       //add your component to this by Route path = "/{component name}"
       <SimpleReactLightbox>
-         <Navbar /> 
         <BrowserRouter>
+          <Navbar />
           <div>
             <Switch>
-              <Route path="/" component={Home} exact/>
-              <Route path="/timeline" component={Timeline} exact/>
-              <Route path="/event/:id" component={Event} exact/>
-              <Route path="/gallery" component={Gallery} exact/>
-              <Route path="/about-club" component={AboutClub} exact/>
-              <Route path="/about-team" component={AboutTeam} exact/>
-              <Route path="/login" component={Login} exact/>
-              <Route path="/logout" component={Logout} exact/>
-              <Route path="/admin" component={Admin} exact/>
-              <Route path="/admin/create_event" component={CreateEvent} exact/>
-              <Route path="/admin/change_event" component={UpdateEvent} exact/>
-              <Route path="/admin/delete_event" component={DeleteEvent} exact/>
-              <Route path="/admin/change_password" component={PassChange} exact/>
-              <Route path="/admin/lineup" component={Lineup} exact/>
-              <Route path="/admin/add_lineup" component={AddLineup} exact/>
-              <Route path="/admin/delete_photo" component={DeletePhoto} exact/>
-              <Route path="/admin/add_photo" component={AddPhoto} exact/>
-              <Route path="/admin/delete_photo/confirm_delete" component={ConfirmDelete} exact/>
-              <Route path="/admin/delete_photo/not_found" component={NotFound} exact/>
-              <Route path="/admin/regs" component={Register} exact/>
+              <Route path="/" component={Home} exact />
+              <Route path="/timeline" component={Timeline} exact />
+              <Route path="/event/:id" component={Event} exact />
+              <Route path="/gallery" component={Gallery} exact />
+              <Route path="/about-club" component={AboutClub} exact />
+              <Route path="/about-team" component={AboutTeam} exact />
+              <Route path="/login" component={Login} exact />
+              <Route path="/logout" component={Logout} exact />
+              <Route path="/admin" component={Admin} exact />
+              <Route path="/admin/create_event" component={CreateEvent} exact />
+              <Route path="/admin/change_event" component={UpdateEvent} exact />
+              <Route path="/admin/delete_event" component={DeleteEvent} exact />
+              <Route path="/admin/change_password" component={PassChange} exact />
+              <Route path="/admin/lineup" component={Lineup} exact />
+              <Route path="/admin/add_lineup" component={AddLineup} exact />
+              <Route path="/admin/delete_photo" component={DeletePhoto} exact />
+              <Route path="/admin/add_photo" component={AddPhoto} exact />
+              <Route path="/admin/delete_photo/confirm_delete" component={ConfirmDelete} exact />
+              <Route path="/admin/delete_photo/not_found" component={NotFound} exact />
+              <Route path="/admin/regs" component={Register} exact />
             </Switch>
           </div>
         </BrowserRouter>
