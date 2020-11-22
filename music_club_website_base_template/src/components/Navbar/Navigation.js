@@ -1,6 +1,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { MenuItem } from "./MenuItem";
+import {withRouter} from 'react-router-dom'
 
 const variants = {
   open: {
@@ -11,6 +12,8 @@ const variants = {
   }
 };
 
+
+
 export const Navigation = () => (
   <motion.ul variants={variants}>
     {itemIds.map(i => (
@@ -19,4 +22,4 @@ export const Navigation = () => (
   </motion.ul>
 );
 
-const itemIds = [0, 1, 2, 3, 4];
+const itemIds = [0, 1, 2, 3];
